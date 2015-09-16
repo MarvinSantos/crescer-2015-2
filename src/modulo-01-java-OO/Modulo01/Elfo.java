@@ -5,7 +5,7 @@ public class Elfo{
     
     Elfo(String n, int flech){
         nome = n; 
-        if(flech == 0) {
+        if(flech != 0) {
             flechas = flech;
         }        
     }
