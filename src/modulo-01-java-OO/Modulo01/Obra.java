@@ -1,20 +1,33 @@
 
 /**
- * Write a description of class Obra here.
+ * Escreva a descrição da classe Obra aqui.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (seu nome) 
+ * @version (número de versão ou data)
  */
 public class Obra
 {
+    // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
     private String situacao;
 
     /**
-     * Constructor for objects of class Obra
+     * COnstrutor para objetos da classe Obra
      */
     public Obra(String sith)
     {
-        // initialise instance variables
+        // inicializa variáveis de instância
         situacao = sith;
+    }
+
+    /**
+     * Exemplo de método - substitua este comentário pelo seu próprio
+     * 
+     * @param  y   exemplo de um parâmetro de método
+     * @return     a soma de x com y 
+     */
+    public int sampleMethod(int y)
+    {return y ;
+        // ponha seu código aqui
+            
     }
 }
