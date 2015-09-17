@@ -41,12 +41,18 @@ public class ElfoTest
     
     @Test
     public void perdaDeFlechasDoElfoEPerdaDeVidaDoDwarf(){
+        //Arrange
         Elfo elfo4 = new Elfo("legolas4");
         Dwarf dwarf1 = new Dwarf();
+        int qtdFlechasEsperada = 41;
+        int qtdExperienciaEsperada = 1;
+        int vidaEsperada = 100;
+        //Act
         elfo4.atirarFlecha(dwarf1);
-        assertEquals(10, elfo4.getExperiencia());
-        assertEquals(41, elfo4.getFlechas());
-        assertEquals(100, dwarf1.getLife());
+        //Assert
+        assertEquals(qtdExperienciaEsperada, elfo4.getExperiencia());
+        assertEquals(qtdFlechasEsperada, elfo4.getFlechas());
+        assertEquals(vidaEsperada, dwarf1.getLife());
     }
     
     @Test
@@ -93,6 +99,28 @@ public class ElfoTest
         //Assert
         assertEquals(41,elfo9.getFlechas());
     } 
+    
+     @Test
+    public void doisElfosAtiramEm2anoes(){
+        //Arrange
+        Elfo elfoI = new Elfo("legolasI");
+        Elfo elfoII = new Elfo("legolasII");
+        Dwarf dwarfI = new Dwarf();
+        Dwarf dwarfII = new Dwarf();
+        int qtdFlechasEsperada = 40;
+        int qtdExperienciaEsperada = 2;
+        int vidaEsperada = 90;
+        //Act
+        elfoI.atirarFlecha(dwarfI);
+        elfoI.atirarFlecha(dwarfI);
+        elfoII.atirarFlecha(dwarfII);
+        elfoII.atirarFlecha(dwarfII);
+        //Assert
+        assertEquals(qtdExperienciaEsperada, elfoI.getExperiencia());
+        assertEquals(qtdFlechasEsperada, elfoI.getFlechas());
+        assertEquals(vidaEsperada, dwarfI.getLife());
+    }
+    
     
      @Test
     public void elfoComDuasFlechas(){

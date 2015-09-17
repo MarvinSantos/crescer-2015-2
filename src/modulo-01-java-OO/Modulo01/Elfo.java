@@ -32,7 +32,7 @@ public class Elfo{
     public void atirarFlecha(Dwarf dwarf){
         flechas--;
         dwarf.recebeFlechada();
-        experiencia += 10;
+        experiencia++;
            
     }
     
