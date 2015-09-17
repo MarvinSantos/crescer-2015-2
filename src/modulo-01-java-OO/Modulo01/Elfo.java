@@ -1,7 +1,7 @@
 public class Elfo{
     private String nome;
-    private static int flechas;
-    private static int experiencia;
+    private int flechas;
+    private int experiencia;
     
     /*type initializer
      * {
@@ -21,12 +21,12 @@ public class Elfo{
     public String getNome(){
         return this.nome;
     }
-    public static int getExperiencia(){
-        return experiencia;
+    public int getExperiencia(){
+        return this.experiencia;
     }    
     
-    public static int getFlechas(){
-        return flechas;
+    public int getFlechas(){
+        return this.flechas;
     }    
        
     public void atirarFlecha(Dwarf dwarf){

@@ -1,15 +1,15 @@
 public class Dwarf {
-    private static int life;
+    private int life;
    
     Dwarf (){
         life = 110;
     }    
     
-    public static int getLife(){
+    public int getLife(){
         return life;
     }
     
-    public static void recebeFlechada(){
+    public void recebeFlechada(){
         life -= 10;
     }    
 }
