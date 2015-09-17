@@ -85,4 +85,10 @@ public class DwarfTest
         Dwarf dwarfvelho = new Dwarf("anao");
         assertNotNull(dwarfvelho.getNome());
     }
+    
+    @Test
+    public void dwarfNasceComZeroDeExperiencia(){
+        Dwarf dwarfSemEXP = new Dwarf("gorgon");
+        assertEquals(0, dwarfSemEXP.getExperiencia());
+    }
 }

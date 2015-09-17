@@ -24,10 +24,15 @@ public class Dwarf {
         checarStatusDwarf();
     } 
     
+    public int getExperiencia(){
+        return this.experiencia;
+    }    
+    
     public Status getStatus(){
         return statusDwarf;
     
     }
+    
     public void checarStatusDwarf(){
         if(this.life == 0){
             statusDwarf = Status.MORTO;
