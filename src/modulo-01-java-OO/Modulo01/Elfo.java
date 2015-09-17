@@ -2,6 +2,7 @@ public class Elfo{
     private String nome;
     private int flechas;
     private int experiencia;
+    private Status statusElfo;
     
     /*type initializer
      * {
@@ -16,7 +17,8 @@ public class Elfo{
     public Elfo(String nome, int flechas){
         this.nome = nome; 
         this.flechas = flechas;
-        experiencia = 0;              
+        experiencia = 0; 
+        this.statusElfo = Status.VIVO;
     }
     public String getNome(){
         return this.nome;
@@ -28,7 +30,11 @@ public class Elfo{
     public int getFlechas(){
         return this.flechas;
     }    
-       
+    
+    public Status getStatus(){
+        return this.statusElfo;
+    }
+    
     public void atirarFlecha(Dwarf dwarf){
         flechas--;
         dwarf.recebeFlechada();
@@ -52,6 +58,14 @@ public class Elfo{
         this.experiencia,
         textoNiveis);
     }    
+    
+    //ruby ou coffeScript;
+    // #{nome} #{textoFlecha}
+    //interpolação de string
+    
+    //c#
+    // \{nome}
+   
         
     
     

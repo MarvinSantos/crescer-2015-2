@@ -43,7 +43,7 @@ public class ElfoTest
     public void perdaDeFlechasDoElfoEPerdaDeVidaDoDwarf(){
         //Arrange
         Elfo elfo4 = new Elfo("legolas4");
-        Dwarf dwarf1 = new Dwarf();
+        Dwarf dwarf1 = new Dwarf("oana");
         int qtdFlechasEsperada = 41;
         int qtdExperienciaEsperada = 1;
         int vidaEsperada = 100;
@@ -59,7 +59,7 @@ public class ElfoTest
     public void doisElfosAtirandoEm1Dwarf(){
         Elfo elfo5 = new Elfo("legolas5");
         Elfo elfo6 = new Elfo("legolas6");
-        Dwarf dwarf2 = new Dwarf();
+        Dwarf dwarf2 = new Dwarf("umDwarf");
         elfo5.atirarFlecha(dwarf2);
         elfo6.atirarFlecha(dwarf2);
         assertEquals(90, dwarf2.getLife());
@@ -68,8 +68,8 @@ public class ElfoTest
      @Test
     public void umElfoAtirandoEm2Dwarfs(){
         Elfo elfo7 = new Elfo("legolas7");
-        Dwarf dwarf3 = new Dwarf();
-        Dwarf dwarf4 = new Dwarf();
+        Dwarf dwarf3 = new Dwarf("tritao");
+        Dwarf dwarf4 = new Dwarf("anaoIlluminat");
         elfo7.atirarFlecha(dwarf3);
         elfo7.atirarFlecha(dwarf4);
         assertEquals(40, elfo7.getFlechas());
@@ -78,10 +78,10 @@ public class ElfoTest
      @Test
     public void umElfoAtirandoEm4Dwarfs(){
         Elfo elfo8 = new Elfo("legolas8");
-        Dwarf dwarf5 = new Dwarf();
-        Dwarf dwarf6 = new Dwarf();
-        Dwarf dwarf7 = new Dwarf();
-        Dwarf dwarf8 = new Dwarf();
+        Dwarf dwarf5 = new Dwarf("golez");
+        Dwarf dwarf6 = new Dwarf("jhon");
+        Dwarf dwarf7 = new Dwarf("locao");
+        Dwarf dwarf8 = new Dwarf("fedor");
         elfo8.atirarFlecha(dwarf5);
         elfo8.atirarFlecha(dwarf6);
         elfo8.atirarFlecha(dwarf7);
@@ -93,7 +93,7 @@ public class ElfoTest
     public void elfoAtirandoEmUmDwarf(){
         //Arrange
         Elfo elfo9 = new Elfo("legolas9");  
-        Dwarf dwarf9 = new Dwarf();
+        Dwarf dwarf9 = new Dwarf("batman");
         //Act
         elfo9.atirarFlecha(dwarf9);  
         //Assert
@@ -105,8 +105,8 @@ public class ElfoTest
         //Arrange
         Elfo elfoI = new Elfo("legolasI");
         Elfo elfoII = new Elfo("legolasII");
-        Dwarf dwarfI = new Dwarf();
-        Dwarf dwarfII = new Dwarf();
+        Dwarf dwarfI = new Dwarf("robin");
+        Dwarf dwarfII = new Dwarf("pitter");
         int qtdFlechasEsperada = 40;
         int qtdExperienciaEsperada = 2;
         int vidaEsperada = 90;
@@ -164,8 +164,14 @@ public class ElfoTest
      @Test
     public void elfoCom1DeExperienciaToString(){
         Elfo elfoK = new Elfo(null);
-        elfoK.atirarFlecha(new Dwarf());
+        elfoK.atirarFlecha(new Dwarf("nano"));
         assertEquals(null + " possui 41 flechas e 1 nivel de experiência.",elfoK.toString());    
     } 
+    
+    @Test
+    public void elfoNasceVivo(){
+        Elfo legolasS = new Elfo("legolasS");
+        assertEquals(Status.VIVO, legolasS.getStatus());
+    }   
         
 }
