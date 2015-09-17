@@ -23,7 +23,7 @@ public class ElfoTest
     @Test
     public void nomeDoElfoNaoNull(){
         Elfo elfo3 = new Elfo("legolas3");
-        assertEquals(elfo3.getNome() != null, elfo3.getNome() != null);
+        assertNotNull(elfo3.getNome());
     }
     
     @Test
