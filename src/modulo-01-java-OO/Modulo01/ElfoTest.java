@@ -151,8 +151,21 @@ public class ElfoTest
     
     @Test
     public void metodoToStringComElfoInicial(){
-        Elfo elfo14 = new Elfo("legolas14");              
-        assertEquals("legolas14 possui 42 flechas e 0 niveis de experiencia",elfo14.toString());    
+        Elfo elfo14 = new Elfo("legolas14", 200);              
+        assertEquals("legolas14 possui 200 flechas e 0 niveis de experiência.",elfo14.toString());    
+    } 
+    
+     @Test
+    public void metodoToStringComElfoCom1Flecha(){
+        Elfo elfo14 = new Elfo("legolas14", 1);              
+        assertEquals("legolas14 possui 1 flecha e 0 niveis de experiência.",elfo14.toString());    
+    } 
+    
+     @Test
+    public void elfoCom1DeExperienciaToString(){
+        Elfo elfoK = new Elfo(null);
+        elfoK.atirarFlecha(new Dwarf());
+        assertEquals(null + " possui 41 flechas e 1 nivel de experiência.",elfoK.toString());    
     } 
         
 }
