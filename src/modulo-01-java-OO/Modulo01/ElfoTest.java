@@ -85,5 +85,11 @@ public class ElfoTest
         elfo13.atirarFlecha(dwarf9);
         assertEquals(60, dwarf9.getLife());
     } 
+    
+    @Test
+    public void metodoToString(){
+        Elfo elfo14 = new Elfo("legolas14");              
+        assertEquals("legolas14 possui 42 flechas e 0 niveis de experiencia",elfo14.toString());    
+    } 
         
 }

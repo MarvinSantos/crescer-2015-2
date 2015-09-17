@@ -36,6 +36,13 @@ public class Elfo{
            
     }
     
+    public String toString(){
+        return this.nome + " possui " + this.flechas + " flechas e " + this.experiencia + " niveis de experiencia" ;
+    }    
+        
+    
+    
+    
      /* 
       public Elfo(String nome, Integer flechas) {
          this(nome);
@@ -43,7 +50,7 @@ public class Elfo{
              this.flechas = flechas;
          }
       }
-+    */
++    */ 
 
     /*
      public void atirarFlechaRefactory(){
