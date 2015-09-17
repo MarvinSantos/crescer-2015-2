@@ -9,7 +9,7 @@ public class Dwarf {
         return life;
     }
     
-    public static void setLife(){
+    public static void recebeFlechada(){
         life -= 10;
     }    
 }
