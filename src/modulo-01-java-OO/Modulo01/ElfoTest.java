@@ -15,6 +15,19 @@ public class ElfoTest
     }
     
     @Test
+    public void elfoCriadoComNomeNull(){
+        Elfo elfonullo = new Elfo(null);
+        assertNull(elfonullo.getNome());
+    } 
+    
+    
+    @Test
+    public void elfoCriadoComNomeVazio(){
+        Elfo elfoNomeVazio = new Elfo("");
+        assertEquals("",elfoNomeVazio.getNome());
+    }  
+    
+    @Test
     public void elfoNasceComZeroDeExperiencia(){
         Elfo elfo2 = new Elfo("legolas2");
         assertEquals(0, elfo2.getExperiencia());
@@ -71,23 +84,45 @@ public class ElfoTest
     } 
     
      @Test
-    public void cincoElfosAtirandoEm1Dwarf(){
-        Elfo elfo9 = new Elfo("legolas9");
-        Elfo elfo10 = new Elfo("legolas10");
-        Elfo elfo11 = new Elfo("legolas11");
-        Elfo elfo12 = new Elfo("legolas12");
-        Elfo elfo13 = new Elfo("legolas13");
+    public void elfoAtirandoEmUmDwarf(){
+        //Arrange
+        Elfo elfo9 = new Elfo("legolas9");  
         Dwarf dwarf9 = new Dwarf();
-        elfo9.atirarFlecha(dwarf9);
-        elfo10.atirarFlecha(dwarf9);
-        elfo11.atirarFlecha(dwarf9);
-        elfo12.atirarFlecha(dwarf9);
-        elfo13.atirarFlecha(dwarf9);
-        assertEquals(60, dwarf9.getLife());
+        //Act
+        elfo9.atirarFlecha(dwarf9);  
+        //Assert
+        assertEquals(41,elfo9.getFlechas());
+    } 
+    
+     @Test
+    public void elfoComDuasFlechas(){
+        //Arrange
+        Elfo elfoh = new Elfo("legolashumilde",2);  
+        //Act 
+        //Assert
+        assertEquals(2,elfoh.getFlechas());
+    } 
+    
+     @Test
+    public void elfoComMuitasFlechasIlluminat(){
+        //Arrange
+        Elfo elfoIlluminat = new Elfo("legolasIlluminat",3570);  
+        //Act 
+        //Assert
+        assertEquals(3570,elfoIlluminat.getFlechas());
+    } 
+    
+      @Test
+    public void elfoDevendoFlechas(){
+        //Arrange
+        Elfo elfoCaloteiro = new Elfo("legolasC",-3570);  
+        //Act 
+        //Assert
+        assertEquals(-3570,elfoCaloteiro.getFlechas());
     } 
     
     @Test
-    public void metodoToString(){
+    public void metodoToStringComElfoInicial(){
         Elfo elfo14 = new Elfo("legolas14");              
         assertEquals("legolas14 possui 42 flechas e 0 niveis de experiencia",elfo14.toString());    
     } 
