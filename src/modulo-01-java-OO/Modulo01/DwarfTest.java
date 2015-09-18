@@ -120,14 +120,14 @@ public class DwarfTest
     }    
     
     @Test
-    public void seONomeDoDwarfForSeixas(){
+    public void seONomeDoDwarfForSeixasEsperase33_0DoNumeroDeSorte(){
         Dwarf seixas = new Dwarf("Seixas");
         double numeroEsperado = 33.0;
         assertEquals(numeroEsperado, seixas.getNumeroSorte(), 0.01);
     }
     
     @Test
-    public void seONomeDoDwarfForMeireles(){
+    public void seONomeDoDwarfForMeirelesEsperase33_0DoNumeroDeSorte(){
         Dwarf meireles = new Dwarf("Meireles");
         double numeroEsperado = 33.0;
         assertEquals(numeroEsperado, meireles.getNumeroSorte(), 0.01);
@@ -141,4 +141,19 @@ public class DwarfTest
         assertEquals(vidaEsperada, seixas.getLife());
         assertEquals(expEsperado, seixas.getExperiencia());
     }
+    
+    @Test
+    public void seONumeroEsperadoForMaiorDoQue100(){
+        //arrange
+        Dwarf naoSeixas = new Dwarf("naoSeixas");        
+        int vidaExperada = 100;
+        int expEsperado = 0;
+        //act
+        naoSeixas.recebeFlechada();
+        //assert
+        assertEquals(vidaExperada, naoSeixas.getLife());
+        assertEquals(expEsperado, naoSeixas.getExperiencia());
+    }
+    
+    
 }
