@@ -80,6 +80,51 @@ public class DwarfTest
         assertEquals(Status.MORTO, anaoDeTeste.getStatus());
     } 
     
+      @Test
+    public void dawrfComZeroDeVidaENaoFicaDevendoRecebe13Flechas(){
+        //arrange
+        Dwarf anaoDeTeste = new Dwarf("balin");
+        int vidaEsperada = 0;
+        //act
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        //assert
+        assertEquals(vidaEsperada, anaoDeTeste.getLife());
+    } 
+    
+       @Test
+    public void dawrfRecebe9FlechasasEEsperaseQueOStatusSejaVivo(){
+        //arrange
+        Dwarf anaoDeTeste = new Dwarf("balin");
+        Status statusEsperado = Status.VIVO;
+        //act
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada();
+        
+        //assert
+        assertEquals(statusEsperado, anaoDeTeste.getStatus());
+    } 
+    
     @Test
     public void nomeDoDwarfNaoNull(){
         Dwarf dwarfvelho = new Dwarf("anao");
