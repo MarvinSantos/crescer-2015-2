@@ -12,14 +12,14 @@ public class DataTerceiraEraTest
    public void oAnoEsperadoEhBissexto(){
        DataTerceiraEra anoBissexto = new DataTerceiraEra(1,1,2016);
        
-       assertEquals(true, anoBissexto.ehBissexto());
+       assertTrue(anoBissexto.ehBissexto());
    } 
    
    @Test
-   public void oAnonaoEBissexto(){
+   public void oAnoEsperadoNaoEhBissexto(){
        DataTerceiraEra anoNaoBissexto = new DataTerceiraEra(1,1,2015);
        
-       assertEquals(false, anoNaoBissexto.ehBissexto());
+       assertFalse(anoNaoBissexto.ehBissexto());
    }
    
    @Test

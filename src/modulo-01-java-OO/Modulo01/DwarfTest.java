@@ -143,7 +143,7 @@ public class DwarfTest
     }
     
     @Test
-    public void seONumeroEsperadoForMaiorDoQue100(){
+    public void seONumeroEsperadoForMaiorDoQue100EONomenNaoEhSeixas(){
         //arrange
         Dwarf naoSeixas = new Dwarf("naoSeixas");        
         int vidaExperada = 100;
@@ -153,7 +153,37 @@ public class DwarfTest
         //assert
         assertEquals(vidaExperada, naoSeixas.getLife());
         assertEquals(expEsperado, naoSeixas.getExperiencia());
+    } 
+    
+     @Test
+    public void seONumeroEsperadoForMaiorDoQue100EONomeNaoEhMeireles(){
+        //arrange
+        Dwarf naoMeireles = new Dwarf("naoMeireles");        
+        int vidaExperada = 100;
+        int expEsperado = 0;
+        //act
+        naoMeireles.recebeFlechada();
+        //assert
+        assertEquals(vidaExperada, naoMeireles.getLife());
+        assertEquals(expEsperado, naoMeireles.getExperiencia());
     }
     
-    
+    @Test
+    public void dwarfTem2DeExpEEhImortalPorqueNasceuEmAnoBissexto(){
+        //arrange
+        Dwarf joao = new Dwarf("formiga",new DataTerceiraEra(1,1,2016));
+        int vidaEsperada = 90;
+        int expEsperado = 2;
+        //act
+        joao.recebeFlechada();
+        joao.recebeFlechada();
+        joao.getNumeroSorte();
+        joao.recebeFlechada();
+        joao.recebeFlechada();
+        //asserts
+        assertEquals(vidaEsperada, joao.getLife());
+        assertEquals(expEsperado, joao.getExperiencia());
+    }    
+        
+        
 }
