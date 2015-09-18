@@ -33,7 +33,7 @@ public class Dwarf {
                 this.life -= 10;
                 checarStatusDwarf();       
             }else if(getNumeroSorte() < 0){
-                this.experiencia++;
+                this.experiencia += 2;
             }   
         }     
     }    
@@ -63,7 +63,7 @@ public class Dwarf {
             numeroSorte *= -33;
         }  
         
-        if((dataDeNascimento.ehBissexto() == false) && (this.nome == "Seixas" || this.nome == "Meireles")){
+        if(!dataDeNascimento.ehBissexto() && this.nome != null && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))){
             numeroSorte *= 33;
             numeroSorte %= 100;
         } 

@@ -166,8 +166,9 @@ public class DwarfTest
         //arrange
         Dwarf dwarf55 = new Dwarf("ibraimovic",new DataTerceiraEra(1,1,2016));
         double valorEsperado = -3333.0;
-        //act
         dwarf55.recebeFlechada();
+        dwarf55.recebeFlechada();  
+        //act
         dwarf55.recebeFlechada();  
         //assert
         assertEquals(valorEsperado, dwarf55.getNumeroSorte(), 0.01);
@@ -183,9 +184,13 @@ public class DwarfTest
     
     @Test
     public void seONomeDoDwarfForMeirelesEsperase33_0DoNumeroDeSorte(){
+        //arrange
         Dwarf meireles = new Dwarf("Meireles");
         double numeroEsperado = 33.0;
+        meireles.recebeFlechada();
+        //assert
         assertEquals(numeroEsperado, meireles.getNumeroSorte(), 0.01);
+        assertEquals(0, meireles.getExperiencia());
     } 
     
     @Test
@@ -234,7 +239,7 @@ public class DwarfTest
         joao.recebeFlechada();
         joao.getNumeroSorte();
         joao.recebeFlechada();
-        joao.recebeFlechada();
+        
         //asserts
         assertEquals(vidaEsperada, joao.getLife());
         assertEquals(expEsperado, joao.getExperiencia());
