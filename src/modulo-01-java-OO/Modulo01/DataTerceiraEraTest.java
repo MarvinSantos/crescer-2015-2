@@ -27,5 +27,7 @@ public class DataTerceiraEraTest
        DataTerceiraEra diaNaoNull = new DataTerceiraEra(1,1,1);
        int diaEsperado = 1;
        assertEquals(diaEsperado, diaNaoNull.getDia());
-   }    
+   }   
+   
+  
 }

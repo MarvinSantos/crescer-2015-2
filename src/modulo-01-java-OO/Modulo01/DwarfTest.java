@@ -151,6 +151,16 @@ public class DwarfTest
         assertEquals(1,ano);
     }
     
+     @Test
+    public void dwarfNasceNaData1Do1Do1ComUmAssertDeComparacaoPraOvjetos(){
+        //arrange
+        Dwarf ledesma = new Dwarf("ledessma");
+        DataTerceiraEra dataEsperada = new DataTerceiraEra(1,1,1);
+        //act
+        //assert
+        assertEquals(dataEsperada, ledesma.getDataDeNascimento());
+    }
+    
     @Test
     public void seAVidaDoDwarfEstiverEntre80E90Esperase3333pontoZeroNegativos(){
         //arrange
