@@ -21,5 +21,10 @@ public class DataTerceiraEra
    
    public int getMes(){
        return this.mes;
-   }    
+   }
+   
+   public boolean ehBissexto(){
+       boolean bissexto = ((this.ano % 100 != 0 )&&((this.ano % 4 == 0) || (this.ano % 400 == 0))) ? true:false;
+       return bissexto;
+   }  
 }
