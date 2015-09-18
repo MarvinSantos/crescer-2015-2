@@ -20,7 +20,7 @@ public class Dwarf {
     }    
     
     public int getLife(){
-        return life;
+        return this.life;
     }
     
     public String getNome(){
@@ -29,11 +29,14 @@ public class Dwarf {
     
     public void recebeFlechada(){
         if(this.statusDwarf == Status.VIVO){
-        life -= 10;
-        checarStatusDwarf();
-       }
-    } 
-    
+            if(getNumeroSorte() > 100){
+                this.life -= 10;
+                checarStatusDwarf();       
+            }else if(getNumeroSorte() < 0){
+                this.experiencia++;
+            }   
+        }     
+    }    
     public int getExperiencia(){
         return this.experiencia;
     }    
@@ -53,5 +56,18 @@ public class Dwarf {
         return this.dataDeNascimento;
     }    
     
+    public double getNumeroSorte(){
+        double numeroSorte = 101.0;
+        
+        if((dataDeNascimento.ehBissexto() == true) && ((this.life >= 80) && (this.life <= 90))){
+            numeroSorte *= -33;
+        }  
+        
+        if((dataDeNascimento.ehBissexto() == false) && (this.nome == "Seixas" || this.nome == "Meireles")){
+            numeroSorte *= 33;
+            numeroSorte %= 100;
+        } 
+        return numeroSorte;
+    }    
 }
     
