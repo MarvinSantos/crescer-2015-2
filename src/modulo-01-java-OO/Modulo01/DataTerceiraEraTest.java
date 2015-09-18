@@ -20,5 +20,12 @@ public class DataTerceiraEraTest
        DataTerceiraEra anoNaoBissexto = new DataTerceiraEra(1,1,2015);
        
        assertEquals(false, anoNaoBissexto.ehBissexto());
+   }
+   
+   @Test
+   public void ODiaNaoENull(){
+       DataTerceiraEra diaNaoNull = new DataTerceiraEra(1,1,1);
+       int diaEsperado = 1;
+       assertEquals(diaEsperado, diaNaoNull.getDia());
    }    
 }
