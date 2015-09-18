@@ -91,4 +91,18 @@ public class DwarfTest
         Dwarf dwarfSemEXP = new Dwarf("gorgon");
         assertEquals(0, dwarfSemEXP.getExperiencia());
     }
+    
+    @Test
+    public void dwarfNasceNaData1Do1Do1(){
+        //arrange
+        Dwarf ledesma = new Dwarf("ledessma");
+        int dia = ledesma.getDataDeNascimento().getDia();
+        int mes = ledesma.getDataDeNascimento().getMes();
+        int ano = ledesma.getDataDeNascimento().getAno();
+        //act
+        //assert
+        assertEquals(1,dia);
+        assertEquals(1,mes);
+        assertEquals(1,ano);
+    }    
 }

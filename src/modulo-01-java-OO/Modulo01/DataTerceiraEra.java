@@ -2,10 +2,10 @@
 public class DataTerceiraEra
 {
    private int dia;
-   private String mes;
+   private int mes;
    private int ano;
    
-   public DataTerceiraEra(int dia, String mes, int ano){
+   public DataTerceiraEra(int dia, int mes, int ano){
        this.dia = dia;
        this.mes = mes;
        this.ano = ano;
@@ -19,7 +19,7 @@ public class DataTerceiraEra
        return this.ano;
    }   
    
-   public String getMes(){
+   public int getMes(){
        return this.mes;
    }    
 }
