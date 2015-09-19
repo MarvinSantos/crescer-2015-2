@@ -4,7 +4,7 @@ public class Dwarf {
     private int experiencia;
     private Status statusDwarf;
     private DataTerceiraEra dataDeNascimento;
-    private Inventario mochila;
+    private Inventario mochila = new Inventario();
    
     public Dwarf(String nome){
         this(nome,new DataTerceiraEra(1,1,1));

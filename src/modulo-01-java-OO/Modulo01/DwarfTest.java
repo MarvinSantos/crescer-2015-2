@@ -243,8 +243,58 @@ public class DwarfTest
         //asserts
         assertEquals(vidaEsperada, joao.getLife());
         assertEquals(expEsperado, joao.getExperiencia());
-    }    
-        
- 
+    } 
     
+     @Test
+    public void dwarfTentaSorteEGanha(){
+        //arrange
+        Dwarf luck = new Dwarf("sortudo",new DataTerceiraEra(1,1,2016));
+        int valorEsperado = 1002;
+        luck.recebeFlechada();
+        luck.recebeFlechada();  
+        luck.recebeFlechada();  
+        //act
+        luck.getInventario().adcionarItem(new Item("poçao",2)); 
+        luck.tentarSorte();
+        //assert
+        assertEquals(valorEsperado, luck.getInventario().getItens().get(0).getQuantidade());
+        
+    }
+    
+     
+     @Test
+    public void dwarfTentaSorteENaoGanha(){
+        //arrange
+        Dwarf luck = new Dwarf("sortudo",new DataTerceiraEra(1,1,2015));
+        int valorEsperado = 2;
+        luck.recebeFlechada();
+        luck.recebeFlechada();  
+        luck.recebeFlechada();  
+        //act
+        luck.getInventario().adcionarItem(new Item("poçao",2)); 
+        luck.tentarSorte();
+        //assert
+        assertEquals(valorEsperado, luck.getInventario().getItens().get(0).getQuantidade());
+        
+    }
+    
+      @Test
+    public void dwarfTentaSorte5VezesEGanha(){
+        //arrange
+        Dwarf luck = new Dwarf("sortudo",new DataTerceiraEra(1,1,2016));
+        int valorEsperado = 5002;
+        luck.recebeFlechada();
+        luck.recebeFlechada();  
+        luck.recebeFlechada();  
+        //act
+        luck.getInventario().adcionarItem(new Item("poçao",2)); 
+        luck.tentarSorte();
+        luck.tentarSorte();
+        luck.tentarSorte();
+        luck.tentarSorte();
+        luck.tentarSorte();
+        //assert
+        assertEquals(valorEsperado, luck.getInventario().getItens().get(0).getQuantidade());
+        
+    }
 }
