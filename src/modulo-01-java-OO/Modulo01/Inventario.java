@@ -38,9 +38,9 @@ public class Inventario{
     
     public Item getItemComMaiorQuantidade(){
         Item itemMaiorQuantidade = this.getItens().get(0);
-        int quantidadeMaior =this.getItens().get(0).getQuantidade();
+        int quantidadeMaior =itemMaiorQuantidade.getQuantidade();
         
-        for(int i = 0; i < this.getItens().size() ; i++){
+        for(int i = 1; i < this.getItens().size() ; i++){
             if(this.getItens().get(i).getQuantidade() > quantidadeMaior){
                 quantidadeMaior = this.getItens().get(i).getQuantidade();
                 itemMaiorQuantidade = this.getItens().get(i); 

@@ -17,7 +17,7 @@ public class InventarioTest
    }  
    
    @Test
-   public void adcionarItemNaListaDeInventarioNoIndice1(){
+   public void adcionarItemNaListaDoInventarioNoIndice1(){
        //arrange
        Inventario mochila = new Inventario();
        Item faca = new Item("faca",1);
@@ -54,7 +54,7 @@ public class InventarioTest
    }
    
    @Test
-   public void itemComMaiorQuantiade(){
+   public void itemComMaiorQuantidade(){
        //arrange
        Item faca = new Item("faca",1);
        Item remedio = new Item("remedio",10);
@@ -73,7 +73,7 @@ public class InventarioTest
    } 
    
     @Test
-   public void itemComMaiorQuantiadeIgualA1NoMeioDeItensNegativos(){
+   public void itemComMaiorQuantidadeIgualA1NoMeioDeItensNegativos(){
        //arrange
        Item faca = new Item("faca",-500);
        Item remedio = new Item("remedio",1);
@@ -171,7 +171,7 @@ public class InventarioTest
    }
    
      @Test
-   public void ordenar1Itens(){
+   public void ordenar1Iten(){
         //arrange
        Item faca = new Item("faca",-1);  
        Inventario mochila = new Inventario(); 
