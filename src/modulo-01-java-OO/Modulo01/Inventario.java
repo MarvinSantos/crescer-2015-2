@@ -2,17 +2,21 @@ import java.util.ArrayList;
 
 public class Inventario{
 
-    ArrayList<Item> listaDeItens = new ArrayList<Item>();
+    ArrayList<Item> listaDeItens;
     
-    public Inventario(Item item){
-        listaDeItens.add(item);
-    }
+    public Inventario(){
+        listaDeItens = new ArrayList<Item>();
+    }    
     
-    public void perderItem(int indice){
-        listaDeItens.remove(indice);
+    public void perderItem(Item item){
+        this.listaDeItens.remove(item);
     }  
     
     public void adcionarItem(Item item){
-        listaDeItens.add(item);
-    }    
+        this.listaDeItens.add(item);
+    }
+    
+    public ArrayList<Item> getItens(){
+        return this.listaDeItens;
+    }  
 }

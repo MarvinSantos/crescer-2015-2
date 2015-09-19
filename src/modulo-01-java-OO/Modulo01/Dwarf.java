@@ -29,10 +29,11 @@ public class Dwarf {
     
     public void recebeFlechada(){
         if(this.statusDwarf == Status.VIVO){
-            if(getNumeroSorte() > 100){
+            double numeroSorteado = getNumeroSorte();
+            if(numeroSorteado > 100){
                 this.life -= 10;
                 checarStatusDwarf();       
-            }else if(getNumeroSorte() < 0){
+            }else if(numeroSorteado < 0){
                 this.experiencia += 2;
             }   
         }     
