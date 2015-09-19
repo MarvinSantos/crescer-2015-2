@@ -51,5 +51,43 @@ public class InventarioTest
        mochila.adcionarItem(spray);
        //assert
        assertEquals(textoEsperado,mochila.getDescricaoItens());
+   }
+   
+   @Test
+   public void itemComMaiorQuantiade(){
+       //arrange
+       Item faca = new Item("faca",1);
+       Item remedio = new Item("remedio",10);
+       Item desodorante = new Item("desodorante",33);
+       Item carneAssada = new Item("carne assada",103);
+       Item itemEsperado = carneAssada;
+       Inventario mochila = new Inventario();
+       //act
+       mochila.adcionarItem(faca);
+       mochila.adcionarItem(remedio);
+       mochila.adcionarItem(desodorante);
+       mochila.adcionarItem(carneAssada);
+       Item itemObtido = mochila.getItemComMaiorQuantidade();
+       //assert
+       assertEquals(itemEsperado, itemObtido);                     
+   } 
+   
+    @Test
+   public void itemComMaiorQuantiadeE1(){
+       //arrange
+       Item faca = new Item("faca",0);
+       Item remedio = new Item("remedio",1);
+       Item desodorante = new Item("desodorante",0);
+       Item carneAssada = new Item("carne assada",0);
+       Item itemEsperado = remedio;
+       Inventario mochila = new Inventario();
+       //act
+       mochila.adcionarItem(faca);
+       mochila.adcionarItem(remedio);
+       mochila.adcionarItem(desodorante);
+       mochila.adcionarItem(carneAssada);
+       Item itemObtido = mochila.getItemComMaiorQuantidade();
+       //assert
+       assertEquals(itemEsperado, itemObtido);                     
    }   
 }
