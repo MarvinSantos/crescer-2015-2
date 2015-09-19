@@ -18,5 +18,21 @@ public class Inventario{
     
     public ArrayList<Item> getItens(){
         return this.listaDeItens;
-    }  
+    }
+    
+    public String getDescricaoItens(){
+        
+        String itensNoInventario = "";
+        
+        for(int i = 0; i < listaDeItens.size(); i++){
+            itensNoInventario += listaDeItens.get(i).getDescricao();
+            if( i < listaDeItens.size() -1){
+                itensNoInventario += ", ";
+            }
+            if(i == listaDeItens.size() -1){
+                itensNoInventario += ".";
+            }    
+        }
+        return itensNoInventario;
+    }    
 }
