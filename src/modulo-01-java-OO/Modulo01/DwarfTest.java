@@ -245,5 +245,6 @@ public class DwarfTest
         assertEquals(expEsperado, joao.getExperiencia());
     }    
         
-        
+ 
+    
 }

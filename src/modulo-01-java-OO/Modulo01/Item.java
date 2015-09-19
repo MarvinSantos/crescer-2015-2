@@ -16,6 +16,10 @@ public class Item
     
     public int getQuantidade(){
         return this.quantidade;
+    }
+    
+    public void quantidadeRecebeMaisMil(){
+        this.quantidade += 1000;
     }    
         
 }

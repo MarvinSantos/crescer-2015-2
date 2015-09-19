@@ -4,6 +4,7 @@ public class Dwarf {
     private int experiencia;
     private Status statusDwarf;
     private DataTerceiraEra dataDeNascimento;
+    private Inventario mochila;
    
     public Dwarf(String nome){
         this(nome,new DataTerceiraEra(1,1,1));
@@ -16,7 +17,11 @@ public class Dwarf {
         this.life = 110;        
         statusDwarf = Status.VIVO;
         this.dataDeNascimento = dataDeNascimento;
-        
+       
+    } 
+    
+    public Inventario getInventario(){
+        return this.mochila;
     }    
     
     public int getLife(){
@@ -69,6 +74,16 @@ public class Dwarf {
             numeroSorte %= 100;
         } 
         return numeroSorte;
+    } 
+    
+    public void tentarSorte(){
+        double numeroDaSorte = getNumeroSorte();
+        
+        if(numeroDaSorte == -3333.0){
+            for(int i = 0; i < mochila.listaDeItens.size(); i++){
+                mochila.getItens().get(i).quantidadeRecebeMaisMil();
+            }    
+        }    
     }    
 }
     
