@@ -12,7 +12,7 @@ public class Inventario{
         this.listaDeItens.remove(item);
     }  
     
-    public void adcionarItem(Item item){
+    public void adicionarItem(Item item){
         this.listaDeItens.add(item);
     }
     

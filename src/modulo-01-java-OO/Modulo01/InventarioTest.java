@@ -12,7 +12,7 @@ public class InventarioTest
    public void adcionarItemNaListaDeInventario(){
        Inventario mochila = new Inventario();
        Item faca = new Item("faca",1);
-       mochila.adcionarItem(faca);
+       mochila.adicionarItem(faca);
        assertEquals(faca,mochila.getItens().get(0));
    }  
    
@@ -22,8 +22,8 @@ public class InventarioTest
        Inventario mochila = new Inventario();
        Item faca = new Item("faca",1);
        Item chinelo = new Item("chinelo",2);
-       mochila.adcionarItem(faca);
-       mochila.adcionarItem(chinelo);
+       mochila.adicionarItem(faca);
+       mochila.adicionarItem(chinelo);
        assertEquals(chinelo,mochila.getItens().get(1));
    }   
    
@@ -34,8 +34,8 @@ public class InventarioTest
        Inventario mochila = new Inventario();
        Item faca = new Item("faca",1);
        Item spray = new Item("sprayDePimenta",1);
-       mochila.adcionarItem(faca);
-       mochila.adcionarItem(spray);
+       mochila.adicionarItem(faca);
+       mochila.adicionarItem(spray);
        //assert
        assertEquals(textoEsperado,mochila.getDescricaoItens());
    } 
@@ -47,8 +47,8 @@ public class InventarioTest
        Inventario mochila = new Inventario();
        Item faca = new Item(null,1);
        Item spray = new Item(null,1);
-       mochila.adcionarItem(faca);
-       mochila.adcionarItem(spray);
+       mochila.adicionarItem(faca);
+       mochila.adicionarItem(spray);
        //assert
        assertEquals(textoEsperado,mochila.getDescricaoItens());
    }
@@ -63,10 +63,10 @@ public class InventarioTest
        Item itemEsperado = carneAssada;
        Inventario mochila = new Inventario();
        //act
-       mochila.adcionarItem(faca);
-       mochila.adcionarItem(remedio);
-       mochila.adcionarItem(desodorante);
-       mochila.adcionarItem(carneAssada);
+       mochila.adicionarItem(faca);
+       mochila.adicionarItem(remedio);
+       mochila.adicionarItem(desodorante);
+       mochila.adicionarItem(carneAssada);
        Item itemObtido = mochila.getItemComMaiorQuantidade();
        //assert
        assertEquals(itemEsperado, itemObtido);                     
@@ -82,10 +82,10 @@ public class InventarioTest
        Item itemEsperado = remedio;
        Inventario mochila = new Inventario();
        //act
-       mochila.adcionarItem(faca);
-       mochila.adcionarItem(remedio);
-       mochila.adcionarItem(desodorante);
-       mochila.adcionarItem(carneAssada);
+       mochila.adicionarItem(faca);
+       mochila.adicionarItem(remedio);
+       mochila.adicionarItem(desodorante);
+       mochila.adicionarItem(carneAssada);
        Item itemObtido = mochila.getItemComMaiorQuantidade();
        //assert
        assertEquals(itemEsperado, itemObtido);                     
@@ -111,21 +111,21 @@ public class InventarioTest
        Item dollar = new Item("doallar",72);
        Inventario mochila = new Inventario();
        
-       mochila.adcionarItem(faca);
-       mochila.adcionarItem(remedio);
-       mochila.adcionarItem(desodorante);
-       mochila.adcionarItem(carneAssada);
-       mochila.adcionarItem(balao);
-       mochila.adcionarItem(carne);
-       mochila.adcionarItem(carro);
-       mochila.adcionarItem(agua);
-       mochila.adcionarItem(bit);
-       mochila.adcionarItem(pc);
-       mochila.adcionarItem(madeira);
-       mochila.adcionarItem(pedra);
-       mochila.adcionarItem(ouro);
-       mochila.adcionarItem(cash);
-       mochila.adcionarItem(dollar);
+       mochila.adicionarItem(faca);
+       mochila.adicionarItem(remedio);
+       mochila.adicionarItem(desodorante);
+       mochila.adicionarItem(carneAssada);
+       mochila.adicionarItem(balao);
+       mochila.adicionarItem(carne);
+       mochila.adicionarItem(carro);
+       mochila.adicionarItem(agua);
+       mochila.adicionarItem(bit);
+       mochila.adicionarItem(pc);
+       mochila.adicionarItem(madeira);
+       mochila.adicionarItem(pedra);
+       mochila.adicionarItem(ouro);
+       mochila.adicionarItem(cash);
+       mochila.adicionarItem(dollar);
        //act
        mochila.ordenarItens();
        //assert
@@ -155,10 +155,10 @@ public class InventarioTest
        Item balao = new Item("balao",6);
        Inventario mochila = new Inventario();       
         
-       mochila.adcionarItem(faca);
-       mochila.adcionarItem(remedio);
-       mochila.adcionarItem(desodorante);
-       mochila.adcionarItem(balao);
+       mochila.adicionarItem(faca);
+       mochila.adicionarItem(remedio);
+       mochila.adicionarItem(desodorante);
+       mochila.adicionarItem(balao);
        
        //act
        mochila.ordenarItens();
@@ -175,7 +175,7 @@ public class InventarioTest
         //arrange
        Item faca = new Item("faca",-1);  
        Inventario mochila = new Inventario(); 
-       mochila.adcionarItem(faca);       
+       mochila.adicionarItem(faca);       
        //act
        mochila.ordenarItens();
        //assert
@@ -188,13 +188,44 @@ public class InventarioTest
        Item faca = new Item("faca",2);  
        Item remedio = new Item("remedio",5);
        Inventario mochila = new Inventario(); 
-       mochila.adcionarItem(faca);
-       mochila.adcionarItem(remedio);
+       mochila.adicionarItem(faca);
+       mochila.adicionarItem(remedio);
        //act
        mochila.ordenarItens();
        //assert
        assertEquals(faca,mochila.getItens().get(0)); 
        assertEquals(remedio,mochila.getItens().get(1));
+   } 
+   
+    @Test
+   public void adcionarItemNaListaDoInventarioEDepoisPerderUm(){
+       //arrange
+       Inventario mochila = new Inventario();
+       Item faca = new Item("faca",1);
+       Item chinelo = new Item("chinelo",2);
+       mochila.adicionarItem(faca);
+       mochila.adicionarItem(chinelo);
+       mochila.perderItem(faca);
+       assertEquals(chinelo,mochila.getItens().get(0));
+   }
+   
+     @Test
+   public void adcionar2ItesNaListaDoInventarioEPerdelosDepoisVerificarSeOsItensForamPerdidosDeFato(){
+       /* se o tamanho da lista depois de 2 itens serem adicionados for 2 e depois que forem removidos o tamanho for 0, então o metodo perderItem() está funcionando */
+       
+       //arrange
+       Inventario mochila = new Inventario();
+       Item faca = new Item("faca",1);
+       Item chinelo = new Item("chinelo",2);
+       mochila.adicionarItem(faca);
+       mochila.adicionarItem(chinelo);
+       //assert1
+       assertEquals(2,mochila.getItens().size());
+       //act
+       mochila.perderItem(faca);
+       mochila.perderItem(chinelo);
+       //assert2
+       assertEquals(0,mochila.getItens().size());
    }  
    
 }
