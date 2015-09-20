@@ -64,11 +64,11 @@ public class Inventario{
                
                 if(this.listaDeItens.get(x).getQuantidade() < this.listaDeItens.get(i).getQuantidade()){
                     //carregador recebeu o que esta fixo
-                    reservatorio = this.listaDeItens.get(x);
+                    reservatorio = this.listaDeItens.get(i);
                     //o lugar do que esta fixo recebe o que esta variando
-                    this.listaDeItens.set(x,this.listaDeItens.get(i));                   
+                    this.listaDeItens.set(i,this.listaDeItens.get(x));                   
                     //o lugar no indice que esta variando recebe o item dentro de "resrvatorio" que era o que estava fixo
-                    this.listaDeItens.set(i,reservatorio);
+                    this.listaDeItens.set(x,reservatorio);
                 }    
             }    
         }    
