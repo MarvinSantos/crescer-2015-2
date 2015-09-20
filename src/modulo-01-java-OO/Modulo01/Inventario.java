@@ -72,5 +72,11 @@ public class Inventario{
                 }    
             }    
         }    
-    }    
+    }
+    
+     public boolean equals(int valor){
+       int valorEsperado = valor;
+       
+       return this.listaDeItens.get(0).getQuantidade() == valorEsperado;
+   }   
 }

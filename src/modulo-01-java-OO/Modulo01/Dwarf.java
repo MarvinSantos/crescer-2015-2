@@ -84,6 +84,7 @@ public class Dwarf {
                 mochila.getItens().get(i).quantidadeRecebeMaisMil();
             }    
         }    
-    }    
+    }
+    
 }
     

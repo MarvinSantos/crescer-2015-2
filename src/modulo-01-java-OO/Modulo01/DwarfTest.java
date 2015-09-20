@@ -257,7 +257,7 @@ public class DwarfTest
         luck.getInventario().adcionarItem(new Item("poçao",2)); 
         luck.tentarSorte();
         //assert
-        assertEquals(valorEsperado, luck.getInventario().getItens().get(0).getQuantidade());
+        assertTrue(luck.getInventario().equals(valorEsperado));
         
     }
     
@@ -274,7 +274,7 @@ public class DwarfTest
         luck.getInventario().adcionarItem(new Item("poçao",2)); 
         luck.tentarSorte();
         //assert
-        assertEquals(valorEsperado, luck.getInventario().getItens().get(0).getQuantidade());
+        assertTrue(luck.getInventario().equals(valorEsperado));
         
     }
     
@@ -294,7 +294,7 @@ public class DwarfTest
         luck.tentarSorte();
         luck.tentarSorte();
         //assert
-        assertEquals(valorEsperado, luck.getInventario().getItens().get(0).getQuantidade());
+        assertTrue(luck.getInventario().equals(valorEsperado));
         
     }
 }
