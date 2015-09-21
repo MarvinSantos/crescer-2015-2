@@ -20,6 +20,18 @@ public class Inventario{
         return this.listaDeItens;
     }
     
+    public void quantidadeAumentaEm1000(){
+        for(int i = 0; i < listaDeItens.size(); i++){
+            listaDeItens.get(i).quantidadeRecebeMaisMil();
+        }    
+    }  
+    
+     public void quantidadeAumentaEmMilESoma3VezesAAual(){
+        for(int i = 0; i < listaDeItens.size(); i++){
+            listaDeItens.get(i).quantidadeRecebeMais2VezesEMaisMil();
+        }    
+    } 
+    
     public String getDescricaoItens(){
         
         String itensNoInventario = "";
@@ -27,11 +39,8 @@ public class Inventario{
         for(int i = 0; i < listaDeItens.size(); i++){
             itensNoInventario += listaDeItens.get(i).getDescricao();
             if( i < listaDeItens.size() -1){
-                itensNoInventario += ", ";
-            }
-            if(i == listaDeItens.size() -1){
-                itensNoInventario += ".";
-            }    
+                itensNoInventario += ",";
+            }  
         }
         return itensNoInventario;
     }
@@ -65,9 +74,9 @@ public class Inventario{
         }    
     }
     
-     public boolean equals(int valor){
-       int valorEsperado = valor;
+    public boolean equals(Object obj){
+       Inventario mochila = (Inventario)obj;
        
-       return this.listaDeItens.get(0).getQuantidade() == valorEsperado;
-   }   
+       return this.listaDeItens.equals(mochila.getItens());
+    }   
 }

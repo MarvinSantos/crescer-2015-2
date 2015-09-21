@@ -1,10 +1,10 @@
 public class Dwarf {
-    private int life;
-    private String nome;
-    private int experiencia;
-    private Status statusDwarf;
-    private DataTerceiraEra dataDeNascimento;
-    private Inventario mochila = new Inventario();
+    protected int life;
+    protected  String nome;
+    protected  int experiencia;
+    protected  Status statusDwarf;
+    protected  DataTerceiraEra dataDeNascimento;
+    protected  Inventario mochila = new Inventario();
    
     public Dwarf(String nome){
         this(nome,new DataTerceiraEra(1,1,1));
@@ -80,9 +80,8 @@ public class Dwarf {
         double numeroDaSorte = getNumeroSorte();
         
         if(numeroDaSorte == -3333.0){
-            for(int i = 0; i < mochila.listaDeItens.size(); i++){
-                mochila.getItens().get(i).quantidadeRecebeMaisMil();
-            }    
+                mochila.quantidadeAumentaEm1000();
+               
         }    
     }
     

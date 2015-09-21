@@ -249,15 +249,16 @@ public class DwarfTest
     public void dwarfTentaSorteEGanha(){
         //arrange
         Dwarf luck = new Dwarf("sortudo",new DataTerceiraEra(1,1,2016));
-        int valorEsperado = 1002;
         luck.recebeFlechada();
         luck.recebeFlechada();  
-        luck.recebeFlechada();  
+        luck.recebeFlechada(); 
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("poçao",1002));
         //act
         luck.getInventario().adicionarItem(new Item("poçao",2)); 
         luck.tentarSorte();
         //assert
-        assertTrue(luck.getInventario().equals(valorEsperado));
+        assertEquals(esperado,luck.getInventario());
         
     }
     
@@ -266,15 +267,16 @@ public class DwarfTest
     public void dwarfTentaSorteENaoGanha(){
         //arrange
         Dwarf luck = new Dwarf("sortudo",new DataTerceiraEra(1,1,2015));
-        int valorEsperado = 2;
         luck.recebeFlechada();
         luck.recebeFlechada();  
         luck.recebeFlechada();  
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("poção",2));
         //act
-        luck.getInventario().adicionarItem(new Item("poçao",2)); 
+        luck.getInventario().adicionarItem(new Item("poção",2)); 
         luck.tentarSorte();
         //assert
-        assertTrue(luck.getInventario().equals(valorEsperado));
+        assertEquals(esperado,luck.getInventario());
         
     }
     
@@ -282,10 +284,11 @@ public class DwarfTest
     public void dwarfTentaSorte5VezesEGanha(){
         //arrange
         Dwarf luck = new Dwarf("sortudo",new DataTerceiraEra(1,1,2016));
-        int valorEsperado = 5002;
         luck.recebeFlechada();
         luck.recebeFlechada();  
-        luck.recebeFlechada();  
+        luck.recebeFlechada(); 
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("poçao",5002));
         //act
         luck.getInventario().adicionarItem(new Item("poçao",2)); 
         luck.tentarSorte();
@@ -294,7 +297,7 @@ public class DwarfTest
         luck.tentarSorte();
         luck.tentarSorte();
         //assert
-        assertTrue(luck.getInventario().equals(valorEsperado));
+        assertEquals(esperado, luck.getInventario());
         
     }
 }
