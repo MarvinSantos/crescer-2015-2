@@ -89,4 +89,19 @@ public class OrcTest
         
         assertEquals(vidaElfoEsperada, elfo.getVida());
     } 
+    
+    @Test
+    public void orcMedrosoEstaFugindo(){
+        Orc orc = new Orc("medroso");
+        Dwarf dwarf = new Dwarf("dwarf");
+        Status statusEsperadoAntesDoAct = Status.VIVO;
+        Status statusEsperadoDepoisDoAct = Status.FUGINDO;
+        assertEquals(statusEsperadoAntesDoAct,orc.getStatus());
+        //act
+        orc.atacarDwarf(dwarf);
+        
+        assertEquals(statusEsperadoDepoisDoAct,orc.getStatus());
+        
+        
+    }    
 }

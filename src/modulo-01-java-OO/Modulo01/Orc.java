@@ -32,7 +32,7 @@ public class Orc
     }
     
     public void receberAtaqueDeElfo() {
-       if(statusOrc == Status.VIVO){
+       if(statusOrc != Status.MORTO){
         vida -= 8;
         verificarSeMorreu();
        }
@@ -42,7 +42,7 @@ public class Orc
         
        boolean temEscudo = verificaSeTemEscudo(); 
        
-       if(statusOrc == Status.VIVO){
+       if(statusOrc != Status.MORTO){
             if(temEscudo) {
                 vida -= 5; 
                 verificarSeMorreu();
@@ -63,7 +63,9 @@ public class Orc
         }else if (temFlecha && temArco){
           dwarf.recebeAtaque(8);
           this.mochila.diminuirQuantidadeItem(flecha,1);
-        }
+        }else if(!temEspada && !temFlecha){
+            statusOrc = Status.FUGINDO;
+        }    
     }
     
     public void atacarElfo(Elfo elfo) {
@@ -75,7 +77,9 @@ public class Orc
         }else if (temFlecha && temArco){
           elfo.recebeAtaque(8);
           this.mochila.diminuirQuantidadeItem(flecha,1);
-        }
+        }else if(!temEspada && !temFlecha){
+            statusOrc = Status.FUGINDO;
+        }  
     }
     
     
