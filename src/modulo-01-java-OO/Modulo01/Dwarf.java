@@ -48,7 +48,20 @@ public class Dwarf {
                 this.experiencia += 2;
             }   
         }     
-    }    
+    }   
+    
+     public void recebeAtaque(int dano){
+        if(this.statusDwarf == Status.VIVO){
+            double numeroSorteado = getNumeroSorte();
+            if(numeroSorteado > 100){
+                this.life -= dano;
+                checarStatusDwarf();       
+            }else if(numeroSorteado < 0){
+                this.experiencia += 2;
+            }   
+        }     
+    }   
+    
     public int getExperiencia(){
         return this.experiencia;
     }    

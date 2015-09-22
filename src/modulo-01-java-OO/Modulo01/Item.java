@@ -32,7 +32,9 @@ public class Item
     }
     
     public void diminuirQuantidade(int quantidade){
-        this.quantidade -= quantidade;
+        if(this.quantidade > 0){
+            this.quantidade -= quantidade;
+        }
     }    
     
     

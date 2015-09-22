@@ -44,6 +44,10 @@ public class Elfo{
            
     }
     
+    public int getVida(){
+        return this.vida;
+    }    
+    
     public void atacarOrc(Orc orc){
         flechas--;
         orc.receberAtaqueDeElfo();
