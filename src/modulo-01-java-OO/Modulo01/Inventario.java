@@ -78,5 +78,9 @@ public class Inventario{
        Inventario mochila = (Inventario)obj;
        
        return this.listaDeItens.equals(mochila.getItens());
-    }   
+    }  
+    
+     public void diminuirQuantidadeItem(Item item, int unidadesParaPerder){
+       item.diminuirQuantidade(unidadesParaPerder);                  
+    }    
 }

@@ -31,6 +31,12 @@ public class Item
         this.quantidade += soma*1000;
     }
     
+    public void diminuirQuantidade(int quantidade){
+        this.quantidade -= quantidade;
+    }    
+    
+    
+    
     /* 
     public void shimbalaie() {
     int pa = this.quantidade * (this.quantidade +1) / 2;
