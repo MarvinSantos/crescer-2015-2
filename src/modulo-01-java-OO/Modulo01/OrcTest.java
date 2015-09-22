@@ -41,12 +41,52 @@ public class OrcTest
     } 
     
      @Test
-    public void orcTemEscudoDeUKrecebeAtaqueDoDwarfEFicaCom145DeVida(){
+    public void orcTemEscudoDeUKRecebeAtaqueDoDwarfEFicaCom145DeVida(){
         Orc orc = new Orc("Uruk-Hai");
-        int vidaEsperada = 145;
+        int vidaEsperada = 145;      
         
         orc.receberAtaqueDeDwarf();
         
         assertEquals(vidaEsperada, orc.getVida());
-    }    
+        
+    }  
+    
+     @Test
+    public void orcTemEscudoDeUKRecebeAtaqueDoDwarfMorre(){
+        Orc orc = new Orc("Uruk-Hai");
+        int vidaEsperada = 0;
+        Status statusEsperado = Status.MORTO;
+        
+        for(int i = 0; i < 30; i++){
+            orc.receberAtaqueDeDwarf();
+        }
+        
+        assertEquals(vidaEsperada, orc.getVida());
+        assertEquals(statusEsperado, orc.getStatus());
+    } 
+    
+     @Test
+    public void orcSnagaRecebeAtaqueDoElfoEMorre(){
+        Orc orc = new Orc("Snaga");
+        int vidaEsperada = -2;
+        Status statusEsperado = Status.MORTO;
+        
+        for(int i = 0; i < 9; i++){
+            orc.receberAtaqueDeElfo();
+        }
+        
+        assertEquals(vidaEsperada, orc.getVida());
+        assertEquals(statusEsperado, orc.getStatus());
+    } 
+    
+       @Test
+    public void atacandoElfoComEspada(){
+        Orc orc = new Orc("Uruk-Hai");
+        Elfo elfo = new Elfo("legolas");
+        int vidaElfoEsperada = 68;
+        
+        orc.atacarElfo(elfo);
+        
+        assertEquals(vidaElfoEsperada, elfo.getVida());
+    } 
 }

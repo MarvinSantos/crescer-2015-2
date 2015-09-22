@@ -44,9 +44,11 @@ public class Orc
        
        if(statusOrc == Status.VIVO){
             if(temEscudo) {
-                vida -= 5;               
+                vida -= 5; 
+                verificarSeMorreu();
             }else{
                 vida -= 10;
+                verificarSeMorreu();
             }
         
        }
@@ -57,9 +59,9 @@ public class Orc
         boolean temFlecha = verificaSeTemFlecha();
         boolean temArco = verificaSeTemArco();
         if (temEspada){
-          dwarf.recebeFlechada(12);
+          dwarf.recebeAtaque(12);
         }else if (temFlecha && temArco){
-          dwarf.recebeFlechada(8);
+          dwarf.recebeAtaque(8);
           this.mochila.diminuirQuantidadeItem(flecha,1);
         }
     }
@@ -130,5 +132,9 @@ public class Orc
             statusOrc = Status.MORTO;
         }    
     }
+    
+    public Status getStatus(){
+        return this.statusOrc;
+    }    
     
 }
