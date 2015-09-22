@@ -3,6 +3,7 @@ public class Elfo{
     private int flechas;
     private int experiencia;
     private Status statusElfo;
+    private int vida;
     
     /*type initializer
      * {
@@ -19,6 +20,7 @@ public class Elfo{
         this.flechas = flechas;
         experiencia = 0; 
         this.statusElfo = Status.VIVO;
+        this.vida = 80;
     }
     public String getNome(){
         return this.nome;
@@ -37,10 +39,22 @@ public class Elfo{
     
     public void atirarFlecha(Dwarf dwarf){
         flechas--;
-        dwarf.recebeFlechada();
+        dwarf.recebeFlechada(10);
         experiencia++;
            
     }
+    
+    public void atacarOrc(Orc orc){
+        flechas--;
+        orc.receberAtaqueDeElfo();
+        this.experiencia++;
+    }    
+    
+    public void recebeAtaque(int dano){
+        if(this.statusElfo == Status.VIVO){      
+           this.vida -= dano;
+        }         
+    }    
     
     public String toString(){
         
@@ -58,6 +72,12 @@ public class Elfo{
         this.experiencia,
         textoNiveis);
     }    
+    
+    public void verificarSeMorreu(){
+        if(this.vida <= 0 && statusElfo == Status.VIVO){
+            statusElfo = Status.MORTO;
+        }    
+    }
     
     //ruby ou coffeScript;
     // #{nome} #{textoFlecha}
