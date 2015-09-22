@@ -1,48 +1,28 @@
-public class Dwarf {
-    protected int life;
-    protected  String nome;
-    protected  int experiencia;
-    protected  Status statusDwarf;
+public class Dwarf extends Personagem { 
     protected  DataTerceiraEra dataDeNascimento;
-    protected  Inventario mochila = new Inventario();
-   
+    
     public Dwarf(String nome){
         this(nome,new DataTerceiraEra(1,1,1));
         
     } 
     
     public Dwarf(String nome,DataTerceiraEra dataDeNascimento){
-        this.nome = nome;
-        this.experiencia = 0;
-        this.life = 110;        
-        statusDwarf = Status.VIVO;
+        super(nome,Status.VIVO, 0);
+        this.vida = 110;        
         this.dataDeNascimento = dataDeNascimento;
        
     } 
-    
-    public Inventario getInventario(){
-        return this.mochila;
-    }    
-    
-    public int getLife(){
-        return this.life;
-    }
-    
-    public String getNome(){
-        return this.nome;
-    } 
-    
-      
+     
     public void atacarOrc(Orc orc){
         orc.receberAtaqueDeDwarf();
         this.experiencia++;
     }   
     
     public void recebeFlechada(int dano){
-        if(this.statusDwarf == Status.VIVO){
+        if(this.status == Status.VIVO){
             double numeroSorteado = getNumeroSorte();
             if(numeroSorteado > 100){
-                this.life -= dano;
+                this.vida -= dano;
                 checarStatusDwarf();       
             }else if(numeroSorteado < 0){
                 this.experiencia += 2;
@@ -51,10 +31,10 @@ public class Dwarf {
     }   
     
      public void recebeAtaqueDoOrc(int dano){
-        if(this.statusDwarf == Status.VIVO){
+        if(this.status == Status.VIVO){
             double numeroSorteado = getNumeroSorte();
             if(numeroSorteado > 100){
-                this.life -= dano;
+                this.vida -= dano;
                 checarStatusDwarf();       
             }else if(numeroSorteado < 0){
                 this.experiencia += 2;
@@ -62,18 +42,9 @@ public class Dwarf {
         }     
     }   
     
-    public int getExperiencia(){
-        return this.experiencia;
-    }    
-    
-    public Status getStatus(){
-        return statusDwarf;
-    
-    }
-    
     public void checarStatusDwarf(){
-        if(this.life == 0){
-            statusDwarf = Status.MORTO;
+        if(this.vida == 0){
+            status = Status.MORTO;
         } 
     }
     
@@ -84,7 +55,7 @@ public class Dwarf {
     public double getNumeroSorte(){
         double numeroSorte = 101.0;
         
-        if((dataDeNascimento.ehBissexto() == true) && ((this.life >= 80) && (this.life <= 90))){
+        if((dataDeNascimento.ehBissexto() == true) && ((this.vida >= 80) && (this.vida <= 90))){
             numeroSorte *= -33;
         }  
         

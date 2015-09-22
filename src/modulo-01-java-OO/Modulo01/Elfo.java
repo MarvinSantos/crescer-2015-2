@@ -1,10 +1,7 @@
-public class Elfo{
-    private String nome;
+public class Elfo extends Personagem{
     private int flechas;
-    private int experiencia;
-    private Status statusElfo;
-    private int vida;
     
+ 
     /*type initializer
      * {
      *     flechas = 42;
@@ -14,28 +11,16 @@ public class Elfo{
     public Elfo(String nome){
         this(nome,42);
     }     
-    
+      
     public Elfo(String nome, int flechas){
-        this.nome = nome; 
-        this.flechas = flechas;
-        experiencia = 0; 
-        this.statusElfo = Status.VIVO;
+        super( nome,Status.VIVO, 0);
         this.vida = 80;
-    }
-    public String getNome(){
-        return this.nome;
-    }
-    public int getExperiencia(){
-        return this.experiencia;
-    }    
+        this.flechas = flechas;
+    }     
     
     public int getFlechas(){
         return this.flechas;
     }    
-    
-    public Status getStatus(){
-        return this.statusElfo;
-    }
     
     public void atirarFlecha(Dwarf dwarf){
         flechas--;
@@ -43,11 +28,7 @@ public class Elfo{
         experiencia++;
            
     }
-    
-    public int getVida(){
-        return this.vida;
-    }    
-    
+        
     public void atacarOrc(Orc orc){
         flechas--;
         orc.receberAtaqueDeElfo();
@@ -55,7 +36,7 @@ public class Elfo{
     }    
     
     public void recebeAtaqueDoOrc(int dano){
-        if(this.statusElfo == Status.VIVO){      
+        if(this.status == Status.VIVO){      
            this.vida -= dano;
         }         
     }    
@@ -78,8 +59,8 @@ public class Elfo{
     }    
     
     public void verificarSeMorreu(){
-        if(this.vida <= 0 && statusElfo == Status.VIVO){
-            statusElfo = Status.MORTO;
+        if(this.vida <= 0 && status == Status.VIVO){
+            status = Status.MORTO;
         }    
     }
     
@@ -90,10 +71,7 @@ public class Elfo{
     //c#
     // \{nome}
    
-        
-    
-    
-    
+           
      /* 
       public Elfo(String nome, Integer flechas) {
          this(nome);

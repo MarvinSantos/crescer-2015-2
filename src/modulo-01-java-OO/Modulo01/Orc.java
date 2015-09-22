@@ -1,8 +1,7 @@
-public class Orc
+public class Orc 
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
     protected int vida;
-    
     protected Inventario mochila = new Inventario();
     protected Status statusOrc;
     protected String tipoDeOrc;
@@ -12,8 +11,7 @@ public class Orc
     protected Item espada;
 
  
-    public Orc(String tipoDeOrc)
-    {
+    public Orc(String tipoDeOrc){
         statusOrc = Status.VIVO;
         this.tipoDeOrc = tipoDeOrc;
         if(tipoDeOrc == "Uruk-Hai"){
