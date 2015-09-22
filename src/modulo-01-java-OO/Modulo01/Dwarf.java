@@ -30,13 +30,19 @@ public class Dwarf {
     
     public String getNome(){
         return this.nome;
-    }    
+    } 
     
-    public void recebeFlechada(){
+      
+    public void atacarOrc(Orc orc){
+        orc.receberAtaqueDeDwarf();
+        this.experiencia++;
+    }   
+    
+    public void recebeFlechada(int dano){
         if(this.statusDwarf == Status.VIVO){
             double numeroSorteado = getNumeroSorte();
             if(numeroSorteado > 100){
-                this.life -= 10;
+                this.life -= dano;
                 checarStatusDwarf();       
             }else if(numeroSorteado < 0){
                 this.experiencia += 2;

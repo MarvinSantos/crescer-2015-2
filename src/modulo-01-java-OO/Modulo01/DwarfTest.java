@@ -18,7 +18,7 @@ public class DwarfTest
     @Test
     public void dwarfLevouFlechadaEPerdeu10DeVida(){
         Dwarf outroAnao = new Dwarf("zoro");
-        outroAnao.recebeFlechada();
+        outroAnao.recebeFlechada(10);
         assertEquals(100,outroAnao.getLife());
         
     }
@@ -28,17 +28,17 @@ public class DwarfTest
         //Arrange
         Dwarf outroAnao = new Dwarf("gigante");
         //Act
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
         //Assert
         assertEquals(0 , outroAnao.getLife());
     }
@@ -48,13 +48,13 @@ public class DwarfTest
         //Arrange
         Dwarf outroAnao = new Dwarf("globin");
         //Act
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();
-        outroAnao.recebeFlechada();       
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);
+        outroAnao.recebeFlechada(10);       
         //Assert
         assertEquals(40 , outroAnao.getLife());
     } 
@@ -64,18 +64,18 @@ public class DwarfTest
         //arrange
         Dwarf anaoDeTeste = new Dwarf("balin");
         //act
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
         //assert
         assertEquals(Status.MORTO, anaoDeTeste.getStatus());
     } 
@@ -86,20 +86,20 @@ public class DwarfTest
         Dwarf anaoDeTeste = new Dwarf("balin");
         int vidaEsperada = 0;
         //act
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
         //assert
         assertEquals(vidaEsperada, anaoDeTeste.getLife());
     } 
@@ -110,16 +110,16 @@ public class DwarfTest
         Dwarf anaoDeTeste = new Dwarf("balin");
         Status statusEsperado = Status.VIVO;
         //act
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
-        anaoDeTeste.recebeFlechada();
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
+        anaoDeTeste.recebeFlechada(10);
         
         //assert
         assertEquals(statusEsperado, anaoDeTeste.getStatus());
@@ -166,10 +166,10 @@ public class DwarfTest
         //arrange
         Dwarf dwarf55 = new Dwarf("ibraimovic",new DataTerceiraEra(1,1,2016));
         double valorEsperado = -3333.0;
-        dwarf55.recebeFlechada();
-        dwarf55.recebeFlechada();  
+        dwarf55.recebeFlechada(10);
+        dwarf55.recebeFlechada(10);  
         //act
-        dwarf55.recebeFlechada();  
+        dwarf55.recebeFlechada(10);  
         //assert
         assertEquals(valorEsperado, dwarf55.getNumeroSorte(), 0.01);
         
@@ -187,7 +187,7 @@ public class DwarfTest
         //arrange
         Dwarf meireles = new Dwarf("Meireles");
         double numeroEsperado = 33.0;
-        meireles.recebeFlechada();
+        meireles.recebeFlechada(10);
         //assert
         assertEquals(numeroEsperado, meireles.getNumeroSorte(), 0.01);
         assertEquals(0, meireles.getExperiencia());
@@ -209,7 +209,7 @@ public class DwarfTest
         int vidaExperada = 100;
         int expEsperado = 0;
         //act
-        naoSeixas.recebeFlechada();
+        naoSeixas.recebeFlechada(10);
         //assert
         assertEquals(vidaExperada, naoSeixas.getLife());
         assertEquals(expEsperado, naoSeixas.getExperiencia());
@@ -222,7 +222,7 @@ public class DwarfTest
         int vidaExperada = 100;
         int expEsperado = 0;
         //act
-        naoMeireles.recebeFlechada();
+        naoMeireles.recebeFlechada(10);
         //assert
         assertEquals(vidaExperada, naoMeireles.getLife());
         assertEquals(expEsperado, naoMeireles.getExperiencia());
@@ -235,10 +235,10 @@ public class DwarfTest
         int vidaEsperada = 90;
         int expEsperado = 2;
         //act
-        joao.recebeFlechada();
-        joao.recebeFlechada();
+        joao.recebeFlechada(10);
+        joao.recebeFlechada(10);
         joao.getNumeroSorte();
-        joao.recebeFlechada();
+        joao.recebeFlechada(10);
         
         //asserts
         assertEquals(vidaEsperada, joao.getLife());
@@ -249,9 +249,9 @@ public class DwarfTest
     public void dwarfTentaSorteEGanha(){
         //arrange
         Dwarf luck = new Dwarf("sortudo",new DataTerceiraEra(1,1,2016));
-        luck.recebeFlechada();
-        luck.recebeFlechada();  
-        luck.recebeFlechada(); 
+        luck.recebeFlechada(10);
+        luck.recebeFlechada(10);  
+        luck.recebeFlechada(10); 
         Inventario esperado = new Inventario();
         esperado.adicionarItem(new Item("poçao",1002));
         //act
@@ -267,9 +267,9 @@ public class DwarfTest
     public void dwarfTentaSorteENaoGanha(){
         //arrange
         Dwarf luck = new Dwarf("sortudo",new DataTerceiraEra(1,1,2015));
-        luck.recebeFlechada();
-        luck.recebeFlechada();  
-        luck.recebeFlechada();  
+        luck.recebeFlechada(10);
+        luck.recebeFlechada(10);  
+        luck.recebeFlechada(10);  
         Inventario esperado = new Inventario();
         esperado.adicionarItem(new Item("poção",2));
         //act
@@ -284,9 +284,9 @@ public class DwarfTest
     public void dwarfTentaSorte5VezesEGanha(){
         //arrange
         Dwarf luck = new Dwarf("sortudo",new DataTerceiraEra(1,1,2016));
-        luck.recebeFlechada();
-        luck.recebeFlechada();  
-        luck.recebeFlechada(); 
+        luck.recebeFlechada(10);
+        luck.recebeFlechada(10);  
+        luck.recebeFlechada(10); 
         Inventario esperado = new Inventario();
         esperado.adicionarItem(new Item("poçao",5002));
         //act
