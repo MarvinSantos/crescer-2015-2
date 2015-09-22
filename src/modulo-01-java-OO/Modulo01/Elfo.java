@@ -54,7 +54,7 @@ public class Elfo{
         this.experiencia++;
     }    
     
-    public void recebeAtaque(int dano){
+    public void recebeAtaqueDoOrc(int dano){
         if(this.statusElfo == Status.VIVO){      
            this.vida -= dano;
         }         

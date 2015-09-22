@@ -59,9 +59,9 @@ public class Orc
         boolean temFlecha = verificaSeTemFlecha();
         boolean temArco = verificaSeTemArco();
         if (temEspada){
-          dwarf.recebeAtaque(12);
+          dwarf.recebeAtaqueDoOrc(12);
         }else if (temFlecha && temArco){
-          dwarf.recebeAtaque(8);
+          dwarf.recebeAtaqueDoOrc(8);
           this.mochila.diminuirQuantidadeItem(flecha,1);
         }else if(!temEspada && !temFlecha){
             statusOrc = Status.FUGINDO;
@@ -73,13 +73,13 @@ public class Orc
         boolean temFlecha = verificaSeTemFlecha();
         boolean temArco = verificaSeTemArco();
         if (temEspada){
-          elfo.recebeAtaque(12);
+          elfo.recebeAtaqueDoOrc(12);
         }else if (temFlecha && temArco){
-          elfo.recebeAtaque(8);
+          elfo.recebeAtaqueDoOrc(8);
           this.mochila.diminuirQuantidadeItem(flecha,1);
         }else if(!temEspada && !temFlecha){
             statusOrc = Status.FUGINDO;
-        }  
+        } 
     }
     
     

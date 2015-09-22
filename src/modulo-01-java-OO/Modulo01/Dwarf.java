@@ -50,7 +50,7 @@ public class Dwarf {
         }     
     }   
     
-     public void recebeAtaque(int dano){
+     public void recebeAtaqueDoOrc(int dano){
         if(this.statusDwarf == Status.VIVO){
             double numeroSorteado = getNumeroSorte();
             if(numeroSorteado > 100){
