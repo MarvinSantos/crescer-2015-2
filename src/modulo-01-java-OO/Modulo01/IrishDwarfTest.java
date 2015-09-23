@@ -11,9 +11,9 @@ public class IrishDwarfTest
    @Test
    public void irishDwarfTentaSorteEGanha(){
        IrishDwarf sortudoIrlandes = new IrishDwarf("sortudo",new DataTerceiraEra(1,1,2016));
-       sortudoIrlandes.recebeFlechada(10);
-       sortudoIrlandes.recebeFlechada(10);
-       sortudoIrlandes.recebeFlechada(10);
+       sortudoIrlandes.recebeFlechada();
+       sortudoIrlandes.recebeFlechada();
+       sortudoIrlandes.recebeFlechada();
        Inventario esperado = new Inventario();
        esperado.adicionarItem(new Item("chapeu",6003));
        

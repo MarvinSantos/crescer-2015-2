@@ -24,7 +24,7 @@ public class Elfo extends Personagem{
     
     public void atirarFlecha(Dwarf dwarf){
         flechas--;
-        dwarf.recebeFlechada(10);
+        dwarf.recebeFlechada();
         experiencia++;
            
     }
