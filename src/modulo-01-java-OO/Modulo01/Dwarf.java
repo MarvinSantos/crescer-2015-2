@@ -18,11 +18,11 @@ public class Dwarf extends Personagem {
         this.experiencia++;
     }   
     
-    public void recebeFlechada(int dano){
+    public void recebeFlechada(){
         if(this.status == Status.VIVO){
             double numeroSorteado = getNumeroSorte();
             if(numeroSorteado > 100){
-                this.vida -= dano;
+                this.vida -= 10;
                 checarStatusDwarf();       
             }else if(numeroSorteado < 0){
                 this.experiencia += 2;
