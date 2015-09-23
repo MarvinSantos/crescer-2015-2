@@ -24,20 +24,30 @@ public class Orc extends Personagem
     }
     
     public void atacarDwarf(Dwarf dwarf) {
+          dwarf.recebeAtaqueDoOrc(this);    
           if(getDanoDeAtaque() == 8){             
               this.mochila.diminuirQuantidadeItem(this.mochila.buscarItemPorDescricao("Flecha"),1);  
           }  
-          dwarf.recebeAtaqueDoOrc(this);    
+          
     }
     
     public void atacarElfo(Elfo elfo) {
+          elfo.recebeAtaqueDoOrc(this); 
           if(getDanoDeAtaque() == 8){             
               Item itemASerDebitado = this.mochila.buscarItemPorDescricao("Flecha");
               this.mochila.diminuirQuantidadeItem(itemASerDebitado,1);  
           }  
-          elfo.recebeAtaqueDoOrc(this); 
+          
     }
     
+    public void atacar(Personagem personagem) {
+          personagem.recebeAtaqueDoOrc(this); 
+          if(getDanoDeAtaque() == 8){             
+              Item itemASerDebitado = this.mochila.buscarItemPorDescricao("Flecha");
+              this.mochila.diminuirQuantidadeItem(itemASerDebitado,1);  
+          }  
+          
+    }
     
     public boolean verificaSeTemEspada(){
         if(this.mochila.buscarItemPorDescricao("Espada") != null){
@@ -45,7 +55,8 @@ public class Orc extends Personagem
         }else{
             return false;
         } 
-    }    
+    } 
+    
     public boolean verificaSeTemEscudo(){
       
         if(this.mochila.buscarItemPorDescricao("Escudo Uruk-Hai") != null){
@@ -55,7 +66,7 @@ public class Orc extends Personagem
         } 
     }
     public boolean verificaSeTemArco(){
-        if(this.mochila.buscarItemPorDescricao("Arco") != null){
+        if(this.mochila.buscarItemPorDescricao("Arco").getQuantidade() > 0){
             return true;
         }else{
             return false;

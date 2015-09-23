@@ -14,7 +14,7 @@ public class OrcSnagaTest
         OrcSnaga orc = new OrcSnaga("rick");
         Status statusEsperado = Status.MORTO;
         
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 15; i++){
             orc.receberAtaque();
         }
         
@@ -51,5 +51,16 @@ public class OrcSnagaTest
         assertEquals(statusEsperado, orc.getStatus());
 
     }
+    
+    /*    @Test
+    public void orcDoTipoSnagaAtacaOrcDoTipoUrukHai(){
+        OrcSnaga orcSnaga = new OrcSnaga("orc Snaga");
+        OrcUrukHai orcUKH = new OrcUrukHai("pedro");
+        
+        orcSnaga.atacar(orcUKH);
+        
+        assertEquals(144,orcUKH.getVida());        
+        
+    } */
     
 }
