@@ -1,48 +1,19 @@
-public class Orc 
+public class Orc extends Personagem
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    protected int vida;
-    protected Inventario mochila = new Inventario();
-    protected Status statusOrc;
-    protected String tipoDeOrc;
-    protected Item flecha;
-    protected Item arco;
-    protected Item escudoUk;
-    protected Item espada;
-
+  
  
-    public Orc(String tipoDeOrc){
-        statusOrc = Status.VIVO;
-        this.tipoDeOrc = tipoDeOrc;
-        if(tipoDeOrc == "Uruk-Hai"){
-            espada = new Item("Espada",1);
-            escudoUk = new Item("Escudo Uruk-Hai",1);
-            mochila.adicionarItem(espada);
-            mochila.adicionarItem(escudoUk);
-            this.vida = 150;
-        }else if(tipoDeOrc == "Snaga"){
-               arco = new Item("Arco",1);
-               flecha = new Item("Flecha",5);
-               mochila.adicionarItem(arco);
-               mochila.adicionarItem(flecha);
-               this.vida = 70;
-        }   
+    public Orc(String nome){
+       super(nome);
     }
     
-    public void receberAtaqueDeElfo() {
-       if(statusOrc != Status.MORTO){
-        vida -= 8;
-        verificarSeMorreu();
-       }
-    }
-    
-    public void receberAtaqueDeDwarf() {
+    public void receberAtaque() {
         
        boolean temEscudo = verificaSeTemEscudo(); 
        
-       if(statusOrc != Status.MORTO){
+       if(status != Status.MORTO){
             if(temEscudo) {
-                vida -= 5; 
+                vida -= 6; 
                 verificarSeMorreu();
             }else{
                 vida -= 10;
@@ -53,72 +24,50 @@ public class Orc
     }
     
     public void atacarDwarf(Dwarf dwarf) {
-        boolean temEspada = verificaSeTemEspada();
-        boolean temFlecha = verificaSeTemFlecha();
-        boolean temArco = verificaSeTemArco();
-        if (temEspada){
-          dwarf.recebeAtaqueDoOrc(12);
-        }else if (temFlecha && temArco){
-          dwarf.recebeAtaqueDoOrc(8);
-          this.mochila.diminuirQuantidadeItem(flecha,1);
-        }else if(!temEspada && !temFlecha){
-            statusOrc = Status.FUGINDO;
-        }    
+          if(getDanoDeAtaque() == 8){             
+              this.mochila.diminuirQuantidadeItem(this.mochila.buscarItemPorDescricao("Flecha"),1);  
+          }  
+          dwarf.recebeAtaqueDoOrc(this);    
     }
     
     public void atacarElfo(Elfo elfo) {
-        boolean temEspada = verificaSeTemEspada();
-        boolean temFlecha = verificaSeTemFlecha();
-        boolean temArco = verificaSeTemArco();
-        if (temEspada){
-          elfo.recebeAtaqueDoOrc(12);
-        }else if (temFlecha && temArco){
-          elfo.recebeAtaqueDoOrc(8);
-          this.mochila.diminuirQuantidadeItem(flecha,1);
-        }else if(!temEspada && !temFlecha){
-            statusOrc = Status.FUGINDO;
-        } 
+          if(getDanoDeAtaque() == 8){             
+              Item itemASerDebitado = this.mochila.buscarItemPorDescricao("Flecha");
+              this.mochila.diminuirQuantidadeItem(itemASerDebitado,1);  
+          }  
+          elfo.recebeAtaqueDoOrc(this); 
     }
-    
     
     
     public boolean verificaSeTemEspada(){
-        boolean temEspada = false;
-         for(Item item : this.mochila.getItens()){
-            if (item.getDescricao() == "Espada" && item.getQuantidade() > 0){
-                temEspada = true;
-            }
-        }
-        return temEspada;
-    } 
-        
+        if(this.mochila.buscarItemPorDescricao("Espada") != null){
+            return true;
+        }else{
+            return false;
+        } 
+    }    
     public boolean verificaSeTemEscudo(){
-        boolean temEscudo =false;
-         for(Item item : this.mochila.getItens()){
-            if (item.getDescricao() == "Escudo Uruk-Hai" && item.getQuantidade() > 0){
-                temEscudo = true;
-            }
-        }
-        return temEscudo;
+      
+        if(this.mochila.buscarItemPorDescricao("Escudo Uruk-Hai") != null){
+            return true;
+        }else{
+            return false;
+        } 
     }
     public boolean verificaSeTemArco(){
-        boolean temArco=false;
-         for(Item item : this.mochila.getItens()){
-            if (item.getDescricao() == "Arco" && item.getQuantidade() > 0){
-                temArco = true;
-            }
-        }
-        return temArco;
+        if(this.mochila.buscarItemPorDescricao("Arco") != null){
+            return true;
+        }else{
+            return false;
+        } 
     }  
     
      public boolean verificaSeTemFlecha(){
-         boolean temFlecha=false;
-         for(Item item : this.mochila.getItens()){
-            if (item.getDescricao() == "Flecha" && item.getQuantidade() > 0){
-                temFlecha = true;
-            }
-        }
-        return temFlecha;
+        if(this.mochila.buscarItemPorDescricao("Flecha").getQuantidade() > 0){
+            return true;
+        }else{
+            return false;
+        } 
     }
     
      public int getVida(){
@@ -130,13 +79,25 @@ public class Orc
     }
     
     public void verificarSeMorreu(){
-        if(this.vida <= 0 && statusOrc == Status.VIVO){
-            statusOrc = Status.MORTO;
+        if(this.vida <= 0 && status == Status.VIVO){
+            status = Status.MORTO;
         }    
     }
     
     public Status getStatus(){
-        return this.statusOrc;
+        return this.status;
     }    
+    
+     public int getDanoDeAtaque(){
+        if(verificaSeTemEspada()){
+            return 12;
+        } else 
+        if(verificaSeTemFlecha() && verificaSeTemArco()){
+            return 8;
+        }else{
+            status = status.FUGINDO;
+            return 0;
+        }   
+    }
     
 }
