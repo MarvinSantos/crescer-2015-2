@@ -7,14 +7,14 @@ public class Dwarf extends Personagem {
     } 
     
     public Dwarf(String nome,DataTerceiraEra dataDeNascimento){
-        super(nome,Status.VIVO, 0);
+        super(nome);
         this.vida = 110;        
         this.dataDeNascimento = dataDeNascimento;
        
     } 
      
     public void atacarOrc(Orc orc){
-        orc.receberAtaqueDeDwarf();
+        orc.receberAtaque();
         this.experiencia++;
     }   
     
@@ -30,11 +30,11 @@ public class Dwarf extends Personagem {
         }     
     }   
     
-     public void recebeAtaqueDoOrc(int dano){
+     public void recebeAtaqueDoOrc(Orc orc){
         if(this.status == Status.VIVO){
             double numeroSorteado = getNumeroSorte();
             if(numeroSorteado > 100){
-                this.vida -= dano;
+                this.vida -= orc.getDanoDeAtaque();
                 checarStatusDwarf();       
             }else if(numeroSorteado < 0){
                 this.experiencia += 2;

@@ -13,7 +13,7 @@ public class Elfo extends Personagem{
     }     
       
     public Elfo(String nome, int flechas){
-        super( nome,Status.VIVO, 0);
+        super( nome);
         this.vida = 80;
         this.flechas = flechas;
     }     
@@ -31,13 +31,13 @@ public class Elfo extends Personagem{
         
     public void atacarOrc(Orc orc){
         flechas--;
-        orc.receberAtaqueDeElfo();
+        orc.receberAtaque();
         this.experiencia++;
     }    
     
-    public void recebeAtaqueDoOrc(int dano){
+    public void recebeAtaqueDoOrc(Orc orc){
         if(this.status == Status.VIVO){      
-           this.vida -= dano;
+           this.vida -= orc.getDanoDeAtaque();
         }         
     }    
     
