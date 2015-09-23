@@ -5,7 +5,7 @@ public class Personagem
     protected int experiencia;
     protected Status status;
     protected int vida;
-    protected Inventario mochila = new Inventario();
+    protected final Inventario mochila;
     
     public Personagem(String nome){
         this.nome = nome;
@@ -41,6 +41,12 @@ public class Personagem
     public void adicionarItem(Item item){
         this.mochila.getItens().add(item);
     }
+    
+    public void recebeAtaqueDoOrc(Orc orc){
+        if(this.status == Status.VIVO){      
+           this.vida -= orc.getDanoDeAtaque();
+        }         
+    }    
 }
 
 
