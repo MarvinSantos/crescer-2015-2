@@ -83,4 +83,14 @@ public class Inventario{
      public void diminuirQuantidadeItem(Item item, int unidadesParaPerder){
        item.diminuirQuantidade(unidadesParaPerder);                  
     }    
+    
+     public Item buscarItemPorDescricao(String descricao){
+        Item itemBuscado = null;
+        for(Item item : this.listaDeItens){
+            if(descricao.equals(item.getDescricao())){
+                itemBuscado = item;
+            }
+        }
+        return itemBuscado;
+    }
 }
