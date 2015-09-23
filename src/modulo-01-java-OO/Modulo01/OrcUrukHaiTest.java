@@ -64,4 +64,17 @@ public class OrcUrukHaiTest
         assertEquals(150,orc.getVida());       
         assertEquals(esperado,orc.getInventario());
     }  
+    
+          @Test
+    public void orcUKRecebeAtaqueEMorre(){
+        OrcUrukHai orc = new OrcUrukHai("rick");
+        Status statusEsperado = Status.MORTO;
+        
+        for(int i = 0; i < 30; i++){
+            orc.receberAtaque();
+        }
+        
+        assertTrue(orc.getVida() <= 0);
+        assertEquals(statusEsperado, orc.getStatus());
+    }
 }
