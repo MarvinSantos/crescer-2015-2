@@ -12,7 +12,7 @@ public class OrcUrukHaiTest
     public void atacandoElfoComEspada(){
         OrcUrukHai jhon = new OrcUrukHai("calr");
         Elfo elfo = new Elfo("legolas");
-        int vidaElfoEsperada = 68;
+        int vidaElfoEsperada = 88;
         
         jhon.atacarElfo(elfo);
         
