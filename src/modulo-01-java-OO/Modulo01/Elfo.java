@@ -1,5 +1,5 @@
 public class Elfo extends Personagem{
-    private int flechas;
+    protected int flechas;
     
  
     /*type initializer
@@ -14,7 +14,7 @@ public class Elfo extends Personagem{
       
     public Elfo(String nome, int flechas){
         super( nome);
-        this.vida = 80;
+        this.vida = 100;
         this.flechas = flechas;
     }     
     
@@ -23,6 +23,7 @@ public class Elfo extends Personagem{
     }    
     
     public void atirarFlecha(Dwarf dwarf){
+        
         flechas--;
         dwarf.recebeFlechada();
         experiencia++;
@@ -38,6 +39,7 @@ public class Elfo extends Personagem{
     public void recebeAtaqueDoOrc(Orc orc){
         if(this.status == Status.VIVO){      
            this.vida -= orc.getDanoDeAtaque();
+           verificarSeMorreu();
         }         
     }    
     
