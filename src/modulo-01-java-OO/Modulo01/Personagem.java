@@ -7,10 +7,10 @@ public class Personagem
     protected int vida;
     protected Inventario mochila = new Inventario();
     
-    public Personagem(String nome, Status status, int experiencia){
+    public Personagem(String nome){
         this.nome = nome;
-        this.status = status;
-        this.experiencia = experiencia;
+        this.status = Status.VIVO;
+        this.experiencia = 0;
         this.mochila = new Inventario();
     } 
     
