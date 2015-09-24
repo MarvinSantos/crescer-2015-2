@@ -26,7 +26,7 @@ public class ExercitoDeElfos
     }    
     
     public void agruparPorStatus(Status status){
-        //ESTE TRECHO DEVE SER MELHORADO
+        
         agrupadosPorStatus.put(status,listaDeElfos);
         for(Map.Entry<String,Elfo > chave : this.exercito.entrySet()){
             if(chave.getValue().getStatus().equals(status)){              

@@ -84,12 +84,12 @@ public class ExercitoDeElfosTest
         
        exercitoElfo.agruparPorStatus(Status.MORTO);
        
-       assertEquals(elfoVerde, exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).get(0));
-       assertEquals(elfoVerde2, exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).get(1));
+       assertTrue(exercitoElfo.buscar(Status.MORTO).contains(elfoVerde));
+       assertTrue(exercitoElfo.buscar(Status.MORTO).contains(elfoVerde2));
        
     } 
     
-    /* @Test
+     @Test
     public void seisElfosMorremEEhChamadoOMetodoParaAgruparOsElfosMortos(){
        ElfoVerde elfoVerde = new ElfoVerde("sortudo");
        ElfoVerde elfoVerde2 = new ElfoVerde("azarado");
@@ -119,14 +119,17 @@ public class ExercitoDeElfosTest
         
        exercitoElfo.agruparPorStatus(Status.MORTO);
        
-       assertEquals(elfoVerde, exercitoElfo.getElfosAgrupadosPorStatus().get(0));
-       assertEquals(elfoVerde2, exercitoElfo.getElfosAgrupadosPorStatus().get(1));
-       assertEquals(elfoVerde3, exercitoElfo.getElfosAgrupadosPorStatus().get(2));
-       assertEquals(noturno2, exercitoElfo.getElfosAgrupadosPorStatus().get(3));
-       assertEquals(noturno3, exercitoElfo.getElfosAgrupadosPorStatus().get(4));
-       assertEquals(noturno4, exercitoElfo.getElfosAgrupadosPorStatus().get(5));
+       assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).contains(elfoVerde));
+       assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).contains(elfoVerde2));
+       assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).contains(elfoVerde3));
+       assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).contains(noturno2));
+       assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).contains(noturno3));
+       assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).contains(noturno4));
        
-    }  */
+       exercitoElfo.agruparPorStatus(Status.VIVO);
+       assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.VIVO).contains(noturno));
+       
+    }  
     
      @Test
    public void buscaElfoPorStatus(){
@@ -134,7 +137,7 @@ public class ExercitoDeElfosTest
        ExercitoDeElfos exercitoElfo = new ExercitoDeElfos();
        exercitoElfo.alistar(elfoVerde);
          
-       assertEquals(elfoVerde,exercitoElfo.buscar(Status.VIVO).get(0));
+       assertTrue(exercitoElfo.buscar(Status.VIVO).contains(elfoVerde));
        
     }
     
@@ -153,12 +156,12 @@ public class ExercitoDeElfosTest
            elfoVerde2.recebeAtaqueDoOrc(orc); 
         }
        
-       assertEquals(elfoVerde, exercitoElfo.buscar(Status.MORTO ).get(0));
-       assertEquals(elfoVerde2, exercitoElfo.buscar(Status.MORTO ).get(1));
-       assertEquals(noturno, exercitoElfo.buscar(Status.VIVO ).get(0));
+       assertTrue(exercitoElfo.buscar(Status.MORTO).contains(elfoVerde));
+       assertTrue(exercitoElfo.buscar(Status.MORTO).contains(elfoVerde2));
+       assertTrue(exercitoElfo.buscar(Status.VIVO).contains(noturno));
    }  
    
-   /* @Test
+    @Test
     public void seisElfosMorremEEhChamadoOMetodoParaBuscarAListaDeElfosMortos(){
        ElfoVerde elfoVerde = new ElfoVerde("sortudo");
        ElfoVerde elfoVerde2 = new ElfoVerde("azarado");
@@ -186,12 +189,13 @@ public class ExercitoDeElfosTest
            noturno4.recebeAtaqueDoOrc(orc);
         }
        
-       assertEquals(elfoVerde, exercitoElfo.buscar(Status.MORTO).get(0));
-       assertEquals(elfoVerde2, exercitoElfo.buscar(Status.MORTO).get(1));
-       assertEquals(elfoVerde3, exercitoElfo.buscar(Status.MORTO).get(2));
-       assertEquals(noturno2, exercitoElfo.buscar(Status.MORTO).get(3));
-       assertEquals(noturno3, exercitoElfo.buscar(Status.MORTO).get(4));
-       assertEquals(noturno4, exercitoElfo.buscar(Status.MORTO).get(5));
+       assertTrue(exercitoElfo.buscar(Status.MORTO).contains(elfoVerde));
+       assertTrue(exercitoElfo.buscar(Status.MORTO).contains(elfoVerde2));
+       assertTrue(exercitoElfo.buscar(Status.MORTO).contains(elfoVerde3));
+       assertTrue(exercitoElfo.buscar(Status.MORTO).contains(noturno2));
+       assertTrue(exercitoElfo.buscar(Status.MORTO).contains(noturno3));
+       assertTrue(exercitoElfo.buscar(Status.MORTO).contains(noturno4));
+       assertTrue(exercitoElfo.buscar(Status.VIVO).contains(noturno));
        
-    }  */
+    }  
 }
