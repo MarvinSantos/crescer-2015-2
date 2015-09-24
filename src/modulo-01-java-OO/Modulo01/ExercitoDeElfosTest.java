@@ -82,7 +82,7 @@ public class ExercitoDeElfosTest
            elfoVerde2.recebeAtaqueDoOrc(orc); 
         }
         
-       exercitoElfo.agruparPorStatus(Status.MORTO);
+       exercitoElfo.agruparPorStatus();
        
        assertTrue(exercitoElfo.buscar(Status.MORTO).contains(elfoVerde));
        assertTrue(exercitoElfo.buscar(Status.MORTO).contains(elfoVerde2));
@@ -117,7 +117,7 @@ public class ExercitoDeElfosTest
            noturno4.recebeAtaqueDoOrc(orc);
         }
         
-       exercitoElfo.agruparPorStatus(Status.MORTO);
+       exercitoElfo.agruparPorStatus();
        
        assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).contains(elfoVerde));
        assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).contains(elfoVerde2));
@@ -126,7 +126,7 @@ public class ExercitoDeElfosTest
        assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).contains(noturno3));
        assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.MORTO).contains(noturno4));
        
-       exercitoElfo.agruparPorStatus(Status.VIVO);
+       exercitoElfo.agruparPorStatus();
        assertTrue(exercitoElfo.getElfosAgrupadosPorStatus().get(Status.VIVO).contains(noturno));
        
     }  
