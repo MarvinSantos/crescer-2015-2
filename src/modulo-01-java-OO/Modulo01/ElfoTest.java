@@ -8,6 +8,20 @@ import org.junit.Test;
 
 public class ElfoTest
 {
+    @Before
+    public void setUp(){
+        Elfo.resetaContador();
+    }    
+    
+    @Test
+    public void contadorElficoCom3Unidades(){
+       
+        ElfoVerde elfoverde = new ElfoVerde("joao");
+       
+        int contadorEsperado = 1;
+        assertEquals(contadorEsperado, elfoverde.getQuantidadeDeElfosCriados());
+    }    
+    
     @Test
     public void elfoNasceCom42FlechasSeNaoIformadoAQuantidade(){
         Elfo elfo1 = new Elfo("legolas");

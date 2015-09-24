@@ -1,5 +1,6 @@
 public class Elfo extends Personagem{
     protected int flechas;
+    private static int CONTADOR;
     
  
     /*type initializer
@@ -16,10 +17,19 @@ public class Elfo extends Personagem{
         super( nome);
         this.vida = 100;
         this.flechas = flechas;
+        this.CONTADOR += 1;
     }     
     
     public int getFlechas(){
         return this.flechas;
+    }    
+    
+    public  int getQuantidadeDeElfosCriados(){
+        return CONTADOR;
+    }    
+    
+    public static void resetaContador(){
+        CONTADOR = 0;
     }    
     
     public void atirarFlecha(Dwarf dwarf){
