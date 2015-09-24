@@ -76,6 +76,8 @@ public class Elfo extends Personagem{
         }    
     }
     
+    public void tentarSorte(){}
+    
     //ruby ou coffeScript;
     // #{nome} #{textoFlecha}
     //interpolação de string

@@ -111,4 +111,6 @@ public class Orc extends Personagem
         }   
     }
     
+    public void tentarSorte(){}
+    
 }
