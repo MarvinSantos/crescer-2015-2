@@ -12,9 +12,12 @@ public class ExercitoDeElfos
     }    
     
     public void alistar(Elfo elfo){
-        String nomeDoElfo = elfo.getNome();
-        exercito.put(nomeDoElfo,elfo);
-    }    
+        if(elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno){
+            String nomeDoElfo = elfo.getNome();
+            exercito.put(nomeDoElfo,elfo);
+        }    
+    } 
+        
     
     public Elfo buscarElfoPeloNome(String nomeDoElfo){              
         return exercito.get(nomeDoElfo);
