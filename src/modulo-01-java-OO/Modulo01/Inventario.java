@@ -89,6 +89,7 @@ public class Inventario{
         for(Item item : this.listaDeItens){
             if(descricao.equals(item.getDescricao())){
                 itemBuscado = item;
+                break;
             }
         }
         return itemBuscado;
