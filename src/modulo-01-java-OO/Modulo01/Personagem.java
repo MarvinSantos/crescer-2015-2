@@ -1,5 +1,5 @@
 
-public class Personagem
+public abstract class Personagem
 {
     protected String nome;
     protected int experiencia;
@@ -47,6 +47,8 @@ public class Personagem
            this.vida -= orc.getDanoDeAtaque();
         }         
     }    
+    
+    public abstract void tentarSorte();
 }
 
 
