@@ -6,6 +6,7 @@ public class ExercitoDeElfos
     
     private HashMap<String,Elfo> exercito = new HashMap<>();
     private HashMap<Status,ArrayList<Elfo> > agrupadosPorStatus = new HashMap<>();
+    private EstrategiaDeAtaque estrategia = new EstrategiaNormal();
         
     
     public ExercitoDeElfos(){    
@@ -17,7 +18,10 @@ public class ExercitoDeElfos
             exercito.put(nomeDoElfo,elfo);
         }    
     } 
-        
+    
+    public EstrategiaDeAtaque getEstrategia(){
+        return this.estrategia;
+    }    
     
     public Elfo buscarElfoPeloNome(String nomeDoElfo){              
         return exercito.get(nomeDoElfo);
@@ -53,6 +57,8 @@ public class ExercitoDeElfos
         agruparPorStatus();
         return this.agrupadosPorStatus.get(status);
     } 
-    
    
+    public void atacar(ExercitoDeElfos exercito , ArrayList<Dwarf> dwarves){
+        this.estrategia.atacar(exercito,dwarves);
+    }        
 }
