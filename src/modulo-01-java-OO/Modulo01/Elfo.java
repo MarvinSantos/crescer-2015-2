@@ -76,6 +76,10 @@ public class Elfo extends Personagem{
         }    
     }
     
+    public int hashCode(){
+        return this.nome.length() + nome.hashCode();
+    }    
+    
     public void tentarSorte(){}
     
     //ruby ou coffeScript;
