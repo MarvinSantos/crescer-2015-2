@@ -52,15 +52,44 @@ public class OrcSnagaTest
 
     }
     
-    /*    @Test
+    @Test
     public void orcDoTipoSnagaAtacaOrcDoTipoUrukHai(){
         OrcSnaga orcSnaga = new OrcSnaga("orc Snaga");
         OrcUrukHai orcUKH = new OrcUrukHai("pedro");
         
         orcSnaga.atacar(orcUKH);
         
-        assertEquals(144,orcUKH.getVida());        
+        assertEquals(142,orcUKH.getVida());        
         
-    } */
+    } 
+    
+        @Test
+    public void orcDoTipoSnagaNasceComArcoEFlechaMasPerdeEsses2ItensEGanhaUmEspadao(){
+        OrcSnaga orc = new OrcSnaga("orc Snaga");
+        ElfoNoturno elfoNotur = new ElfoNoturno("elfao");
+        int vidaElfoEsperada = 88;
+        
+        orc.perderItem(new Item("Flecha",5));
+        orc.perderItem(new Item("Arco",1));
+        orc.adicionarItem(new Item("Espada",1));
+        orc.atacarElfo(elfoNotur);
+        
+        
+        assertEquals(vidaElfoEsperada,elfoNotur.getVida());        
+    } 
+    
+    @Test
+    public void orcDoTipoSnagaNasceComArcoEFlechaEGanhaUmEscudo(){
+        OrcSnaga orc = new OrcSnaga("orc Snaga");
+        ElfoNoturno elfoNotur = new ElfoNoturno("elfao");
+        int vidaOrcEsperada = 64;
+        
+        orc.adicionarItem(new Item("Espada",1));
+        orc.adicionarItem(new Item("Escudo Uruk-Hai",1));
+        elfoNotur.atacarOrc(orc);
+        
+        
+        assertEquals(vidaOrcEsperada,orc.getVida());        
+    } 
     
 }
