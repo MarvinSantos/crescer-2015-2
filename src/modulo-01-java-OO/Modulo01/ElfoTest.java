@@ -15,12 +15,26 @@ public class ElfoTest
     
     @Test
     public void contadorElficoCom3Unidades(){
-       
+        ElfoNoturno elfoNoturno = new ElfoNoturno("jonas"); 
         ElfoVerde elfoverde = new ElfoVerde("joao");
+        Elfo elfo = new Elfo("josé");
        
-        int contadorEsperado = 1;
+        int contadorEsperado = 3;
         assertEquals(contadorEsperado, elfoverde.getQuantidadeDeElfosCriados());
     }    
+    
+    @Test
+    public void contadorElficoCom6Unidades(){
+        ElfoNoturno elfoNoturno = new ElfoNoturno("jonas"); 
+        ElfoVerde elfoverde = new ElfoVerde("joao");
+        Elfo elfo = new Elfo("josé");
+        Elfo elfo2 = new Elfo("pedro");
+        ElfoNoturno elfoNoturno2 = new ElfoNoturno("maria"); 
+        ElfoVerde elfoverde2 = new ElfoVerde("legolas");
+        
+        int contadorEsperado = 6;
+        assertEquals(contadorEsperado, elfoverde.getQuantidadeDeElfosCriados());
+    }  
     
     @Test
     public void elfoNasceCom42FlechasSeNaoIformadoAQuantidade(){
