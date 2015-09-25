@@ -77,4 +77,43 @@ public class OrcUrukHaiTest
         assertTrue(orc.getVida() <= 0);
         assertEquals(statusEsperado, orc.getStatus());
     }
+    
+       @Test
+    public void orcDoTipoUrukHaiNasceComEscudoEspadaE150DeVidaMasDepoisPerdeAEspadaEGanhaUmArco(){
+        OrcUrukHai orc = new OrcUrukHai("pedro");
+        ElfoVerde elfoVerde = new ElfoVerde("robim");
+        Item espada = new Item("Espada",1);
+        Item arco = new Item("Arco",1);
+        Item flecha = new Item("Flecha",1);
+        orc.perderItem(espada);
+        orc.adicionarItem(arco);
+        orc.adicionarItem(flecha);
+        orc.atacarElfo(elfoVerde);
+        int vidaElfoEsperada = 92;
+        
+        assertEquals(vidaElfoEsperada,elfoVerde.getVida());       
+        
+    }
+    
+     @Test
+    public void orcDoTipoUrukHaiNasceComEscudoMasPerdeEle(){
+        OrcUrukHai orc = new OrcUrukHai("pedro");
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("Espada",1));
+        orc.perderItem(new Item("Escudo Uruk-Hai",1));
+        
+        assertEquals(150,orc.getVida());       
+        assertEquals(esperado,orc.getInventario());
+    }
+    
+      @Test
+    public void orcDoTipoUrukHaiNasceComEscudoPerdeEleEToma10DeDanoDoElfo(){
+        OrcUrukHai orc = new OrcUrukHai("pedro");
+        Elfo elfo = new Elfo("jon");
+        int orcVidaEsperada = 140;
+        orc.perderItem(new Item("Escudo Uruk-Hai",1));
+        elfo.atacarOrc(orc);
+        
+        assertEquals(orcVidaEsperada,orc.getVida());       
+    }  
 }
