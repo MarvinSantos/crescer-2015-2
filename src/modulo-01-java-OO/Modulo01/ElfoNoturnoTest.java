@@ -48,6 +48,35 @@ public class ElfoNoturnoTest
  
       assertEquals(vidaEsperada,kurt.getVida());
     
+  } 
+  
+   @Test
+  public void elfoNoturnoGanha6DeExperienciaCom2ataques(){
+      ElfoNoturno kurt = new ElfoNoturno("kurt");
+      int expEsperado = 6;
+     
+      Dwarf dwarf = new Dwarf("anao");
+      kurt.atirarFlecha(dwarf);
+      kurt.atirarFlecha(dwarf);
+      
+      assertEquals(expEsperado,kurt.getExperiencia());
+    
+  } 
+  
+    @Test
+  public void elfoNoturnoGanha15DeExperienciaCom5ataques(){
+      ElfoNoturno kurt = new ElfoNoturno("kurt");
+      int expEsperado = 15;
+     
+      Dwarf dwarf = new Dwarf("anao");
+      kurt.atirarFlecha(dwarf);
+      kurt.atirarFlecha(dwarf);
+      kurt.atirarFlecha(dwarf);
+      kurt.atirarFlecha(dwarf);
+      kurt.atirarFlecha(dwarf);
+      
+      assertEquals(expEsperado,kurt.getExperiencia());
+    
   }  
   
 }
