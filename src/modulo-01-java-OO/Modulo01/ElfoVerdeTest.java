@@ -34,4 +34,28 @@ public class ElfoVerdeTest
         
         assertEquals(esperado, arrow.getInventario());
     }
+    
+     @Test
+    public void elfoVerdeTemArcoEFlechaDeVidro(){
+        ElfoVerde arrow = new ElfoVerde("arrow");
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("Arco e Flecha de Vidro",1));
+        arrow.adicionarItem(new Item("Arco e Flecha de Vidro",1));       
+        
+        assertEquals(esperado, arrow.getInventario());
+    }
+    
+      @Test
+    public void elfoVerdeTemArcoEFlechaDeVidroEEspadaValiriana(){
+        ElfoVerde arrow = new ElfoVerde("arrow");
+        Inventario esperado = new Inventario();
+        esperado.adicionarItem(new Item("Arco e Flecha de Vidro",1));
+        esperado.adicionarItem(new Item("Espada de aço valiriano",1));
+        arrow.adicionarItem(new Item("Arco e Flecha de Vidro",1));
+        arrow.adicionarItem(new Item("Espada de aço valiriano",1));
+        
+        assertEquals(esperado, arrow.getInventario());
+    }
+    
+    
 }
