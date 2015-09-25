@@ -198,4 +198,24 @@ public class ExercitoDeElfosTest
        assertTrue(exercitoElfo.buscar(Status.VIVO).contains(noturno));
        
     }  
+    
+   @Test
+   public void oRetornoDaBuscaPorElfosMortosDeveSerNull(){
+       ElfoVerde elfoVerde = new ElfoVerde("sortudo");  
+       ExercitoDeElfos exercitoElfo = new ExercitoDeElfos();
+       exercitoElfo.alistar(elfoVerde);
+         
+       assertNull(exercitoElfo.buscar(Status.MORTO));
+       
+    }
+    
+    @Test
+   public void tentandoAlistarUmElfoNormal(){
+       Elfo elfo = new Elfo("impostor");  
+       ExercitoDeElfos exercitoElfo = new ExercitoDeElfos();
+       exercitoElfo.alistar(elfo);
+         
+       assertNull(exercitoElfo.buscarElfoPeloNome("impostor"));
+       
+    }
 }
