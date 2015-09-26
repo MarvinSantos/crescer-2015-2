@@ -7,6 +7,7 @@ public class EstrategiaNormal implements EstrategiaDeAtaque {
     
     
     public void atacar(ExercitoDeElfos exercito , ArrayList<Dwarf> dwarves){
+        ordemDeAtaque.clear();
         ArrayList<Elfo> elfos = exercito.buscar(Status.VIVO);
         
         int tamanhoDoPelotaoElfos = elfos.size();
@@ -28,7 +29,7 @@ public class EstrategiaNormal implements EstrategiaDeAtaque {
                if(elfo instanceof ElfoNoturno && contadorDeAtaquesDeNoturno < trintaPorcentoDasIntencoes){  
                    elfo.atirarFlecha(dwarf);
                    contadorDeAtaquesDeNoturno++;
-               }else{
+               }else if(elfo instanceof ElfoVerde){
                    elfo.atirarFlecha(dwarf);
                 }    
                
