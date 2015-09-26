@@ -60,5 +60,9 @@ public class ExercitoDeElfos
    
     public void atacar(ExercitoDeElfos exercito , ArrayList<Dwarf> dwarves){
         this.estrategia.atacar(exercito,dwarves);
-    }        
+    } 
+    
+    public void mudarEstrategia(EstrategiaDeAtaque estrategy){
+        this.estrategia = estrategy;
+    }    
 }
