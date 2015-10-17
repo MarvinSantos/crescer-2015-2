@@ -43,3 +43,20 @@ function imprime(nomes, funcao){
 imprime(['bernardo','nunes','dudu','ben-hur','fabrício','zanatta'],(function funcaoInterna(instrutor){
   console.log('olá querido instrutor:', instrutor);
 }));
+
+
+
+
+/* função não recursiva para calcular a noma de n numeros da sequencia de fibonacci */
+function fiboSum(n){
+  var seq = 0,soma = 1;
+  var numero1 = 0, numero2 = 1;
+  for(i = 0; i < n; i++){
+    soma = soma + seq;
+    seq = numero1 + numero2;
+    numero1 = numero2;
+    numero2 = seq;
+
+  }
+  return soma;
+}
