@@ -12,6 +12,8 @@ function daisyGame(numeroDePetalas){
 }
 
 
+
+
 /*função que retorna o maior texto dentro de um array de strings*/
 function maiorTexto(textos){
   var auxiliar = textos[0];
@@ -23,3 +25,20 @@ function maiorTexto(textos){
   }
   return console.log(auxiliar);
 }
+
+
+
+
+/* Imprime isntrutores */
+function imprime(nomes, funcao){
+  if(typeof funcao !== 'function'){
+    alert('o segundo parametro deve ser uma função');
+  }
+  for(i = 0; i < nomes.length ; i++){
+    funcao(nomes[i]);
+  }
+}
+/*chamando a função imprime instrutores*/
+imprime(['bernardo','nunes','dudu','ben-hur','fabrício','zanatta'],(function funcaoInterna(instrutor){
+  console.log('olá querido instrutor:', instrutor);
+}));
