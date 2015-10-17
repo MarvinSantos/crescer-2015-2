@@ -33,9 +33,10 @@ function maiorTexto(textos){
 function imprime(nomes, funcao){
   if(typeof funcao !== 'function'){
     alert('o segundo parametro deve ser uma função');
-  }
-  for(i = 0; i < nomes.length ; i++){
-    funcao(nomes[i]);
+  }else{
+    for(i = 0; i < nomes.length ; i++){
+      funcao(nomes[i]);
+    }
   }
 }
 /*chamando a função imprime instrutores*/
