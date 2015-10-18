@@ -68,12 +68,16 @@ function fiboSum(n){
 
 
 
-
-/* exercício 5 *//*IMCOMPLETO*/
+/* exercício 5 */
 /* função que retorna o numero de uma coluna */
 function excelis(coluna){
-    var alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var indice = alfabeto.indexOf(coluna) + 1;
-
+    var indice = 0;
+    if(coluna.length === 1){
+      indice = coluna.toUpperCase().charCodeAt(0) - 64;
+    }else{
+      for (var i = 0; i < coluna.length; i++) {
+          indice = indice * 26 + coluna.toUpperCase().charCodeAt(i) - 64;
+      }
+    }
     return indice;
 }
