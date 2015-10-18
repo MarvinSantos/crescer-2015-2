@@ -1,4 +1,5 @@
 
+/* exercício 1 */
 /* função bem me quer, mal me quer... */
 function daisyGame(numeroDePetalas){
 
@@ -14,6 +15,7 @@ function daisyGame(numeroDePetalas){
 
 
 
+/* exercício 2 */
 /*função que retorna o maior texto dentro de um array de strings*/
 function maiorTexto(textos){
   var auxiliar = textos[0];
@@ -29,14 +31,15 @@ function maiorTexto(textos){
 
 
 
+/* exercício 3 */
 /* Imprime isntrutores */
 function imprime(nomes, funcao){
-  if(typeof funcao !== 'function'){
-    alert('o segundo parametro deve ser uma função');
-  }else{
+  if(typeof funcao === 'function'){
     for(i = 0; i < nomes.length ; i++){
       funcao(nomes[i]);
     }
+  }else{
+    console.log('type error: ' + typeof funcao + ' is not a function' );
   }
 }
 /*chamando a função imprime instrutores*/
@@ -46,7 +49,7 @@ imprime(['bernardo','nunes','dudu','ben-hur','fabrício','zanatta'],(function fu
 
 
 
-
+/* exercício 4 */
 /* função não recursiva para calcular a noma de n numeros da sequencia de fibonacci */
 function fiboSum(n){
   var seq = 0,soma = 1;
@@ -59,4 +62,18 @@ function fiboSum(n){
 
   }
   return soma;
+}
+
+
+
+
+
+
+/* exercício 5 *//*IMCOMPLETO*/
+/* função que retorna o numero de uma coluna */
+function excelis(coluna){
+    var alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var indice = alfabeto.indexOf(coluna) + 1;
+
+    return indice;
 }
