@@ -10,7 +10,7 @@ function daisyGame(numeroDePetalas){
   }else {
     return console.log('Love Me Not');
   }
-}
+};
 
 
 
@@ -19,14 +19,14 @@ function daisyGame(numeroDePetalas){
 /*função que retorna o maior texto dentro de um array de strings*/
 function maiorTexto(textos){
   var auxiliar = textos[0];
-  for (i = 1 ; i < textos.length; i++){
+  for (var i = 1 ; i < textos.length; i++){
     var texto = textos[i];
     if (texto.length > auxiliar.length){
       auxiliar = texto;
     }
   }
   return console.log(auxiliar);
-}
+};
 
 
 
@@ -35,13 +35,13 @@ function maiorTexto(textos){
 /* Imprime isntrutores */
 function imprime(nomes, funcao){
   if(typeof funcao === 'function'){
-    for(i = 0; i < nomes.length ; i++){
+    for(var i = 0; i < nomes.length ; i++){
       funcao(nomes[i]);
     }
   }else{
     console.log('type error: ' + typeof funcao + ' is not a function' );
   }
-}
+};
 /*chamando a função imprime instrutores*/
 imprime(['bernardo','nunes','dudu','ben-hur','fabrício','zanatta'],(function funcaoInterna(instrutor){
   console.log('olá querido instrutor:', instrutor);
@@ -54,7 +54,7 @@ imprime(['bernardo','nunes','dudu','ben-hur','fabrício','zanatta'],(function fu
 function fiboSum(n){
   var seq = 0,soma = 1;
   var numero1 = 0, numero2 = 1;
-  for(i = 0; i < n; i++){
+  for( var i = 0; i < n; i++){
     soma = soma + seq;
     seq = numero1 + numero2;
     numero1 = numero2;
@@ -62,7 +62,20 @@ function fiboSum(n){
 
   }
   return soma;
+};
+/*recursivo*//*
+var fibonacci =  function(n){
+  if(n === 1) return 1;
+  if(n === 2) return 1;
+
+  return fibonacci( n - 1) + fibonacci(n - 2);
 }
+var fiboSum2 = function(n){
+  if(n ===1) return 1;
+  return fibonacci(n) + fiboSum2(n - 2);
+}       */
+
+
 
 
 
@@ -80,4 +93,24 @@ function excelis(coluna){
       }
     }
     return indice;
-}
+};
+
+
+
+
+
+
+
+/* exercicio 6 */
+function queroCafe(mascada,precos){
+    var precosString = '';
+    precos.sort(function(a, b){
+      return a > b;
+    });
+    for( var i = 0; i <= precos.length; i++){
+        if(precos[i] <= mascada){
+            precosString = precosString + precos[i] + ',';
+        }
+    }
+    return precosString.substring(0,precosString.length - 1);
+};
