@@ -103,14 +103,16 @@ function excelis(coluna){
 
 /* exercicio 6 */
 function queroCafe(mascada,precos){
-    var precosString = '';
-    precos.sort(function(a, b){
-      return a > b;
-    });
-    for( var i = 0; i <= precos.length; i++){
-        if(precos[i] <= mascada){
-            precosString = precosString + precos[i] + ',';
-        }
-    }
-    return precosString.substring(0,precosString.length - 1);
+    var precosString = precos.filter(
+          function(elem){
+            return elem <= mascada;
+          }
+        )
+        .sort(
+          function(a, b){
+            return a > b;
+          }
+        )
+        .join(',');
+    return precosString;
 };
