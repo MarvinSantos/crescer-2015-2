@@ -34,6 +34,9 @@ var clubes = [
 ];
                         // EXERCICIO 1
 
+//criar função auxiliar para ordenar o array para evitar duplocação de codigo
+
+
 // exercicio 1.A
 function ordenaPorNacionais(arreiClubes){
   return arreiClubes.sort(
@@ -61,8 +64,14 @@ function ordenaPorMundiais(arreiClubes){
     )
 };
 
+// com console.log utilizar concat() "arreiClubes.concat().sort()" ou
+// utilizar o terceiro parametro da função dentro do sort como o array que sera ordenado
+
+
                               // EXERCICIO 2
 
+// utilizar reduce()
+//criar função auxiliar
 // exercicio 2.A
 function somarPorNacionais(arreiClubes){
   var soma = 0;
@@ -100,6 +109,7 @@ function somarPorMundiais(arreiClubes){
 
 
                 //EXERCÍCIO 3
+//utilizar filter
 //retorna apenas os times com qtd de titulos nacionais maior do que 18
 function apenasOsMelhores(arreiClubes){
   var times = [];
