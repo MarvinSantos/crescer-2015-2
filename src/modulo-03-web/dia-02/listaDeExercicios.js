@@ -38,7 +38,26 @@ var clubes = [
 ];
                         // EXERCICIO 1
 
-//criar função auxiliar para ordenar o array para evitar duplocação de codigo
+//criar função auxiliar para ordenar o array para evitar duplicação de
+/* exemplo do instrutor
+
+function ordenaPorIndice(indice, times) {
+
+   Arrow functions
+  return clubes.sort(
+    (x,y) => x.titulos[indice].qtd < y.titulos[indice].qtd
+  );
+
+  var clubes = [];
+
+  times.sort(function(elemEsq, elemDir, clubes) {
+    return elemEsq.titulos[indice].qtd < elemDir.titulos[indice].qtd;
+  });
+
+  return clubes;
+};
+
+  */
 
 
 // exercicio 1.A
@@ -49,6 +68,12 @@ function ordenaPorNacionais(arreiClubes){
       }
     )
 };
+/*exemplo do instrutor agora utilizando a função auxiliar
+function ordenaPorNacionais(times) {
+  return ordenaPorIndice(1, times);
+};
+*/
+
 
 // exercicio 1.B
 function ordenaPorContinentais(arreiClubes){
