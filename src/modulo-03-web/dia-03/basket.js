@@ -3,6 +3,7 @@ function Basket(){
   this.itens = [];
 };
 
+
 Basket.prototype.adicionarItem = function(item){
   this.itens.push(item);
 };
@@ -36,8 +37,25 @@ Basket.prototype.calcularValorTotal = function(){
 
 Basket.prototype.jogarMoedaDeDesconto = function(){
   var desconto = false;
-  if(Math.random() <= 0.4){
+  if(Math.random() < 0.4){
     desconto = true;
   }
   return desconto;
+};
+
+Basket.prototype.forcarCompra = function(){
+  if(!this.myTimer){
+    var self = this;
+    this.myTimer = setInterval(function(){
+      self.itens.forEach(function(elem){
+        elem.valorUnitario += (elem.valorUnitario*0.1);
+        console.log(elem.valorUnitario);
+      })
+    },5000);
+  }
+};
+
+Basket.prototype.concluirPedido = function(){
+  clearInterval(this.myTimer);
+  delete this.myTimer;
 };
