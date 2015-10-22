@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html>
+  <head>
+    <tilte>JQuery</title>
+    <meta   charset="UTF-8" />
+    <style>
+      .red{
+        background-color: red;
+      }
+      .blue{
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img id="minhaImagem" src="https://static.pexels.com/photos/12095/pexels-photo-12095.jpeg" width="1080" height="600"/>
+    <h2> olá jQuery </h2>
+    <input name="nome" type="text" placeholder="digite seu nome">
+    <input name="idade" type="text" placeholder="sua idade"
+    <ul>
+      <li>
+        <small id="novos">novos conceitos</small>
+      </li>
+      <li>
+        <small class="red">Projetor crescer</small>
+      </li>
+    </ul>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      window.onload = function(){
+        console.log('carregou');
+      };
+      //avisar quando a DOM terminar de ser baixada
+      $(function(){
+        console.log('DOM carregou');
+      });
+    </script>
+
+  </body>
+
+</html>
