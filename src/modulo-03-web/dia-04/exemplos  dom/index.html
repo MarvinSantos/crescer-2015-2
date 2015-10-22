@@ -8,14 +8,13 @@
   <body>
     <h2>horario</h2>
     <button id="carregaIMG" >botaoo</button>
-    <img id="minhaImagem" src="pexels-photo.jpeg" />
-
+    <img id="minhaImagem" src="pexels-photo.jpeg" width="1080" height="600"/>
     <script type="text/javascript">
-      //terminar
+        document.getElementById('carregaIMG').onclick = function() {
+          document.getElementById('minhaImagem').src
+            = 'https://static.pexels.com/photos/12060/pexels-photo-12060.jpeg';
+        };
     </script>
-
-
-
   </body>
 
 </html>
