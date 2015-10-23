@@ -1,0 +1,32 @@
+<!doctype html>
+ <html>
+   <head>
+     <title></title>
+     <meta charset="utf-8">
+     <style type="text/css">
+
+     </style>
+   </head>
+   <body>
+     <h2>Exercícios Culsulta API spotify</h2>
+     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+     <script type="text/javascript">
+       $(function() {
+         $.get('https://api.spotify.com/v1/artists/6mdiAmATAx73kdxrNrnlao/albums?limit=50')
+           .done(function(data) {
+             $('h2').empty();
+             var albuns = data.items;
+             var imagenUrl;
+             albuns.forEach(function(elem) {
+               imagenUrl = elem.images[1].url
+               $('h2').append(
+                 $('<img>')
+                   .attr('src', imagenUrl)
+                   .attr('alt', 'foto Do Megadeath')
+               )
+             });
+           });
+       });
+     </script>
+   </body>
+ </html>
