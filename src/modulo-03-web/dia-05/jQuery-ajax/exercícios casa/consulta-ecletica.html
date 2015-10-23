@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html>
+  <head>
+    <tilte>Consulta ecletica</title>
+    <meta   charset="UTF-8" />
+    <style>
+
+    </style>
+  </head>
+
+  <body>
+
+    <h2> Usuario, faça sua consulta eclética </h2>
+    <input id="caixaDeTexto" type="text" placeholder="digite sua banda Favorita">
+    <button id="btnGo" >GO!</button>
+    <h1> albuns: <h1>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function(){
+          $('#btnGo').click(function() {
+            $('h1').empty();
+            delete primeiraUrl;
+            var textoDigitado = $('#caixaDeTexto').val();
+            var idDoArtista;
+            var imagenUrl;
+            var primeiraUrl = 'https://api.spotify.com/v1/search?q='+ textoDigitado +'&type=artist';
+
+            if(textoDigitado.toUpperCase() === 'JUSTIN BIEBER'){
+              var numeroRandomico = Math.random();
+              if(numeroRandomico < 0.8){
+                primeiraUrl = 'https://api.spotify.com/v1/artists/douchebag/albums?limit=50';
+              }
+            }
+
+            $.get(primeiraUrl)
+              .done(function(data){
+                idDoArtista = data.artists.items[0].id;
+
+                $.get('https://api.spotify.com/v1/artists/'+ idDoArtista +'/albums?limit=50')
+                  .done(function(data2){
+                    data2.items.forEach(function(elem) {
+                      if(elem.images.length > 0){
+                        imagenUrl = elem.images[1].url;
+                        $('h1').prepend(
+                          $('<img>')
+                            .attr('src', imagenUrl)
+                            .attr('alt', 'foto Do ' + textoDigitado)
+                        );
+                      }
+                    });
+                  });
+              }).fail(function(xhr, textStatus, errorThrown){
+                  alert('caro usuario, devido ao erro ' + xhr.responseJSON.error.status +' não foi possivel procurar por '+textoDigitado);
+              });
+            });
+        });
+    </script>
+
+  </body>
+
+</html>
