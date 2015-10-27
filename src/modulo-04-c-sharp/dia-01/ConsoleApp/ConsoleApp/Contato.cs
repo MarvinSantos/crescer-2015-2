@@ -16,6 +16,11 @@ namespace ConsoleApp
             this.Nome = nome;
             this.Numero = numero;
         }
-        
+
+        public override string ToString()
+        {
+            return Nome + "-" + Numero;
+        }
+
     }
 }
