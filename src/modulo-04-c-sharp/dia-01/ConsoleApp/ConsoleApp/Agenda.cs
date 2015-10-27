@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleApp
 {
@@ -71,6 +72,21 @@ namespace ConsoleApp
             }
 
             return texto;
+        }
+
+        public string ListarOrdenadosPorNome()
+        {
+            string texto = "";
+            var nomesOrdenados = contatos.OrderBy(contato => contato.Nome).ToList();
+
+            foreach (var contato in nomesOrdenados)
+            {
+                texto += contato.Nome + "-" + contato.Numero + "\n";
+            }
+
+
+            return texto;
+
         }
 
     }
