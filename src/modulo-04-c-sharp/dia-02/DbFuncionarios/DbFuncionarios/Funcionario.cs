@@ -21,5 +21,10 @@ namespace DbFuncionarios
             this.DataNascimento = dataNascimento;
         }
 
+        //public IList<Funcionario> OrdenadosPorCategoria()
+        //{
+        //    /// terminar
+        //}
+
     }
 }
