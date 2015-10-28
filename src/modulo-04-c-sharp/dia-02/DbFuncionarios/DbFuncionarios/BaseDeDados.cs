@@ -81,5 +81,112 @@ namespace DbFuncionarios
             margareteRicardo.TurnoTrabalho = TurnoTrabalho.Manha;
             Funcionarios.Add(margareteRicardo);
         }
+
+        //A
+        public IList<Funcionario> OrdenadosPorCategoria()
+        {
+            var resultado = Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ToList();
+            return resultado;
+        }
+
+        //B
+        public IList<Funcionario> BuscarPorNome(string nome)
+        {
+            var resultado = Funcionarios.Where(funcionario => funcionario.Nome.Contains(nome)).OrderBy(funcionario => funcionario.Nome).ToList();
+            return resultado;
+        }
+
+        //C
+        public IList<dynamic> BuscaRapida(string nome)
+        {
+            var funcionario = Funcionarios.Where(funcionario2 => funcionario2.Nome == nome)
+                                          .Select(x => new {Nome = x.Nome,Titulo = x.Cargo.Titulo});
+
+            return funcionario.ToList<dynamic>();
+
+        }
+
+        //D
+        public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho?[] turnos)
+        {
+            var funcionarios = from funcionario in Funcionarios
+                               where turnos.Contains(funcionario.TurnoTrabalho)
+                               select funcionario;
+
+            return funcionarios.ToList();
+
+        }
+
+        //D de outra forma não funcional
+
+        //public IList<Funcionario> BuscarPorTurno(TurnoTrabalho turno1,TurnoTrabalho turno2 = TurnoTrabalho.Default,TurnoTrabalho turno3 = TurnoTrabalho.Default)
+        //{
+        //    var funcionario = Funcionarios.Where(funcionario1 => funcionario1.TurnoTrabalho == turno1);
+        //    var funcionario2 = Funcionarios.Where(funcionario3 => funcionario3.TurnoTrabalho == turno2);
+        //    var funcionario4 = Funcionarios.Where(funcionario5 => funcionario5.TurnoTrabalho == turno3);
+        //    funcionario.Concat(funcionario2);
+        //    funcionario.Concat(funcionario4);
+        //    return funcionario.ToList();
+
+        //}
+
+
+        //E
+        public IList<dynamic> QtdFuncionariosPorTurno()
+        {
+            var funcionariosAgrupados = (Funcionarios.GroupBy(funcionario => funcionario.TurnoTrabalho)).ToList();
+
+            var query = from funcionario in funcionariosAgrupados
+                        select new
+                        {
+                            Turno = funcionario.Key,
+                            Contagem = funcionario.Count()
+                        };
+            return query.ToList<dynamic>();
+        }
+
+        //F
+        public IList<Funcionario> BuscarPorCargo(Cargo cargo)
+        {
+            IList<Funcionario> funcionarios = Funcionarios.Where(funcionario => funcionario.Cargo.Equals(cargo)).ToList();
+
+            return funcionarios;
+        }
+
+
+        //G
+        public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
+        {
+            DateTime dataDeHoje = DateTime.Now;
+
+            IList<Funcionario> funcionarios = Funcionarios.Where(funcionario => 
+                                    ((idade - 5) <= (dataDeHoje.Year - funcionario.DataNascimento.Year)) && 
+                                    ((dataDeHoje.Year - funcionario.DataNascimento.Year) <= (idade + 5))).ToList();
+
+            return funcionarios;
+        }
+
+
+        //H
+        public double SalarioMedio(TurnoTrabalho? turno)
+        {
+            double media = 0.0;
+
+            if (turno.HasValue)
+            {
+                IList<Funcionario> funcionarios =  BuscarPorTurno(turno);
+
+                media = (funcionarios.Sum(funcionario => funcionario.Cargo.Salario)) / (funcionarios.Count());
+            }
+            return media;
+        }
+
+        //I
+        public IList<Funcionario> AniversariantesDoMes()
+        {
+            return (Funcionarios.Where(funcionario => funcionario.DataNascimento.Month == DateTime.Now.Month)).ToList();
+        }
+
+
     }
 }
