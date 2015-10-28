@@ -17,5 +17,12 @@ namespace DbFuncionarios
             this.Salario = salario;
         }
 
+        public override bool Equals(object obj)
+        {
+            Cargo cargo = (Cargo)obj;
+            return cargo.Titulo == Titulo && cargo.Salario == Salario;
+
+        }
+
     }
 }
