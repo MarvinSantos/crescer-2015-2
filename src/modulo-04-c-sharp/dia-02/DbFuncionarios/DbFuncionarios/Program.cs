@@ -19,7 +19,67 @@ namespace DbFuncionarios
             //    Console.WriteLine(item.TituloCargo);
             //    Console.WriteLine();
             //}
-            
+
+            //var baseDeDados = new BaseDeDados();
+            //IList<Funcionario> funcionarios = baseDeDados.OrdenadosPorCategoria();
+            //foreach (var item in funcionarios)
+            //{
+            //    Console.WriteLine(item.Cargo.Titulo);
+            //}
+
+            //var baseDeDados = new BaseDeDados();
+            //IList<Funcionario> funcionarios = baseDeDados.BuscarPorNome("ea");
+            //foreach (var item in funcionarios)
+            //{
+            //    Console.WriteLine(item.Nome);
+            //}
+
+            //var baseDeDados = new BaseDeDados();
+            //IList<Funcionario> funcionarios = baseDeDados.BuscarPorTurno(TurnoTrabalho.Tarde, TurnoTrabalho.Noite);
+            //foreach (var item in funcionarios)
+            //{
+            //    Console.WriteLine(item.TurnoTrabalho + "    " + item.Nome);
+            //}
+
+
+            //var baseDeDados = new BaseDeDados();
+            //var funcionarios = baseDeDados.QtdFuncionariosPorTurno();
+            //foreach (var item in funcionarios)
+            //{
+            //    Console.WriteLine(item.Turno + "-" + item.Contagem);
+            //}
+
+            //var baseDeDados = new BaseDeDados();
+            //Cargo desenvolvedor = new Cargo("Desenvolvedor", 190);
+            //Cargo analista = new Cargo("Analista", 250);
+            //IList<Funcionario> funcionarios = baseDeDados.BuscarPorCargo(analista);
+            //foreach (var item in funcionarios)
+            //{
+            //    Console.WriteLine(item.Nome);
+            //}
+
+            //var baseDeDados = new BaseDeDados();
+            //IList<Funcionario> funcionarios = baseDeDados.FiltrarPorIdadeAproximada(31);
+            //foreach (var item in funcionarios)
+            //{
+            //    Console.WriteLine(item.Nome + "   " + item.DataNascimento);
+            //}
+
+
+            //var baseDeDados = new BaseDeDados();
+            //double mediaSalarial = baseDeDados.SalarioMedio(TurnoTrabalho.Manha);
+
+            //Console.WriteLine(mediaSalarial);
+
+            //var baseDeDados = new BaseDeDados();
+            //IList<Funcionario> funcionarios = baseDeDados.AniversariantesDoMes();
+            //foreach (var item in funcionarios)
+            //{
+            //    Console.WriteLine(item.Nome);
+            //}
+
+
+
             Console.Read();
         }
 
