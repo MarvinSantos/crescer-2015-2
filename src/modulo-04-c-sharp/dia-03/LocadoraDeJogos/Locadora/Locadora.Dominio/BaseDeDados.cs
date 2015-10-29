@@ -9,14 +9,46 @@ namespace Locadora.Dominio
 {
     public class BaseDeDados
     {
-        public string caminhoArquivo = @"C:\Users\marvin.santos\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos";
-
-        public void cadastrarJogo(string nome, short id, string categoria, double preco)
+        public string caminhoArquivo;
+        XElement jogos;
+        public BaseDeDados()
         {
+            this.caminhoArquivo = @"C:\Users\marvi\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\dbDeJogos.xml";
+            this.jogos = XElement.Load(caminhoArquivo);
+        }
+
+        public void cadastrarJogo(string nome, int id, string categoria, double preco)
+        {
+            
+            XDocument documentoXml = XDocument.Load(caminhoArquivo);
             Jogo jogo = new Jogo(nome, categoria, preco, id);
-            XElement jogos = XElement.Load(caminhoArquivo);
-            jogos.Element("jogos").Add(jogo.ToXElement());
+
+            documentoXml.Element("jogos").Add(jogo.ToXElement());
+            documentoXml.Save(caminhoArquivo);
                  
+        }
+
+        public int nextID()
+        {
+            
+            XDocument documentoXml = XDocument.Load(caminhoArquivo);
+            int proximoID = Convert.ToInt32(documentoXml.Element("jogos").Elements().Count()) + 1;
+            return proximoID;
+                  
+        }
+
+        public XElement pasquisarPorNome(string nome)
+        {
+            try
+            {
+                XElement jogo = jogos.Elements().First(jogo2 => jogo2.Element("nome").Value == nome);
+                return jogo;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+             
         }
     }
 }
