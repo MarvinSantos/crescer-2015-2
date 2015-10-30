@@ -31,23 +31,24 @@ namespace Locadora.UI
             Console.WriteLine("Digite a categoria do jogo");
         }
 
-        public void PedirNovoNome()
-        {
-            Console.WriteLine("Digite o novo Nome");
-        }
-
-        public void PedirNovoPreco()
-        {
-            Console.WriteLine("Digite o novo Preço que este jogo terá");
-        }
 
         public void MostrarInformacoesDoJogoNaTela(string nomeJogo)
         {
             BaseDeDados dbXml = new BaseDeDados();
-            Jogo jogo = dbXml.getJogo(nomeJogo);
+            Jogo jogo = dbXml.GetJogo(nomeJogo);
             string informacoesDoJogo = jogo.ToString();
             Console.WriteLine(informacoesDoJogo);
             
+        }
+
+        public void PerguntarSeQuerMudarOId()
+        {
+            Console.WriteLine("Você quer mudar o id do jogo? \r\n 1- SIM \r\n 2- NAO ");
+        }
+
+        public void PedirId()
+        {
+            Console.WriteLine("Digite o ID: ");
         }
 
         
