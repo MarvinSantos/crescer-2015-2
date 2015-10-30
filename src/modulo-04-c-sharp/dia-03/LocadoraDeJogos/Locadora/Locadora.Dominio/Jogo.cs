@@ -28,6 +28,12 @@ namespace Locadora.Dominio
             return jogoXElemento;
         }
 
+        public override string ToString()
+        {
+            string informacoes = string.Format("Nome: " + Nome + "\r\nID: "+ this.Id + "\r\nCategoria: " + this.Categoria + "\r\nPreço: {0:C} ",this.Preco);
+            return informacoes;
+        }
+
     }
 
 
