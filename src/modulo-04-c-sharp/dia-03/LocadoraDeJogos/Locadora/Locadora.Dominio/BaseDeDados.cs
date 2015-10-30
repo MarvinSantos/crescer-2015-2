@@ -50,5 +50,16 @@ namespace Locadora.Dominio
             }
              
         }
+
+        public Jogo getJogo(string nomeDoJogo)
+        {
+            XElement xejogo = pasquisarPorNome(nomeDoJogo);
+            string nomeJogo = xejogo.Element("nome").Value;
+            double precoJogo = Convert.ToDouble(xejogo.Element("preco").Value);
+            string categoriaJogo = xejogo.Element("categoria").Value;
+            int idJogo = Convert.ToInt32(xejogo.Attribute("id").Value);
+            Jogo jogo = new Jogo(nomeJogo,categoriaJogo,precoJogo,idJogo);
+            return jogo;
+        }
     }
 }
