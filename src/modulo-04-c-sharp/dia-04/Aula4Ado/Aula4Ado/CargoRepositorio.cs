@@ -39,6 +39,7 @@ namespace Aula4Ado
                     {
                         Situacao = situacao
                     };
+                    Console.WriteLine(cargoEncontrado.IdCargo + "  "+cargoEncontrado.Nome);
                 }
                 
                 connection.Close();
