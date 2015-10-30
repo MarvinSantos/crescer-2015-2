@@ -69,8 +69,8 @@ namespace Locadora.UI
             nomeJogo = Console.ReadLine();
             try
             {
-                XElement jogoRetornado = dbXml.pasquisarPorNome(nomeJogo);
-                menuPrincipal.MostrarInformacoesDoJogoNaTela(jogoRetornado);
+                
+                menuPrincipal.MostrarInformacoesDoJogoNaTela(nomeJogo);
             }
             catch (Exception)
             {
