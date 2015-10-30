@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Locadora.Dominio;
 
 namespace Locadora.UI
 {
@@ -40,12 +41,13 @@ namespace Locadora.UI
             Console.WriteLine("Digite o novo Preço que este jogo terá");
         }
 
-        public void MostrarInformacoesDoJogoNaTela(XElement jogo)
+        public void MostrarInformacoesDoJogoNaTela(string nomeJogo)
         {
-            Console.WriteLine("Nome: " + jogo.Element("nome").Value);
-            Console.WriteLine("Preço: " + jogo.Element("preco").Value);
-            Console.WriteLine("Categoria: " + jogo.Element("categoria").Value);
-            Console.WriteLine("ID: " + jogo.Attribute("id").Value);
+            BaseDeDados dbXml = new BaseDeDados();
+            Jogo jogo = dbXml.getJogo(nomeJogo);
+            string informacoesDoJogo = jogo.ToString();
+            Console.WriteLine(informacoesDoJogo);
+            
         }
 
         
