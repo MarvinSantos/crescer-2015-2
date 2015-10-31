@@ -17,11 +17,10 @@ namespace Locadora.Dominio
             this.jogos = XElement.Load(caminhoArquivo);
         }
 
-        public void cadastrarJogo(string nome, int id, string categoria, double preco,string status)
+        public void cadastrarJogo(Jogo jogo)
         {
             
             XDocument documentoXml = XDocument.Load(caminhoArquivo);
-            Jogo jogo = new Jogo(nome, categoria, preco, id,status);
 
             documentoXml.Element("jogos").Add(jogo.ToXElement());
             documentoXml.Save(caminhoArquivo);
