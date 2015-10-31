@@ -36,6 +36,11 @@ namespace Locadora.Dominio
             return informacoes;
         }
 
+        public override bool Equals(object obj)
+        {
+            Jogo jogo = (Jogo)obj;
+            return jogo.Nome == this.Nome && jogo.Categoria == this.Categoria && jogo.Id == this.Id;
+        }
     }
 
 
