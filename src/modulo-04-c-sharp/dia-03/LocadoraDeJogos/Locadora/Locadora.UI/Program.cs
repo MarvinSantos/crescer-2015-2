@@ -24,20 +24,21 @@ namespace Locadora.UI
         public static void Main(string[] args)
         {
             BaseDeDados dbXml = new BaseDeDados();
-            int indice = 5;
+            
             bool rodando = true;
 
             while (rodando)
             {
                 DesenharMenuNaTela();
-                
+                int indice = 6;
                 try
                 {
                     indice = Convert.ToInt32(Console.ReadLine());
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Você deve digitar um Numero Inteiro entre 1-5");
+                    menuPrincipal.LimparTela();
+                    
                 }
 
                 if(indice == CADASTRARJOGO)
@@ -50,6 +51,7 @@ namespace Locadora.UI
                 }
                 else if(indice == EDITARJOGO)
                 {
+                    menuPrincipal.LimparTela();
                     bool loopEditarJogo = true;
                     while (loopEditarJogo)
                     {
@@ -64,29 +66,36 @@ namespace Locadora.UI
                                 loopEditarJogo = false;
                             }
                             catch (Exception)
-                            {
-
+                            {                          
                                 menuPrincipal.ExceptionJogoNaoExistenteNaBase();
                             }
                             
 
                         }
                         else
-                        {
+                        {                           
                             menuPrincipal.ExceptionDigitarNome();
                         }
 
                     }
+
+                    menuPrincipal.LimparTela();
 
 
                 }
                 else if (indice == EXPORTARRELATORIO)
                 {
                     ExportarRelatorio();
+                    menuPrincipal.SucessoEmExportarRelatorio();
                 }
                 else if (indice == SAIR)
                 {
                     rodando = false;
+                }
+                else
+                {
+                    menuPrincipal.LimparTela();
+                    menuPrincipal.ExceptionIndiceMenu();
                 }
                    
 
@@ -103,10 +112,13 @@ namespace Locadora.UI
 
         public static void pesquisarJogoPorNome()
         {
+            menuPrincipal.LimparTela();
+
             BaseDeDados dbXml = new BaseDeDados();
 
             bool rodando = true;
             string nomeJogo = " ";
+
             while (rodando)
             {
                 menuPrincipal.PedirNomeDoJogo();
@@ -118,16 +130,22 @@ namespace Locadora.UI
                 }
                 catch (Exception)
                 {
+                    
                     menuPrincipal.ExceptionJogoNaoExistenteNaBase();
                 }
+                
+
             }
-            
-            
-            
+            Console.WriteLine("para voltar tecle enter");
+            Console.ReadKey();
+            menuPrincipal.LimparTela();
+
         }
 
         public static void CadastrarNovoJogo()
         {
+            menuPrincipal.LimparTela();
+
             BaseDeDados dbXml = new BaseDeDados();
 
             string nomeJogo = "";
@@ -203,8 +221,11 @@ namespace Locadora.UI
                 }
                 else
                 {
+                    menuPrincipal.LimparTela();
                     menuPrincipal.ExceptionDigitarNome();
                 }
+
+                menuPrincipal.LimparTela();
            
             }
 
@@ -232,6 +253,10 @@ namespace Locadora.UI
                     if(novoNome != "")
                     {
                         rodando = false;
+                    }
+                    else
+                    {
+                        menuPrincipal.ExceptionDigitarNome();
                     }
                 }
                 
@@ -316,7 +341,7 @@ namespace Locadora.UI
                     }
                     else
                     {
-
+                        menuPrincipal.ExceptionDigitarCategoria();
                     }
                 }
 
