@@ -19,11 +19,11 @@ namespace Locadora.UI
         public const int NAO = 2;
 
         public static Menu menuPrincipal = new Menu();
-        public static BaseDeDados dbXml = new BaseDeDados();
+        
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-
+            BaseDeDados dbXml = new BaseDeDados();
             int indice = 5;
             bool rodando = true;
 
@@ -53,21 +53,35 @@ namespace Locadora.UI
                     bool loopEditarJogo = true;
                     while (loopEditarJogo)
                     {
-                        Console.WriteLine("digite o nome do jogo que deseja alterar");
+                        menuPrincipal.PedirNomeDoJogoASerAlterado();
                         string jogoParaAlterar = Console.ReadLine();
                         if(jogoParaAlterar != "")
                         {
-                            loopEditarJogo = false;
-                            EditarJogo(jogoParaAlterar);
+                            try
+                            {
+                                dbXml.GetJogo(jogoParaAlterar);
+                                EditarJogo(jogoParaAlterar);
+                                loopEditarJogo = false;
+                            }
+                            catch (Exception)
+                            {
+
+                                menuPrincipal.ExceptionJogoNaoExistenteNaBase();
+                            }
+                            
 
                         }
                         else
                         {
-                            Console.WriteLine("Voce deve digitar o nome do jogo");
+                            menuPrincipal.ExceptionDigitarNome();
                         }
 
                     }
 
+
+                }
+                else if (indice == EXPORTARRELATORIO)
+                {
 
                 }
                    
@@ -85,6 +99,8 @@ namespace Locadora.UI
 
         public static void pesquisarJogoPorNome()
         {
+            BaseDeDados dbXml = new BaseDeDados();
+
             bool rodando = true;
             string nomeJogo = " ";
             while (rodando)
@@ -98,7 +114,7 @@ namespace Locadora.UI
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Voce Deve Digitar Um nome Valido, Em Duvida verifique como está escrito o nome deste jogo na base");
+                    menuPrincipal.ExceptionJogoNaoExistenteNaBase();
                 }
             }
             
@@ -108,13 +124,17 @@ namespace Locadora.UI
 
         public static void CadastrarNovoJogo()
         {
+            BaseDeDados dbXml = new BaseDeDados();
+
             string nomeJogo = "";
             double preco = 0.0;
             string categoria = "";
+            string status = "";
             int id;
             bool primeiroLoop = true;
             bool rodando = true;
             bool loopCategoria = true;
+            bool loopStatus = true;
 
             while (rodando)
             {
@@ -137,7 +157,7 @@ namespace Locadora.UI
                         catch (FormatException)
                         {
                             primeiroLoop = true;
-                            Console.WriteLine("Você deve digitar um valor numerico. EX: 12.95");
+                            menuPrincipal.PedirParaDigitarValorDouble();
                         }
 
                     }
@@ -152,18 +172,34 @@ namespace Locadora.UI
                         }
                         else
                         {
-                            Console.WriteLine("voce deve digitar a categoria deste jogo, se não souber coloque 'outro' e edite mais tarde");
+                            menuPrincipal.ExceptionDigitarCategoria();
                         }
+
+                    }
+
+                    while (loopStatus)
+                    {
+                        menuPrincipal.PedirStatus();
+                        status = Console.ReadLine();
+                        
+                        if(status.ToLower() == "disponivel" || status.ToLower() == "locado")
+                        {
+                            loopStatus = false;
+                        }
+                        else
+                        {
+                            menuPrincipal.ExceptionStatus();
+                        }           
 
                     }
                         
                     id = dbXml.nextID();
 
-                    dbXml.cadastrarJogo(nomeJogo, id, categoria, preco);
+                    dbXml.cadastrarJogo(nomeJogo, id, categoria, preco,status);
                 }
                 else
                 {
-                    Console.WriteLine("voce deve digitar um nome");
+                    menuPrincipal.ExceptionDigitarNome();
                 }
            
             }
@@ -172,10 +208,13 @@ namespace Locadora.UI
 
         public static void EditarJogo(string jogoASerAlterado)
         {
+            BaseDeDados dbXml = new BaseDeDados();
+
             bool rodando = true;
             string novoNome = "";
             double preco = 0.0;
             string categoria = "";
+            string status = "";
             int id = dbXml.nextID();
             int respostaSeQuerMudarID = NAO;
 
@@ -205,7 +244,7 @@ namespace Locadora.UI
                     }
                     catch (FormatException)
                     {
-                        Console.WriteLine("Você deve digitar um valor numerico. EX: 12.95");
+                        menuPrincipal.PedirParaDigitarValorDouble();
                     }               
 
                 }
@@ -216,14 +255,26 @@ namespace Locadora.UI
                 {
                     menuPrincipal.PerguntarSeQuerMudarOId();
                     try
-                    {                 
+                    {          
+                               
                         respostaSeQuerMudarID = Convert.ToInt32(Console.ReadLine());
-                        rodando = false;
+                        if(respostaSeQuerMudarID == 1 || respostaSeQuerMudarID == 2)
+                        {
+                            rodando = false;
+                        }
+                        else
+                        {
+                            throw new FormatException();
+                        }
+
                     }
                     catch (FormatException)
                     {
-                        Console.WriteLine("Você deve digitar 1 para SIM e 2 Para NÃO");
+                        menuPrincipal.ExcepitionSeQuermudarID();
                     }
+                   
+                    
+                   
                 }
 
                 rodando = true;
@@ -259,13 +310,39 @@ namespace Locadora.UI
                     {
                         rodando = false;
                     }
+                    else
+                    {
+
+                    }
                 }
-       
-                
-                Jogo jogo = new Jogo(novoNome, categoria, preco, id);
+
+                rodando = true;
+                while (rodando)
+                {
+                    menuPrincipal.PedirStatus();
+                    status = Console.ReadLine();
+
+                    if (status.ToLower() == "disponivel" || status.ToLower() == "locado")
+                    {
+                        rodando = false;
+                    }
+                    else
+                    {
+                        menuPrincipal.ExceptionStatus();
+                    }
+
+                }
+
+
+                Jogo jogo = new Jogo(novoNome, categoria, preco, id,status);
 
                 dbXml.AlterarCamposDoJogo(jogo, jogoASerAlterado);
             }
+        }
+
+        public static void ExportarRelatorio()
+        {
+
         }
     }
 }
