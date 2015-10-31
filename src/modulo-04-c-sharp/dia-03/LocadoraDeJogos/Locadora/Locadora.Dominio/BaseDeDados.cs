@@ -17,11 +17,11 @@ namespace Locadora.Dominio
             this.jogos = XElement.Load(caminhoArquivo);
         }
 
-        public void cadastrarJogo(string nome, int id, string categoria, double preco)
+        public void cadastrarJogo(string nome, int id, string categoria, double preco,string status)
         {
             
             XDocument documentoXml = XDocument.Load(caminhoArquivo);
-            Jogo jogo = new Jogo(nome, categoria, preco, id);
+            Jogo jogo = new Jogo(nome, categoria, preco, id,status);
 
             documentoXml.Element("jogos").Add(jogo.ToXElement());
             documentoXml.Save(caminhoArquivo);
@@ -53,12 +53,23 @@ namespace Locadora.Dominio
 
         public Jogo GetJogo(string nomeDoJogo)
         {
-            XElement xejogo = PesquisarPorNome(nomeDoJogo);
-            string nomeJogo = xejogo.Element("nome").Value;
-            double precoJogo = Convert.ToDouble(xejogo.Element("preco").Value);
-            string categoriaJogo = xejogo.Element("categoria").Value;
-            int idJogo = Convert.ToInt32(xejogo.Attribute("id").Value);
-            Jogo jogo = new Jogo(nomeJogo,categoriaJogo,precoJogo,idJogo);
+            Jogo jogo;
+            try
+            {
+                XElement xejogo = PesquisarPorNome(nomeDoJogo);
+                string nomeJogo = xejogo.Element("nome").Value;
+                double precoJogo = Convert.ToDouble(xejogo.Element("preco").Value);
+                string categoriaJogo = xejogo.Element("categoria").Value;
+                int idJogo = Convert.ToInt32(xejogo.Attribute("id").Value);
+                string statusJogo = xejogo.Element("status").Value;
+                jogo = new Jogo(nomeJogo, categoriaJogo, precoJogo, idJogo,statusJogo);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
             return jogo;
         }
 
@@ -69,6 +80,7 @@ namespace Locadora.Dominio
             xeJogo.Element("categoria").Value = jogo.Categoria;
             xeJogo.Element("preco").Value = Convert.ToString(jogo.Preco);
             xeJogo.Attribute("id").Value = Convert.ToString(jogo.Id);
+            xeJogo.Element("status").Value = jogo.Status;
             jogos.Save(caminhoArquivo);
         }
 
