@@ -194,8 +194,8 @@ namespace Locadora.UI
                     }
                         
                     id = dbXml.nextID();
-
-                    dbXml.cadastrarJogo(nomeJogo, id, categoria, preco,status);
+                    Jogo jogo = new Jogo(nomeJogo, categoria, preco, id,  status);
+                    dbXml.cadastrarJogo(jogo);
                 }
                 else
                 {
