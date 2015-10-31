@@ -99,5 +99,21 @@ namespace Locadora.UI
         {
             Console.WriteLine("você deve informar o Status do Jogo");
         }
+
+        public void ExceptionIndiceMenu()
+        {
+            Console.WriteLine("Você deve digitar um Numero Inteiro entre 1-5");
+        }
+
+        public void LimparTela()
+        {
+            Console.Clear();
+        }
+
+        public void SucessoEmExportarRelatorio()
+        {
+            Console.WriteLine("O relatorio foi exportado com sucesso  :)  ");
+        }
+
     }
 }
