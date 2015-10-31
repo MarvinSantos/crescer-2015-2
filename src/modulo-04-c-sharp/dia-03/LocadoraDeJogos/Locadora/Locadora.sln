@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.UI", "Locadora.UI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Dominio", "Locadora.Dominio\Locadora.Dominio.csproj", "{EA54D541-67EE-48C1-B435-DB291D55A7B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{7A03A7AC-1200-48FF-9250-DA3804C5920C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestLocadoraDominio", "UnitTestProject1\UnitTestLocadoraDominio.csproj", "{7A03A7AC-1200-48FF-9250-DA3804C5920C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
