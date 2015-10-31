@@ -82,7 +82,11 @@ namespace Locadora.UI
                 }
                 else if (indice == EXPORTARRELATORIO)
                 {
-
+                    ExportarRelatorio();
+                }
+                else if (indice == SAIR)
+                {
+                    rodando = false;
                 }
                    
 
@@ -342,7 +346,9 @@ namespace Locadora.UI
 
         public static void ExportarRelatorio()
         {
-
+            BaseDeDados dbXml = new BaseDeDados();
+            Relatorio relatorio = new Relatorio();
+            relatorio.ExportarRelatorio(dbXml);
         }
     }
 }
