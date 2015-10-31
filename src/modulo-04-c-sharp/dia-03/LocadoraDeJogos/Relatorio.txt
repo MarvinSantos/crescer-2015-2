@@ -1,0 +1,36 @@
+                                 LOCADORA NUNES GAMES                                   
+31/10/2015                                                                      06/09/46
+                                  Relatório de jogos                                    
+
+========================================================================================
+ID       Categoria        Nome                                 Preço      Status
+1        RPG              Chrono Trigger                       R$ 60      disponivel     
+2        CORRIDA          Top Gear                             R$ 20      disponivel     
+3        AVENTURA         Megaman X                            R$ 40      disponivel     
+4        AVENTURA         Super Metroid                        R$ 35      disponivel     
+5        AVENTURA         Donkey Kong Country                  R$ 25      disponivel     
+6        CORRIDA          Super Mario Kart                     R$ 40      disponivel     
+7        LUTA             Super Street Fighter                 R$ 25      disponivel     
+8        LUTA             Mortal Kombat 2                      R$ 37      disponivel     
+9        LUTA             Killer Instinct                      R$ 18      disponivel     
+10       AVENTURA         Final Fight                          R$ 12      disponivel     
+11       RPG              Super Mario RPG                      R$ 70      disponivel     
+12       AVENTURA         Aladdin                              R$ 16      disponivel     
+13       CORRIDA          Rock 'n Roll Racing                  R$ 22      disponivel     
+14       AVENTURA         Zelda: A link to the past            R$ 110     disponivel     
+15       RPG              Final Fantasy VI                     R$ 30,5    disponivel     
+16       ESPORTE          International Super Star Soc         R$ 45      disponivel     
+17       AVENTURA         Contra III                           R$ 28      disponivel     
+18       AVENTURA         Sunset Riders                        R$ 37,9    disponivel     
+19       AVENTURA         Goof Troop                           R$ 41,9    disponivel     
+20       AVENTURA         Mickey to Donald: Magical Ad         R$ 32,9    disponivel     
+21       Aventura         Super Zelda 2                        R$ 50      locado         
+
+----------------------------------------------------------------------------------------
+Quantidade total de jogos: 21
+Quantidade de jogos disponíveis: 20
+Valor médio por jogo: R$ 037.91
+Jogo mais caro: Zelda: A link to the past
+Jogo mais barato: Final Fight
+
+========================================================================================
