@@ -12,7 +12,7 @@ namespace Locadora.UI
     {
         public void MostrarTela()
         {
-            Console.WriteLine(" 1- Cadastrar Um novo jogo \r\n 2- Realizar pesquisa de jogos por nome \r\n 3- Editar um jogo \r\n 4-Exportar relatorio de jogos em TXT \r\n 5- Sair");
+            Console.WriteLine(" 1- Cadastrar Um novo jogo \r\n 2- Realizar pesquisa de jogos por nome \r\n 3- Editar um jogo \r\n 4- Exportar relatorio de jogos em TXT \r\n 5- Sair");
         }
 
         public void PedirNomeDoJogo()
