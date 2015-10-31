@@ -88,5 +88,71 @@ namespace Locadora.Dominio
             XElement xeJogo = PesquisarPorNome(nomeDoJogo);
             return Convert.ToInt32(xeJogo.Attribute("id").Value);
         }
+
+        public int QuantidadeTotalDeJogos()
+        {
+            return jogos.Elements("jogo").Count();
+        }
+
+        public string JogoMaisCaro()
+        {
+            
+            double maiorPreco = jogos.Elements("jogo").Max(jogo => Convert.ToDouble(jogo.Element("preco").Value));
+            var jogoMaisCaro = jogos.Elements("jogo").First(jogo => Convert.ToDouble(jogo.Element("preco").Value) == maiorPreco);
+            return jogoMaisCaro.Element("nome").Value;
+        }
+
+        public string jogoMaisBarato()
+        {
+            double menorPreco = jogos.Elements("jogo").Min(jogo => Convert.ToDouble(jogo.Element("preco").Value));
+            var jogoMaisBarato = jogos.Elements("jogo").First(jogo => Convert.ToDouble(jogo.Element("preco").Value) == menorPreco);
+            return jogoMaisBarato.Element("nome").Value;
+        }
+
+        public int QuantidadeJogosDisponiveis()
+        {
+            return jogos.Elements("jogo").Count(jogo => jogo.Element("status").Value == "disponivel");
+        }
+
+        public double MediaDePrecoDosJogos()
+        {
+            double media;
+            media = jogos.Elements("jogo").Sum(jogo => Convert.ToDouble(jogo.Element("preco").Value)) / QuantidadeTotalDeJogos();
+            return media;
+        }
+
+        public string ListaDeJogosEmString()
+        {
+            string listaJogos = "";
+            string quebraLinha = Environment.NewLine;
+            foreach (var xeJogo in jogos.Elements("jogo"))
+            {
+                string nome = xeJogo.Element("nome").Value;
+                nome = DiminuiNomeGrandeDeJogo(nome);
+                string categoria = xeJogo.Element("categoria").Value;
+                string id = xeJogo.Attribute("id").Value;
+                string preco = xeJogo.Element("preco").Value.Replace(".",",");
+                string status = xeJogo.Element("status").Value;
+                listaJogos += String.Format("{0,-9}{1,-17}{2,-34}{3,-3}R$ {4,-8}{5,-15}{6}",id,categoria, nome,"  ", preco ,status,quebraLinha);
+            }
+
+            return listaJogos;
+        }
+
+
+        public string DiminuiNomeGrandeDeJogo(string nome)
+        {
+            string nome2;
+            if(nome.Length > 28)
+            {
+                nome2 = nome.Substring(0, 28);
+            }
+            else
+            {
+                nome2 = nome;
+            }
+            return nome2;
+        }
+
     }
 }
