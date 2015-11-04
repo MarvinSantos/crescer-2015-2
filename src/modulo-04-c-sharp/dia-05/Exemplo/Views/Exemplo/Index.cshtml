@@ -1,0 +1,77 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @DateTime.Now
+
+        @{
+            var deveExibirTitulo = false;
+        }
+
+        @if (true)
+        {
+            <text>Hello World!</text>
+        }
+
+        @if (deveExibirTitulo)
+        {
+            <h1>Hello World</h1>
+        }
+
+        @if (DateTime.Now.Second % 2 == 0)
+        {
+            <div style="background-color: red">TEXTO VERMELHO</div>
+        }
+        else
+        {
+            <div style="background-color: blue">TEXTO AZUL</div>
+        }
+
+        @{
+            var listaPersonages = new List<string>()
+            {
+                "Goku",
+                "Luffy",
+                "Vegeta",
+                "Naruto",
+                "Gimli",
+                "Bob Esponja",
+                "Jaspion",
+                "Plancton",
+                "Nunes"
+            };
+        }
+
+        <h1>Vai atualizar sozinho?</h1>
+
+        <div style="background-color: yellowgreen;">
+            <ul>
+                @foreach (var personagem in listaPersonages)
+                {
+                    <li>@personagem</li>
+                }
+            </ul>
+        </div>
+
+        github: @@fabriciorissetto
+        fabriciorissetto@qualquercoisa.com
+
+        @{
+            var script = "<script>console.log('Olá!')</script>";
+        }
+
+        <div style="border: 1px solid black;">@script</div>
+
+        @Html.Raw(script)
+    </div>
+</body>
+</html>

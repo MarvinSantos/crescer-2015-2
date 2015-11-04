@@ -4,12 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Locadora.MVC.Controllers
+namespace Locadora.Web.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        
-        public ActionResult HomePage()
+        public ActionResult Index()
         {
             return View();
         }

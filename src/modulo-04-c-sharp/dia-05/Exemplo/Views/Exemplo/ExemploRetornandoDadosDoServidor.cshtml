@@ -1,0 +1,26 @@
+﻿@model List<string>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <h1>Oi</h1>
+    <div style="background-color: yellowgreen;">
+        <ul>
+            @foreach (var personagem in @Model)
+            {
+                <li>@personagem</li>
+            }
+        </ul>
+    </div>
+
+</body>
+</html>
