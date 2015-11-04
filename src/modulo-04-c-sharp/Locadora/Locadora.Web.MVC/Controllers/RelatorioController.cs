@@ -4,19 +4,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Locadora.Repositorio.ADO;
+using Locadora.Dominio.Repositorio;
 
 namespace Locadora.Web.MVC.Controllers
 {
     public class RelatorioController : Controller
     {
+        IJogoRepositorio repo = new JogoRepositorio();
+
         public ActionResult JogosDisponiveis()
-        {
-            var model = new List<JogoModel>()
+        {      
+            RelatorioModel model = new RelatorioModel();
+
+            foreach (var jogo in repo.BuscarTodos())
             {
-                new JogoModel() { Id = 1, Nome = "Teste", Preco = 9.9m, Categoria="RPG" },
-                new JogoModel() { Id = 1, Nome = "dasd", Preco = 5m, Categoria="Aventura" },
-                new JogoModel() { Id = 1, Nome = "dasda", Preco = 10m, Categoria="RPG" }
-            };
+                JogoModel jogoModel = new JogoModel();
+                jogoModel.Nome = jogo.Nome;
+                jogoModel.Preco = jogo.Preco;
+                jogoModel.Categoria = jogo.Categoria.ToString();
+
+                model.Jogos.Add(jogoModel);
+            }
 
             return View(model);
         }
