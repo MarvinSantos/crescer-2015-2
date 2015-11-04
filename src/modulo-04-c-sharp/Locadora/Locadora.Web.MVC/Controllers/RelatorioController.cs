@@ -27,6 +27,10 @@ namespace Locadora.Web.MVC.Controllers
                 model.Jogos.Add(jogoModel);
             }
 
+            model.MaisBarato = repo.BuscarTodos().Min(jogo => jogo.Preco);
+            model.MaisCaro = repo.BuscarTodos().Max(jogo => jogo.Preco);
+            model.QuantidadeDeJogos = repo.BuscarTodos().Count();
+
             return View(model);
         }
     }
