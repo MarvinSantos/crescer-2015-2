@@ -18,12 +18,12 @@
         <tr>
             <td>@jogo.Nome</td>            
             <td>@jogo.Categoria</td>
-            <td>@jogo.Preco.ToString()</td>
+            <td>@jogo.Preco.ToString("c")</td>
         </tr>
     }
 </table>
 <ul>
-    <li>Jogo mais caro: @Model.MaisCaro.ToString();</li>
-    <li>Jogo mais barato: @Model.MaisBarato.ToString();</li>
-    <li>Quantidade de Jogos: @Model.QuantidadeDeJogos.ToString();</li>
+    <li>Jogo mais caro: @Model.MaisCaro.ToString("c")</li>
+    <li>Jogo mais barato: @Model.MaisBarato.ToString("c")</li>
+    <li>Quantidade de Jogos: @Model.QuantidadeDeJogos.ToString()</li>
 </ul>
