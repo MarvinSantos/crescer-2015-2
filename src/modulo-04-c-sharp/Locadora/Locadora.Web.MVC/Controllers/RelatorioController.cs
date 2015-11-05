@@ -24,6 +24,7 @@ namespace Locadora.Web.MVC.Controllers
                 jogoModel.Nome = jogo.Nome;
                 jogoModel.Preco = jogo.Preco;
                 jogoModel.Categoria = jogo.Categoria.ToString();
+                jogoModel.Id = jogo.Id;
 
                 model.Jogos.Add(jogoModel);
             }
