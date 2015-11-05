@@ -11,6 +11,7 @@
             <th>Jogo</th>
             <th>Categoria</th>
             <th>Preço</th>
+            <th>Selo</th>
             <th>ID</th>
         </tr>
     </thead>
@@ -18,8 +19,24 @@
         <td>@Model.Nome</td>
         <td>@Model.Categoria</td>
         <td>@Model.Preco.ToString("c")</td>
+        <td>@Model.Selo.ToString()</td>
         <td>@Model.Id</td>
     </tr>
-
 </table>
+<div class="divPaiVideoImg">
+    <div class="centraliar">
+        <div class="left tamanhoPadrao">
+            <img class="img-responsive tamanhoPadrao" src="@Html.Raw(Model.Imagem)" />
+        </div>
 
+        <div class="right tamanhoPadrao video">
+            @Html.Raw(@Model.Video)
+        </div>
+    </div>
+</div>
+
+<div>
+    <p class="centraliar">
+       Descrição: @Model.Descricao
+    </p>
+</div>
