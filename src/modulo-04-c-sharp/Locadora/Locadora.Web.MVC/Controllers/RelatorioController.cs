@@ -16,8 +16,9 @@ namespace Locadora.Web.MVC.Controllers
         public ActionResult JogosDisponiveis()
         {      
             RelatorioModel model = new RelatorioModel();
+            var jogos = repo.BuscarTodos();
 
-            foreach (var jogo in repo.BuscarTodos())
+            foreach (var jogo in jogos)
             {
                 JogoModel jogoModel = new JogoModel();
                 jogoModel.Nome = jogo.Nome;
@@ -27,9 +28,9 @@ namespace Locadora.Web.MVC.Controllers
                 model.Jogos.Add(jogoModel);
             }
 
-            model.MaisBarato = repo.BuscarTodos().Min(jogo => jogo.Preco);
-            model.MaisCaro = repo.BuscarTodos().Max(jogo => jogo.Preco);
-            model.QuantidadeDeJogos = repo.BuscarTodos().Count();
+            model.MaisBarato = jogos.Min(jogo => jogo.Preco);
+            model.MaisCaro = jogos.Max(jogo => jogo.Preco);
+            model.QuantidadeDeJogos = jogos.Count();
 
             return View(model);
         }
