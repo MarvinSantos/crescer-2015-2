@@ -24,3 +24,29 @@ textarea {
     margin-top: 
     padding: 6px 6px 6px 6px;
 }
+
+.right{
+    float: right;
+}
+
+.left{
+    float:left;
+}
+
+.tamanhoPadrao{
+    width: 400px;
+    height: 400px;
+}
+
+.divPaiVideoImg{
+    width: 900px;
+    height: 400px;
+}
+
+.video{
+    margin-right: 70px;
+}
+
+.centralizar{
+    text-align: center;
+}
