@@ -16,7 +16,7 @@
     @foreach (var jogo in @Model.Jogos)
     {
         <tr>
-            <td>@jogo.Nome</td>            
+            <td><a href='@Url.Action("JogoDetalhado","Jogo")/@jogo.Id'>@jogo.Nome</a></td>            
             <td>@jogo.Categoria</td>
             <td>@jogo.Preco.ToString("c")</td>
         </tr>
