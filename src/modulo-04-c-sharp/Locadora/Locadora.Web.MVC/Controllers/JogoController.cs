@@ -22,6 +22,10 @@ namespace Locadora.Web.MVC.Controllers
             jogoDetalhadoModel.Preco = jogo.Preco;
             jogoDetalhadoModel.Categoria = jogo.Categoria.ToString();
             jogoDetalhadoModel.Id = jogo.Id;
+            jogoDetalhadoModel.Imagem = jogo.Imagem;
+            jogoDetalhadoModel.Video = jogo.Video;
+            jogoDetalhadoModel.Descricao = jogo.Descricao;
+            jogoDetalhadoModel.Selo = jogo.Selo;
 
             ViewBag.JogoTitiulo = jogo.Nome;
 
