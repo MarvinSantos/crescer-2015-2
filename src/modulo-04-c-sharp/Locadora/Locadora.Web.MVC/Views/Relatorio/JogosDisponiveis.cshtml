@@ -2,8 +2,10 @@
 @{
     ViewBag.Title = "Jogos Disponíveis";
 }
-
-<h2>Jogos para locação</h2>
+<div style="width:300;">
+    <h2 class="inline-block">Jogos para locação</h2>
+    <a class="inline-block btn right">Adicionar Jogo</a>
+</div>
 
 @if (Model.Jogos.Count > 0)
 {
