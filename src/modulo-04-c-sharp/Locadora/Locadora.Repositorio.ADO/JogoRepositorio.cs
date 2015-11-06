@@ -23,7 +23,11 @@ namespace Locadora.Repositorio.ADO
                 sql.Append(" Nome = @paramNome, ");
                 sql.Append(" Preco = @paramPreco, ");
                 sql.Append(" IdCategoria = @paramIdCategoria, ");
-                sql.Append(" IdClienteLocacao = @paramIdClienteLocacao ");
+                sql.Append(" IdClienteLocacao = @paramIdClienteLocacao, ");
+                sql.Append(" IdSelo = @paramIdSelo, ");
+                sql.Append(" Descricao = @paramDescricao, ");
+                sql.Append(" Imagem = @paramImagem, ");
+                sql.Append(" Video = @paramVideo ");
                 sql.Append(" WHERE Id = @paramId ");
 
                 IDbCommand comando = conexao.CreateCommand();
@@ -32,6 +36,10 @@ namespace Locadora.Repositorio.ADO
                 comando.AddParam("paramPreco", entidade.Preco);
                 comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
                 comando.AddParam("paramIdClienteLocacao", entidade.IdClienteLocacao);
+                comando.AddParam("paramIdSelo", (int)entidade.Selo);
+                comando.AddParam("paramDescricao", entidade.Descricao);
+                comando.AddParam("paramImagem", entidade.Imagem);
+                comando.AddParam("paramVideo", entidade.Video);
                 comando.AddParam("paramId", entidade.Id);
 
                 conexao.Open();
@@ -89,8 +97,8 @@ namespace Locadora.Repositorio.ADO
             using (IDbConnection conexao = CriarConexao())
             {
                 var sql = new StringBuilder();
-                sql.Append(" INSERT INTO Jogo (Nome, Preco, Categoria, IdClienteLocacao) ");
-                sql.Append(" VALUES (@paramNome, @paramPreco, @paramCategoria, @paramIdClienteLocacao) ");
+                sql.Append(" INSERT INTO Jogo (Nome, Preco, Categoria, IdClienteLocacao,Descricao,IdSelo,Imagem,Video) ");
+                sql.Append(" VALUES (@paramNome, @paramPreco, @paramCategoria, @paramIdClienteLocacao, @paramDescricao, @paramIdSelo,@paramImagem,@paramVideo) ");
 
                 IDbCommand comando = conexao.CreateCommand();
                 comando.CommandText = sql.ToString();
@@ -98,6 +106,10 @@ namespace Locadora.Repositorio.ADO
                 comando.AddParam("paramPreco", entidade.Preco);
                 comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
                 comando.AddParam("paramIdClienteLocacao", entidade.IdClienteLocacao);
+                comando.AddParam("paramDescricao", entidade.Descricao);
+                comando.AddParam("paramIdSelo", (int)entidade.Selo);
+                comando.AddParam("paramImagem", entidade.Imagem);
+                comando.AddParam("paramVideo", entidade.Video);
 
                 conexao.Open();
                 return comando.ExecuteNonQuery();
