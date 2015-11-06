@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Locadora.Repositorio.ADO;
 using Locadora.Dominio.Repositorio;
+using Locadora.Dominio;
 
 namespace Locadora.Web.MVC.Controllers
 {
@@ -13,10 +14,19 @@ namespace Locadora.Web.MVC.Controllers
     {
         IJogoRepositorio repo = new JogoRepositorio();
 
-        public ActionResult JogosDisponiveis()
+        public ActionResult JogosDisponiveis(string nomeJogo)
         {      
             RelatorioModel model = new RelatorioModel();
-            var jogos = repo.BuscarTodos();
+            IList<Jogo> jogos;
+
+            if (!string.IsNullOrEmpty(nomeJogo))
+            {
+                jogos = repo.BuscarPorNome(nomeJogo);
+            }
+            else
+            {
+                jogos = repo.BuscarTodos();
+            }
 
             foreach (var jogo in jogos)
             {
@@ -29,9 +39,10 @@ namespace Locadora.Web.MVC.Controllers
                 model.Jogos.Add(jogoModel);
             }
 
-            model.MaisBarato = jogos.Min(jogo => jogo.Preco);
-            model.MaisCaro = jogos.Max(jogo => jogo.Preco);
+            model.MaisBarato = jogos.OrderBy(jogo => jogo.Preco).First().Nome; 
+            model.MaisCaro = jogos.OrderByDescending(jogo => jogo.Preco).First().Nome;
             model.QuantidadeDeJogos = jogos.Count();
+            model.MediaDePreco = jogos.Sum(jogo => jogo.Preco) / jogos.Count;
 
             return View(model);
         }
