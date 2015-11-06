@@ -15,7 +15,7 @@ namespace Locadora.Repositorio.XML
         {
             get
             {
-                return "db_jogos.xml";
+                return @"C:\Users\marvi\Documents\crescer-2015-2\src\modulo-04-c-sharp\Locadora\Locadora.Repositorio.XML\db_jogos.xml";
             }
         }
 
@@ -125,7 +125,11 @@ namespace Locadora.Repositorio.XML
             jogo.Nome = jogoXml.Element("nome").Value;
             jogo.Preco = Convert.ToDecimal(jogoXml.Element("preco").Value);
             jogo.Categoria = ConverterXmlCategoriaEmEnum(jogoXml.Element("categoria"));
-            
+            jogo.Selo = ConverterXmlSeloEmEnum(jogoXml.Element("selo"));
+            jogo.Imagem = jogoXml.Element("imagem").Value;
+            jogo.Video = jogoXml.Element("video").Value;
+            jogo.Descricao = jogoXml.Element("descricao").Value;
+
             return jogo;
         }
 
@@ -133,6 +137,12 @@ namespace Locadora.Repositorio.XML
         {
             string valorXml = categoriaXml.Value;
             return (Categoria)Enum.Parse(typeof(Categoria), valorXml);
+        }
+
+        private Selo ConverterXmlSeloEmEnum(XElement seloXml)
+        {
+            string valorXml = seloXml.Value;
+            return (Selo)Enum.Parse(typeof(Selo), valorXml);
         }
     }
 }
