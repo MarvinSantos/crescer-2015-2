@@ -5,26 +5,34 @@
 
 <h2>Jogos para locação</h2>
 
-<table class="table table-striped table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Jogo</th>            
-            <th>Categoria</th>
-            <th>Preço</th>
-        </tr>
-    </thead>
-    @foreach (var jogo in @Model.Jogos)
-    {
-        <tr>
-            <td><a href='@Url.Action("JogoDetalhado","Jogo")/@jogo.Id'>@jogo.Nome</a></td>            
-            <td>@jogo.Categoria</td>
-            <td>@jogo.Preco.ToString("c")</td>
-        </tr>
-    }
-</table>
-<ul>
-    <li>Jogo mais caro: @Model.MaisCaro</li>
-    <li>Jogo mais barato: @Model.MaisBarato</li>
-    <li>Quantidade de Jogos: @Model.QuantidadeDeJogos.ToString()</li>
-    <li>Media de preço por jogo: @Model.MediaDePreco.ToString("c")</li>
-</ul>
+@if (Model.Jogos.Count > 0)
+{
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Jogo</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        @foreach (var jogo in @Model.Jogos)
+        {
+            <tr>
+                <td><a href='@Url.Action("JogoDetalhado","Jogo")/@jogo.Id'>@jogo.Nome</a></td>
+                <td>@jogo.Categoria</td>
+                <td>@jogo.Preco.ToString("c")</td>
+            </tr>
+        }
+    </table>
+    <ul>
+        <li>Jogo mais caro: @Model.MaisCaro</li>
+        <li>Jogo mais barato: @Model.MaisBarato</li>
+        <li>Quantidade de Jogos: @Model.QuantidadeDeJogos.ToString()</li>
+        <li>Media de preço por jogo: @Model.MediaDePreco.ToString("c")</li>
+    </ul>
+}
+else
+{
+    <h1>O Nome que você digitou não foi encontrado, tente outro :)</h1>
+}
+
