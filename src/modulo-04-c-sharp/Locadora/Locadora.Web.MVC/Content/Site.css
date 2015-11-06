@@ -34,13 +34,13 @@ textarea {
 }
 
 .tamanhoPadrao{
-    width: 400px;
-    height: 400px;
+    width: 420px;
+    height: 315px;
 }
 
-.divPaiVideoImg{
-    width: 900px;
-    height: 400px;
+.conteiner-video-img{
+    width: 1200px;
+    height: 450px;
 }
 
 .video{
@@ -49,4 +49,13 @@ textarea {
 
 .centralizar{
     text-align: center;
+}
+
+.inline-block{
+    display:inline-block;
+}
+
+.descricao-jogo{
+    text-align:center;
+    border: 5px solid #cacaca;
 }

@@ -27,8 +27,6 @@ namespace Locadora.Web.MVC.Controllers
             jogoDetalhadoModel.Descricao = jogo.Descricao;
             jogoDetalhadoModel.Selo = jogo.Selo;
 
-            ViewBag.JogoTitiulo = jogo.Nome;
-
             return View(jogoDetalhadoModel);
         }
     }
