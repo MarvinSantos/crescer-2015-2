@@ -19,30 +19,33 @@ namespace Locadora.Web.MVC.Controllers
             RelatorioModel model = new RelatorioModel();
             IList<Jogo> jogos;
 
-            if (!string.IsNullOrEmpty(nomeJogo))
+            if (nomeJogo == null || nomeJogo!= "")
+            {
+                jogos = repo.BuscarTodos();            
+            }
+            else 
             {
                 jogos = repo.BuscarPorNome(nomeJogo);
             }
-            else
+
+            if (jogos.Count > 0)
             {
-                jogos = repo.BuscarTodos();
+                foreach (var jogo in jogos)
+                {
+                    JogoModel jogoModel = new JogoModel();
+                    jogoModel.Nome = jogo.Nome;
+                    jogoModel.Preco = jogo.Preco;
+                    jogoModel.Categoria = jogo.Categoria.ToString();
+                    jogoModel.Id = jogo.Id;
+
+                    model.Jogos.Add(jogoModel);
+                }
+
+                model.MaisBarato = jogos.OrderBy(jogo => jogo.Preco).First().Nome;
+                model.MaisCaro = jogos.OrderByDescending(jogo => jogo.Preco).First().Nome;
+                model.QuantidadeDeJogos = jogos.Count();
+                model.MediaDePreco = jogos.Sum(jogo => jogo.Preco) / jogos.Count;
             }
-
-            foreach (var jogo in jogos)
-            {
-                JogoModel jogoModel = new JogoModel();
-                jogoModel.Nome = jogo.Nome;
-                jogoModel.Preco = jogo.Preco;
-                jogoModel.Categoria = jogo.Categoria.ToString();
-                jogoModel.Id = jogo.Id;
-
-                model.Jogos.Add(jogoModel);
-            }
-
-            model.MaisBarato = jogos.OrderBy(jogo => jogo.Preco).First().Nome; 
-            model.MaisCaro = jogos.OrderByDescending(jogo => jogo.Preco).First().Nome;
-            model.QuantidadeDeJogos = jogos.Count();
-            model.MediaDePreco = jogos.Sum(jogo => jogo.Preco) / jogos.Count;
 
             return View(model);
         }
