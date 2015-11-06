@@ -5,29 +5,49 @@
     <preco>60</preco>
     <categoria>RPG</categoria>
     <id_cliente_locacao></id_cliente_locacao>
+    <descricao>é um jogo de magia e aventura</descricao>
+    <imagem></imagem>
+    <video></video>
+    <selo>1</selo>
   </jogo>
   <jogo id="2">
     <nome>Top Gear</nome>
     <preco>20</preco>
     <categoria>CORRIDA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
+    <descricao>é um jogo de corrida com muitas fases</descricao>
+    <imagem></imagem>
+    <video></video>
+    <selo>1</selo>
   </jogo>
   <jogo id="3">
     <nome>Megaman X</nome>
     <preco>40</preco>
     <categoria>AVENTURA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
+    <descricao>é um jogo de aventura de um robo</descricao>
+    <imagem></imagem>
+    <video></video>
+    <selo>2</selo>
   </jogo>
   <jogo id="4">
     <nome>Super Metroid</nome>
     <preco>35</preco>
     <categoria>AVENTURA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
+    <descricao>é um jogo de luta de um robo inteligente</descricao>
+    <imagem></imagem>
+    <video></video>
+    <selo>3</selo>
   </jogo>
   <jogo id="5">
     <nome>Donkey Kong Country</nome>
     <preco>25</preco>
     <categoria>AVENTURA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
+    <descricao>é um jogo de aventura onde dois macacos passam fases</descricao>
+    <imagem></imagem>
+    <video></video>
+    <selo>1</selo>
   </jogo>
 </jogos>
