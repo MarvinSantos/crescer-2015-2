@@ -2,9 +2,15 @@
 @{
     ViewBag.Title = "Jogos Disponíveis";
 }
-<div style="width:300;">
-    <h2 class="inline-block">Jogos para locação</h2>
-    <a class="inline-block btn right">Adicionar Jogo</a>
+<div>
+    <h2 class="inline-block left margem-direita">Jogos para locação</h2>
+
+    <h3 class="inline-block left">@TempData["MensagemSalvarEditar"]</h3>    
+
+    <form action='@Url.Action("JogoManter", "JogoManter")'/>
+        <input class="btn margem right inline-block" type="submit" value="Cadastrar novo jogo" />
+    </form>
+
 </div>
 
 @if (Model.Jogos.Count > 0)
