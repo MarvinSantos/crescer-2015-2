@@ -20,6 +20,9 @@ namespace Locadora.Web.MVC.App_Start
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/validation").Include(
+                        "~/Scripts/jquery.validate-*"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/site.css"));
