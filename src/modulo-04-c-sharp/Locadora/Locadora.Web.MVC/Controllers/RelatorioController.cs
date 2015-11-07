@@ -19,13 +19,13 @@ namespace Locadora.Web.MVC.Controllers
             RelatorioModel model = new RelatorioModel();
             IList<Jogo> jogos;
 
-            if (nomeJogo == null || nomeJogo!= "")
+            if (!string.IsNullOrEmpty(nomeJogo))
             {
-                jogos = repo.BuscarTodos();            
+                jogos = repo.BuscarPorNome(nomeJogo);                     
             }
             else 
             {
-                jogos = repo.BuscarPorNome(nomeJogo);
+                jogos = repo.BuscarTodos();
             }
 
             if (jogos.Count > 0)
