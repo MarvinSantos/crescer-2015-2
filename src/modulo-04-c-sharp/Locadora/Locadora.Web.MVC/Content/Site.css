@@ -20,42 +20,51 @@ textarea {
     margin-top: 50px;
 }
 
-.btn-menu{
-    margin-top: 
-    padding: 6px 6px 6px 6px;
+.btn-menu {
+    margin-top: padding: 6px 6px 6px 6px;
 }
 
-.right{
+.right {
     float: right;
 }
 
-.left{
-    float:left;
+.left {
+    float: left;
 }
 
-.tamanhoPadrao{
+.tamanhoPadrao {
     width: 420px;
     height: 315px;
 }
 
-.conteiner-video-img{
+.conteiner-video-img {
     width: 1200px;
     height: 450px;
 }
 
-.video{
+.video {
     margin-right: 70px;
 }
 
-.centralizar{
+.centralizar {
     text-align: center;
 }
 
-.inline-block{
-    display:inline-block;
+.inline-block {
+    display: inline-block;
 }
 
-.descricao-jogo{
-    text-align:center;
-    border: 5px solid #cacaca;
+.descricao-jogo {
+    text-align: center;
+    border: 2px dotted #cacaca;
+}
+
+.margem{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 0;
+}
+
+.margem-direita{
+    margin-right: 70px;
 }
