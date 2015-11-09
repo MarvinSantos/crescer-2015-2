@@ -29,7 +29,8 @@ namespace Locadora.Repositorio.XML
             jogoSalvo.SetElementValue("nome", entidade.Nome);
             jogoSalvo.SetElementValue("preco", entidade.Preco);
             jogoSalvo.SetElementValue("categoria", entidade.Categoria.ToString());
-            jogoSalvo.SetElementValue("id_cliente_locacao", entidade.IdClienteLocacao.HasValue ? entidade.IdClienteLocacao.Value.ToString() : "");
+            //TODO: arrumar pq  deu erro
+            //jogoSalvo.SetElementValue("id_cliente_locacao", entidade.IdClienteLocacao.HasValue ? entidade.IdClienteLocacao.Value.ToString() : "");
 
             SalvarDbXml(db);
             return 1;
@@ -105,7 +106,8 @@ namespace Locadora.Repositorio.XML
             jogoXml.SetElementValue("nome", jogo.Nome);
             jogoXml.SetElementValue("preco", jogo.Preco);
             jogoXml.SetElementValue("categoria", jogo.Categoria.ToString());
-            jogoXml.SetElementValue("id_cliente_locacao", jogo.IdClienteLocacao.HasValue ? jogo.IdClienteLocacao.Value.ToString() : "");
+            //TODO: arrumar pq  deu erro
+            //jogoXml.SetElementValue("id_cliente_locacao", jogo.IdClienteLocacao.HasValue ? jogo.IdClienteLocacao.Value.ToString() : "");
 
             return jogoXml;
         }
@@ -118,8 +120,9 @@ namespace Locadora.Repositorio.XML
             }
 
             var jogo = new Jogo(
-                    id: Convert.ToInt32(jogoXml.Attribute("id").Value),
-                    idClienteLocacao: jogoXml.Element("id_cliente_locacao").Value.ToNullable<int>()
+                    //TODO: arrumar pq  deu erro
+                    // id: Convert.ToInt32(jogoXml.Attribute("id").Value),
+                    // idClienteLocacao: jogoXml.Element("id_cliente_locacao").Value.ToNullable<int>()
                     );
 
             jogo.Nome = jogoXml.Element("nome").Value;
