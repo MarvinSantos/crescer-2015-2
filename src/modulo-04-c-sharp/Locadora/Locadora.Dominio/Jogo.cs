@@ -12,7 +12,7 @@ namespace Locadora.Dominio
 
         public Categoria Categoria { get; set; }
 
-        public int? IdClienteLocacao { get; private set; }
+        public Cliente ClienteLocacao { get; private set; }
 
         public String Descricao { get; set; }
 
@@ -27,15 +27,15 @@ namespace Locadora.Dominio
 
         }
 
-        public Jogo(int id, int? idClienteLocacao = null)
+        public Jogo(int id, Cliente cliente = null)
         {
             this.Id = id;
-            this.IdClienteLocacao = idClienteLocacao;
+            this.ClienteLocacao = cliente;
         }
 
         public void LocarPara(Cliente cliente)
         {
-            this.IdClienteLocacao = cliente.Id;
+            this.ClienteLocacao = cliente;
         }
 
         public override string ToString()
@@ -64,7 +64,7 @@ namespace Locadora.Dominio
                     && this.Nome == jogoComp.Nome
                     && this.Preco == jogoComp.Preco
                     && this.Categoria == jogoComp.Categoria
-                    && this.IdClienteLocacao == jogoComp.IdClienteLocacao;
+                    && this.ClienteLocacao == jogoComp.ClienteLocacao;
             }
 
             return false;
