@@ -22,7 +22,9 @@ namespace Locadora.Repositorio.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            
             modelBuilder.Configurations.Add(new JogoMap());
+            modelBuilder.Configurations.Add(new ClienteMap());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -44,7 +46,7 @@ namespace Locadora.Repositorio.EF
             Property(p => p.Categoria).IsRequired();
             Property(p => p.Selo).IsRequired();
 
-            HasOptional(p => p.ClienteLocacao).WithRequired().Map(m => m.MapKey("IdClienteLocacao"));
+            HasOptional(p => p.ClienteLocacao).WithOptionalDependent().Map(m => m.MapKey("IdClienteLocacao"));
 
         }
     }
