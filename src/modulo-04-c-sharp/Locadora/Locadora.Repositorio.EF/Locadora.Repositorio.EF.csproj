@@ -59,9 +59,9 @@
     <Compile Include="Migrations\201511091928263_Add_Tabelas_Selo_Categoria.Designer.cs">
       <DependentUpon>201511091928263_Add_Tabelas_Selo_Categoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511091933285_initial.cs" />
-    <Compile Include="Migrations\201511091933285_initial.Designer.cs">
-      <DependentUpon>201511091933285_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201511100545556_ajuste.cs" />
+    <Compile Include="Migrations\201511100545556_ajuste.Designer.cs">
+      <DependentUpon>201511100545556_ajuste.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,8 +83,8 @@
     <EmbeddedResource Include="Migrations\201511091928263_Add_Tabelas_Selo_Categoria.resx">
       <DependentUpon>201511091928263_Add_Tabelas_Selo_Categoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511091933285_initial.resx">
-      <DependentUpon>201511091933285_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511100545556_ajuste.resx">
+      <DependentUpon>201511100545556_ajuste.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

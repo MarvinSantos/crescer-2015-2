@@ -7,13 +7,13 @@ namespace Locadora.Repositorio.EF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initial : IMigrationMetadata
+    public sealed partial class ajuste : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ajuste));
         
         string IMigrationMetadata.Id
         {
-            get { return "201511091933285_initial"; }
+            get { return "201511100545556_ajuste"; }
         }
         
         string IMigrationMetadata.Source
