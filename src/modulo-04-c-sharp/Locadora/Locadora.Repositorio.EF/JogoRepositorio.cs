@@ -1,25 +1,25 @@
-﻿using Locadora.Dominio.Repositorio;
+﻿using Locadora.Dominio;
+using Locadora.Dominio.Repositorio;
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Locadora.Dominio;
-using System.Data.SqlClient;
-using System.Data;
-
 
 namespace Locadora.Repositorio.EF
 {
     public class JogoRepositorio : IJogoRepositorio
     {
-        
+
 
         public int Atualizar(Jogo entidade)
         {
             using (BancoDeDados db = new BancoDeDados())
-            {                
-                
+            {
+                db.Entry(entidade).State = System.Data.Entity.EntityState.Modified;
+                return db.SaveChanges();
+
             }
         }
 
@@ -34,32 +34,42 @@ namespace Locadora.Repositorio.EF
 
         public IList<Jogo> BuscarPorNome(string nome)
         {
-            using (IDbConnection conexao = CriarConexao())
+            using (BancoDeDados db = new BancoDeDados())
             {
+                return db.Jogo.Where(jogo => jogo.Nome.Contains(nome)).ToList();
             }
+            
         }
 
         public IList<Jogo> BuscarTodos()
         {
-            using (IDbConnection conexao = CriarConexao())
+            using (BancoDeDados db = new BancoDeDados())
             {
-               
+                return db.Jogo.ToList();
             }
+            
         }
 
         public int Criar(Jogo entidade)
         {
-            using (IDbConnection conexao = CriarConexao())
+            using (BancoDeDados db = new BancoDeDados())
             {
-               
+                db.Entry(entidade).State = System.Data.Entity.EntityState.Added;
+                return db.SaveChanges();
             }
+            
         }
 
         public int Excluir(int id)
         {
-            using (IDbConnection conexao = CriarConexao())
+            Jogo entidade = new Jogo(id);
+
+            using (BancoDeDados db = new BancoDeDados())
             {
+                db.Entry(entidade).State = System.Data.Entity.EntityState.Added;
+                return db.SaveChanges();
             }
+            
         }
 
 
