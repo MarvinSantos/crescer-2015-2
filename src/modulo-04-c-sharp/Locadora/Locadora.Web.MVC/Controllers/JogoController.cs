@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Locadora.Repositorio.ADO;
+using Locadora.Repositorio.EF;
 using Locadora.Dominio.Repositorio;
 
 namespace Locadora.Web.MVC.Controllers
@@ -17,15 +17,18 @@ namespace Locadora.Web.MVC.Controllers
             IJogoRepositorio repo = new JogoRepositorio();
             var jogo = repo.BuscarPorId(id);
 
-            JogoDetalhadoModel jogoDetalhadoModel = new JogoDetalhadoModel();
-            jogoDetalhadoModel.Nome = jogo.Nome;
-            jogoDetalhadoModel.Preco = jogo.Preco;
-            jogoDetalhadoModel.Categoria = jogo.Categoria.ToString();
-            jogoDetalhadoModel.Id = jogo.Id;
-            jogoDetalhadoModel.Imagem = jogo.Imagem;
-            jogoDetalhadoModel.Video = jogo.Video;
-            jogoDetalhadoModel.Descricao = jogo.Descricao;
-            jogoDetalhadoModel.Selo = jogo.Selo;
+            JogoDetalhadoModel jogoDetalhadoModel = new JogoDetalhadoModel()
+            {
+                Nome = jogo.Nome,
+                Preco = jogo.Preco,
+                Categoria = jogo.Categoria.ToString(),
+                Id = jogo.Id,
+                Imagem = jogo.Imagem,
+                Video = jogo.Video,
+                Descricao = jogo.Descricao,
+                Selo = jogo.Selo
+            };
+           
 
             return View(jogoDetalhadoModel);
         }
