@@ -140,14 +140,18 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\JogoManterController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
+    <Compile Include="Filters\Autorizador.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ManterJogoModel.cs" />
-    <Compile Include="Models\JogoDetalhadoModel.cs" />
-    <Compile Include="Models\JogoModel.cs" />
-    <Compile Include="Models\RelatorioModel.cs" />
+    <Compile Include="Seguranca\Models\UsuarioLogado.cs" />
+    <Compile Include="ViewModels\LoginModel.cs" />
+    <Compile Include="ViewModels\ManterJogoModel.cs" />
+    <Compile Include="ViewModels\JogoDetalhadoModel.cs" />
+    <Compile Include="ViewModels\JogoModel.cs" />
+    <Compile Include="ViewModels\RelatorioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +166,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Jogo\JogoDetalhado.cshtml" />
     <Content Include="Views\JogoManter\JogoManter.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

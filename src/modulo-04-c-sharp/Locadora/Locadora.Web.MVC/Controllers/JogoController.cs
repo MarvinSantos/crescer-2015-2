@@ -6,12 +6,13 @@ using System.Web;
 using System.Web.Mvc;
 using Locadora.Repositorio.EF;
 using Locadora.Dominio.Repositorio;
+using Locadora.Web.MVC.Filters;
 
 namespace Locadora.Web.MVC.Controllers
 {
     public class JogoController : Controller
     {
-
+        [Autorizador(Roles ="Jogo_Detalhado")]
         public ActionResult JogoDetalhado(int id)
         {
             IJogoRepositorio repo = new JogoRepositorio();
