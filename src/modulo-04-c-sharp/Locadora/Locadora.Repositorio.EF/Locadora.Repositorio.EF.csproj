@@ -51,17 +51,9 @@
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
     <Compile Include="JogoRepositorio.cs" />
-    <Compile Include="Migrations\201511091911027_Initial.cs" />
-    <Compile Include="Migrations\201511091911027_Initial.Designer.cs">
-      <DependentUpon>201511091911027_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511091928263_Add_Tabelas_Selo_Categoria.cs" />
-    <Compile Include="Migrations\201511091928263_Add_Tabelas_Selo_Categoria.Designer.cs">
-      <DependentUpon>201511091928263_Add_Tabelas_Selo_Categoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511100545556_ajuste.cs" />
-    <Compile Include="Migrations\201511100545556_ajuste.Designer.cs">
-      <DependentUpon>201511100545556_ajuste.cs</DependentUpon>
+    <Compile Include="Migrations\201511100601223_initial2.cs" />
+    <Compile Include="Migrations\201511100601223_initial2.Designer.cs">
+      <DependentUpon>201511100601223_initial2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,14 +69,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511091911027_Initial.resx">
-      <DependentUpon>201511091911027_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511091928263_Add_Tabelas_Selo_Categoria.resx">
-      <DependentUpon>201511091928263_Add_Tabelas_Selo_Categoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511100545556_ajuste.resx">
-      <DependentUpon>201511100545556_ajuste.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511100601223_initial2.resx">
+      <DependentUpon>201511100601223_initial2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
