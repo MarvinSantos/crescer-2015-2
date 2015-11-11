@@ -50,7 +50,9 @@
     <Compile Include="Relatorio.cs" />
     <Compile Include="Repositorio\IClienteRepositorio.cs" />
     <Compile Include="Repositorio\IJogoRepositorio.cs" />
+    <Compile Include="Repositorio\IUsuarioRepositorio.cs" />
     <Compile Include="Selo.cs" />
+    <Compile Include="Servicos\ServicoAutenticacaoUsuario.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
