@@ -1,6 +1,7 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Repositorio.EF;
+using Locadora.Web.MVC.Filters;
 using Locadora.Web.MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Locadora.Web.MVC.Controllers
 
 
         [HttpGet]
+        [Autorizador(Roles = "ADMIN")]
         public ActionResult JogoManter(int? id)
         {
             if(id.HasValue)
@@ -48,6 +50,7 @@ namespace Locadora.Web.MVC.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [Autorizador(Roles = "ADMIN")]
         public ActionResult Salvar(ManterJogoModel model)
         {
             if (ModelState.IsValid)
