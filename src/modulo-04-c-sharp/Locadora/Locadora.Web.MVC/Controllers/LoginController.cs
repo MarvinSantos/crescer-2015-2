@@ -10,6 +10,7 @@ using System.Web.Security;
 using Locadora.Repositorio.EF.Repositorios;
 using Locadora.Dominio.Servicos;
 using Locadora.Dominio;
+using Locadora.Infraestrutura.Servicos;
 
 namespace Locadora.Web.MVC.Controllers
 {
@@ -29,7 +30,9 @@ namespace Locadora.Web.MVC.Controllers
             if (ModelState.IsValid)
             {
                 IUsuarioRepositorio repositorioUsuario = new UsuarioRepositorio();
-                ServicoAutenticacaoUsuario servicoAutenticacao = new ServicoAutenticacaoUsuario(repositorioUsuario);
+                //TODO: arrumar
+                IServicoCriptografia servicoCriptografia = new ServicoCriptografia();
+                ServicoAutenticacaoUsuario servicoAutenticacao = new ServicoAutenticacaoUsuario(repositorioUsuario, servicoCriptografia);
 
                 Usuario usuarioAutenticado = servicoAutenticacao.AutenticarEBuscar(model.Email, model.Senha);
 
