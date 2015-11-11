@@ -9,11 +9,14 @@ namespace Locadora.Dominio.Servicos
 {
     public class ServicoAutenticacaoUsuario
     {
-        IUsuarioRepositorio Repositorio;
+        
+        private IServicoCriptografia ServicoCriptografia;
+        private IUsuarioRepositorio Repositorio;
 
-        public ServicoAutenticacaoUsuario(IUsuarioRepositorio repositorio)
+        public ServicoAutenticacaoUsuario(IUsuarioRepositorio repositorio, IServicoCriptografia servicoCriptografia)
         {
             this.Repositorio = repositorio;
+            this.ServicoCriptografia = servicoCriptografia;
         }
 
         public Usuario AutenticarEBuscar(string email,string senha)
@@ -26,7 +29,9 @@ namespace Locadora.Dominio.Servicos
             }
             else
             {
-                if(usuario.Senha == senha)
+                string senhaCriptografada = ServicoCriptografia.CriptografarSenha(senha);
+
+                if (usuario.Senha == senha)
                 {
                     return usuario;
                 }

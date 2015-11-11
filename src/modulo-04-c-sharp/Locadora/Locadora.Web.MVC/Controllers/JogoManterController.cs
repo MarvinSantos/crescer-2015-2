@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class JogoManterController : Controller
     {
         IJogoRepositorio repo = new JogoRepositorio();

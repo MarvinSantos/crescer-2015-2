@@ -13,6 +13,7 @@ using Locadora.Dominio;
 
 namespace Locadora.Web.MVC.Controllers
 {
+   
     public class LoginController : Controller
     {
 
@@ -37,7 +38,7 @@ namespace Locadora.Web.MVC.Controllers
 
                     ControladorDeSessao.CriarSessaoUsuario(usuarioAutenticado);
 
-                    return RedirectToAction("Index", "Home",model);
+                    return RedirectToAction("Index", "Home");
 
                 }
                 else
