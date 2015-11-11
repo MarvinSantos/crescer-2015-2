@@ -19,5 +19,50 @@ namespace Locadora.Repositorio.EF.Repositorios
                 return usuario;
             }
         }
+
+        public int Atualizar(Usuario user)
+        {
+            using (BancoDeDados db = new BancoDeDados())
+            {
+                db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                return db.SaveChanges();
+
+            }
+        }
+
+
+        public IList<Usuario> BuscarTodos()
+        {
+            using (BancoDeDados db = new BancoDeDados())
+            {
+                return db.Usuario.ToList();
+            }
+
+        }
+
+        public int Criar(Usuario user)
+        {
+            using (BancoDeDados db = new BancoDeDados())
+            {
+                db.Entry(user).State = System.Data.Entity.EntityState.Added;
+                return db.SaveChanges();
+            }
+
+        }
+
+        public int Excluir(string email)
+        {
+            Usuario user = new Usuario()
+            {
+                Email = email
+            };
+
+            using (BancoDeDados db = new BancoDeDados())
+            {
+                db.Entry(user).State = System.Data.Entity.EntityState.Deleted;
+                return db.SaveChanges();
+            }
+
+        }
     }
 }
