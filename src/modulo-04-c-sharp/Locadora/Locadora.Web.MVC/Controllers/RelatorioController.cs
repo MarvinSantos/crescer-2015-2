@@ -7,9 +7,11 @@ using System.Web.Mvc;
 using Locadora.Repositorio.EF;
 using Locadora.Dominio.Repositorio;
 using Locadora.Dominio;
+using Locadora.Web.MVC.Filters;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class RelatorioController : Controller
     {
         IJogoRepositorio repo = new JogoRepositorio();
