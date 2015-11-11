@@ -16,9 +16,9 @@ namespace Locadora.Web.MVC.Controllers
     public class LoginController : Controller
     {
 
-        public ActionResult Index(LoginModel model)
+        public ActionResult Index()
         {
-            return View(model);
+            return View();
         }
 
         [ValidateAntiForgeryToken]
@@ -43,14 +43,14 @@ namespace Locadora.Web.MVC.Controllers
                 else
                 {
                     ModelState.AddModelError("ERRO_LOGIN", "Algum dos campos não está correto, arrume.");
-                    return RedirectToAction("Index", model);
+                    return View("Index", model);
                 }
 
             }
             else
             {
                 ModelState.AddModelError("ERRO_LOGIN", "Algum dos campos não está correto, arrume.");
-                return RedirectToAction("Index", model);
+                return View("Index", model);
             }
 
         }
