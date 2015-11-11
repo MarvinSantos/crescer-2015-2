@@ -66,12 +66,11 @@ namespace Locadora.Repositorio.EF
 
             using (BancoDeDados db = new BancoDeDados())
             {
-                db.Entry(entidade).State = System.Data.Entity.EntityState.Added;
+                db.Entry(entidade).State = System.Data.Entity.EntityState.Deleted;
                 return db.SaveChanges();
             }
             
         }
-
 
     }
 }
