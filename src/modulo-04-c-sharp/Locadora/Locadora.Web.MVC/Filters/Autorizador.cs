@@ -6,6 +6,7 @@ using System.Security.Principal;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Locadora.Web.MVC.Filters
 {
@@ -18,7 +19,7 @@ namespace Locadora.Web.MVC.Filters
 
             if (usuarioEstaLogado)
             {
-                var identidade = new GenericIdentity(usuarioLogado.Usuario);
+                var identidade = new GenericIdentity(usuarioLogado.Email);
                 string[] roles = usuarioLogado.Permissoes;
 
                 var principal = new GenericPrincipal(identidade, roles);
@@ -28,8 +29,22 @@ namespace Locadora.Web.MVC.Filters
 
                 base.OnAuthorization(filterContext);
             }
+            else
+            {
+                RedirecionarParaPaginaLogin(filterContext);
+            }
 
             
+        }
+
+
+        private void RedirecionarParaPaginaLogin(AuthorizationContext filterContext)
+        {
+            filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary
+                                                             {
+                                                                 {"action","Index"},
+                                                                 {"controller","Login"}
+                                                              });
         }
     }
 }
