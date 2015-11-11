@@ -4,10 +4,18 @@
 }
 
 <h2 class="inline-block left" >@ViewBag.Title</h2>
+@{
+    var usuario = Locadora.Web.MVC.Seguranca.Models.ControladorDeSessao.UsuarioLogado;
 
-<form action='@Url.Action("JogoManter", "JogoManter")/@Model.Id'>
-    <input class="btn margem right inline-block" type="submit" value="Editar jogo" />
-</form>
+    if (usuario.PodeCadastrar)
+    {
+        <form action='@Url.Action("JogoManter", "JogoManter")/@Model.Id'>
+            <input class="btn margem right inline-block" type="submit" value="Editar jogo" />
+        </form>
+    }
+}
+
+    
 
 <table class="table table-striped table-bordered table-hover">
     <thead>

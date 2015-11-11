@@ -7,10 +7,16 @@
 
     <h3 class="inline-block left verde">@TempData["MensagemSalvarEditar"]</h3>    
 
-    <form action='@Url.Action("JogoManter", "JogoManter")'>
-        <input class="btn margem right inline-block" type="submit" value="Cadastrar novo jogo" />
-    </form>
+@{
+    var usuario = Locadora.Web.MVC.Seguranca.Models.ControladorDeSessao.UsuarioLogado;
 
+    if (usuario.PodeCadastrar)
+    {
+        <form action='@Url.Action("JogoManter", "JogoManter")'>
+            <input class="btn margem right inline-block" type="submit" value="Cadastrar novo jogo" />
+        </form>
+    }
+}
 </div>
 
 @if (Model.Jogos.Count > 0)
