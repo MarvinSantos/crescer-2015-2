@@ -1,39 +1,64 @@
-﻿using Locadora.Web.MVC.Seguranca.Models;
-using Locadora.Web.MVC.ViewModels;
+﻿using Locadora.Dominio.Repositorio;
+using Locadora.Web.MVC.Seguranca.Models;
+using Locadora.Web.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Locadora.Repositorio.EF.Repositorios;
+using Locadora.Dominio.Servicos;
+using Locadora.Dominio;
 
 namespace Locadora.Web.MVC.Controllers
 {
     public class LoginController : Controller
     {
 
-        public ActionResult Index()
+        public ActionResult Index(LoginModel model)
         {
-            return View();
+            return View(model);
         }
 
+        [ValidateAntiForgeryToken]
+        [HttpPost]
         public ActionResult Login(LoginModel model)
         {
-
-            if (model.Email == "didi" && model.Senha == "die")
+            if (ModelState.IsValid)
             {
-                var usuarioLogadoModel = new UsuarioLogado("didi", new string[] { "Jogo_Detalhado" });
+                IUsuarioRepositorio repositorioUsuario = new UsuarioRepositorio();
+                ServicoAutenticacaoUsuario servicoAutenticacao = new ServicoAutenticacaoUsuario(repositorioUsuario);
 
-                FormsAuthentication.SetAuthCookie(model.Email, true);
-                Session["USUARIO_LOGADO"] = usuarioLogadoModel;
+                Usuario usuarioAutenticado = servicoAutenticacao.AutenticarEBuscar(model.Email, model.Senha);
 
-                return RedirectToAction("Index", "Home");
+                if (usuarioAutenticado != null)
+                {
+
+                    ControladorDeSessao.CriarSessaoUsuario(usuarioAutenticado);
+
+                    return RedirectToAction("Index", "Home",model);
+
+                }
+                else
+                {
+                    ModelState.AddModelError("ERRO_LOGIN", "Algum dos campos não está correto, arrume.");
+                    return RedirectToAction("Index", model);
+                }
+
             }
             else
             {
-                return RedirectToAction("Index",model);
-            }     
+                ModelState.AddModelError("ERRO_LOGIN", "Algum dos campos não está correto, arrume.");
+                return RedirectToAction("Index", model);
+            }
 
+        }
+
+        public ActionResult LogOut()
+        {
+            ControladorDeSessao.LogOut();
+            return RedirectToAction("Index", "Login");
         }
     }
 }
