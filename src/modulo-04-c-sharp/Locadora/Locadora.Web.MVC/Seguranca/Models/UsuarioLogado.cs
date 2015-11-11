@@ -7,13 +7,13 @@ namespace Locadora.Web.MVC.Seguranca.Models
 {
     public class UsuarioLogado
     {
-        public string Usuario { get; private set; }
+        public string Email { get; private set; }
 
         public string[] Permissoes { get; private set; }
 
-        public UsuarioLogado(string usuario, string[] permissoes)
+        public UsuarioLogado(string email, string[] permissoes)
         {
-            this.Usuario = usuario;
+            this.Email = email;
             this.Permissoes = permissoes;
         }
     }
