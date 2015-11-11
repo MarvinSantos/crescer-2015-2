@@ -11,6 +11,8 @@ namespace Locadora.Web.MVC.Seguranca.Models
 
         public string[] Permissoes { get; private set; }
 
+        public bool PodeCadastrar { get; set; }
+
         public UsuarioLogado(string email, string[] permissoes)
         {
             this.Email = email;
