@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
-    <Compile Include="JogoRepositorio.cs" />
+    <Compile Include="Repositorios\JogoRepositorio.cs" />
     <Compile Include="Migrations\201511101556010_initiall.cs" />
     <Compile Include="Migrations\201511101556010_initiall.Designer.cs">
       <DependentUpon>201511101556010_initiall.cs</DependentUpon>
@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

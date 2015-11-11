@@ -146,6 +146,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Seguranca\Models\ControladorDeSessao.cs" />
     <Compile Include="Seguranca\Models\UsuarioLogado.cs" />
     <Compile Include="ViewModels\LoginModel.cs" />
     <Compile Include="ViewModels\ManterJogoModel.cs" />
@@ -167,6 +168,7 @@
     <Content Include="Views\Jogo\JogoDetalhado.cshtml" />
     <Content Include="Views\JogoManter\JogoManter.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\_LayoutLogin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
