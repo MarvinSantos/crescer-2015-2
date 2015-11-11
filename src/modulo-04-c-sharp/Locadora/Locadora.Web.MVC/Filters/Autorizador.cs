@@ -14,13 +14,18 @@ namespace Locadora.Web.MVC.Filters
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            UsuarioLogado usuarioLogado = filterContext.HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogado;
+            UsuarioLogado usuarioLogado = ControladorDeSessao.UsuarioLogado; // filterContext.HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogado;
             bool usuarioEstaLogado = usuarioLogado != null;
 
-            if (usuarioEstaLogado)
+            if (usuarioEstaLogado && AuthorizeCore(filterContext.HttpContext))
             {
                 var identidade = new GenericIdentity(usuarioLogado.Email);
                 string[] roles = usuarioLogado.Permissoes;
+
+                if (roles.Contains("ADMIN"))
+                {
+                    usuarioLogado.PodeCadastrar = true;
+                }
 
                 var principal = new GenericPrincipal(identidade, roles);
 
