@@ -12,5 +12,7 @@ namespace Locadora.Web.MVC.ViewModels
         public string Descricao { get; set; }
         public string Imagem { get; set; }
         public Cliente Cliente { get; set; }
+        public DateTime? DataLocacao { get; set; }
+        public decimal PrecoPorSelo { get; set; }
     }
 }
