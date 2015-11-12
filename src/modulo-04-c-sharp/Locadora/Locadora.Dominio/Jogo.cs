@@ -22,6 +22,43 @@ namespace Locadora.Dominio
 
         public Selo Selo { get; set; }
 
+        public int? IdCliente {
+            get
+            {
+                if(ClienteLocacao != null)
+                {
+                    return ClienteLocacao.Id;
+                }
+                else
+                {
+                    return null;
+                }
+                
+            }
+
+            set { }
+        }
+
+        public decimal Preco {
+            get
+            {
+                if(Selo == Selo.OURO)
+                {
+                    return 15.00m;
+                }
+                else if(Selo == Selo.PRATA)
+                {
+                    return 10.00m;
+                }
+                else
+                {
+                    return 5.00m;
+                }
+            }
+        }
+
+        public DateTime? DataLocacao { get; set; }
+
         public Jogo()
         {
 
