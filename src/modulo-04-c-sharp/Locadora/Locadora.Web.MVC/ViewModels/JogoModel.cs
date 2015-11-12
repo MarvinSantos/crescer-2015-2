@@ -1,4 +1,5 @@
 ﻿
+using Locadora.Web.MVC.ViewModels.BaseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,10 @@ using System.Web;
 
 namespace Locadora.Web.MVC.Models
 {
-    public class JogoModel
+    public class JogoModel : JogoBase
     {
-        public string Nome { get; set; }
+        
         public string Categoria { get; set; }
-        public decimal Preco { get; set; }
-        public int Id { get; set; }
 
     }
 }
