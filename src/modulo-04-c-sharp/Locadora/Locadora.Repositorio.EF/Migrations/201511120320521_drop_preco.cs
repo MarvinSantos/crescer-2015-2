@@ -7,12 +7,12 @@ namespace Locadora.Repositorio.EF.Migrations
     {
         public override void Up()
         {
-            DropColumn("dbo.jogo", "Preco");
+            //DropColumn("dbo.jogo", "Preco");
         }
         
         public override void Down()
         {
-            AddColumn("dbo.jogo", "Preco", c => c.Decimal(nullable: false, precision: 18, scale: 2));
+           // AddColumn("dbo.jogo", "Preco", c => c.Decimal(nullable: false, precision: 18, scale: 2));
         }
     }
 }
