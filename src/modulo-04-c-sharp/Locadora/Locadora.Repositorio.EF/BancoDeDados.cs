@@ -50,8 +50,11 @@ namespace Locadora.Repositorio.EF
             Property(p => p.Video).IsOptional();
             Property(p => p.Categoria).IsRequired();
             Property(p => p.Selo).IsRequired();
+            Property(p => p.DataLocacao).IsOptional();
+            Ignore(p => p.Preco);
 
-            HasOptional(p => p.ClienteLocacao).WithOptionalDependent().Map(m => m.MapKey("IdClienteLocacao"));
+            HasOptional(p => p.ClienteLocacao).WithMany().HasForeignKey(p => p.IdCliente);
+            
 
         }
     }
