@@ -26,6 +26,7 @@
             <tr>
                 <th>Jogo</th>
                 <th>Categoria</th>
+                <th>Locar Jogo</th>
             </tr>
         </thead>
         @foreach (var jogo in @Model.Jogos)
@@ -33,6 +34,7 @@
             <tr>
                 <td><a href='@Url.Action("JogoDetalhado","Jogo")/@jogo.Id'>@jogo.Nome</a></td>
                 <td>@jogo.Categoria</td>
+                <td><a href='@Url.Action("Locacao","Jogo")/@jogo.Id'>Locar</a></td>
             </tr>
         }
     </table>
