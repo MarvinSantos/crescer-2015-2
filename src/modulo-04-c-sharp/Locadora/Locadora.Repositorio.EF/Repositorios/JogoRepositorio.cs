@@ -72,5 +72,13 @@ namespace Locadora.Repositorio.EF
             
         }
 
+        public int BuscarNumeroDeJogosLocados(Cliente cliente)
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Jogo.Count(j => j.ClienteLocacao.Id == cliente.Id);
+            }
+        }
+
     }
 }

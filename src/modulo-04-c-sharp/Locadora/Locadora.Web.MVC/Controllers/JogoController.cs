@@ -9,6 +9,7 @@ using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Filters;
 using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.ViewModels;
+using Locadora.Dominio.Servicos;
 
 namespace Locadora.Web.MVC.Controllers
 {
@@ -36,14 +37,13 @@ namespace Locadora.Web.MVC.Controllers
             return View(jogoDetalhadoModel);
         }
 
-        [HttpPost]
-        [HttpGet]
-        public ActionResult Locacao(int? id)
+        
+        
+        public ActionResult Locacao(int id)
         {
             IJogoRepositorio repositorio = FabricaDeModulos.CriarJogoRepositorio();
-            if(id != null)
-            {
-                var jogo = repositorio.BuscarPorId((int)id);
+            
+                var jogo = repositorio.BuscarPorId(id);
                 JogoLocacaoModel jogolocacao = new JogoLocacaoModel()
                 {
                     Cliente = jogo.ClienteLocacao,
@@ -55,12 +55,37 @@ namespace Locadora.Web.MVC.Controllers
                 };
 
                 return View(jogolocacao);
+           
+            
+        }
+
+        [HttpPost]
+        public ActionResult SalvarLocacao(JogoLocacaoModel jogoLocacaoModel)
+        {
+            IClienteRepositorio clienteRepo = FabricaDeModulos.CriarClienteRepositorio();
+            var clienteLocador = clienteRepo.BuscarPorNome(jogoLocacaoModel.Cliente.Nome).FirstOrDefault(j => j.Nome == jogoLocacaoModel.Cliente.Nome);
+
+            IJogoRepositorio repositorioJogo = FabricaDeModulos.CriarJogoRepositorio();
+            var jogo = repositorioJogo.BuscarPorId(jogoLocacaoModel.Id);
+
+            jogo.LocarPara(clienteLocador);
+            jogo.DataLocacao = DateTime.Now;
+
+            ServicoValidacaoLocacao servicoValidadorLocacao = FabricaDeModulos.CriarServicoValidacaoLocacao();
+            bool podeLocar = servicoValidadorLocacao.ValidarLocacaoParaCliente(jogo.ClienteLocacao);
+
+            if (podeLocar)
+            {
+                repositorioJogo.Atualizar(jogo);
+                return RedirectToAction("JogosDisponiveis", "Relatorio");
             }
             else
             {
-                return RedirectToAction("JogosDisponiveis","Relatorio");
+                TempData["MensagemSalvarEditar"] = "o cliente ja possui 3 jogos locados";
+                return RedirectToAction("JogosDisponiveis", "Relatorio");
             }
-            
+
+
         }
     }
 }
