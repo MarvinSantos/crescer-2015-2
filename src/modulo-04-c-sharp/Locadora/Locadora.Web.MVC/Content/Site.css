@@ -76,3 +76,18 @@ textarea {
 .vermelho{
     color: red;
 }
+
+.block{
+    display:block;
+}
+
+.conteiner-img-descricao{
+    width: 80%;
+    height: 70%;
+    margin-bottom: 10%;
+}
+
+.descricao-jogo-locacao{
+    width: 40%;
+    height: 100%;
+}
