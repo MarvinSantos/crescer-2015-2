@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using Locadora.Repositorio.EF;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Filters;
+using Locadora.Web.MVC.Helpers;
+using Locadora.Web.MVC.ViewModels;
 
 namespace Locadora.Web.MVC.Controllers
 {
@@ -32,6 +34,33 @@ namespace Locadora.Web.MVC.Controllers
            
 
             return View(jogoDetalhadoModel);
+        }
+
+        [HttpPost]
+        [HttpGet]
+        public ActionResult Locacao(int? id)
+        {
+            IJogoRepositorio repositorio = FabricaDeModulos.CriarJogoRepositorio();
+            if(id != null)
+            {
+                var jogo = repositorio.BuscarPorId((int)id);
+                JogoLocacaoModel jogolocacao = new JogoLocacaoModel()
+                {
+                    Cliente = jogo.ClienteLocacao,
+                    Id = jogo.Id,
+                    Descricao = jogo.Descricao,
+                    Imagem = jogo.Imagem,
+                    Nome = jogo.Nome
+                    
+                };
+
+                return View(jogolocacao);
+            }
+            else
+            {
+                return RedirectToAction("JogosDisponiveis","Relatorio");
+            }
+            
         }
     }
 }
