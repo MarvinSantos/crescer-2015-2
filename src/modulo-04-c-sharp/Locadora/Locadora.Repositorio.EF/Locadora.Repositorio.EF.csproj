@@ -50,6 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
+    <Compile Include="Migrations\201511120226551_NomeUsuario_TirarPrecoJogo.cs" />
+    <Compile Include="Migrations\201511120226551_NomeUsuario_TirarPrecoJogo.Designer.cs">
+      <DependentUpon>201511120226551_NomeUsuario_TirarPrecoJogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511120320521_drop_preco.cs" />
+    <Compile Include="Migrations\201511120320521_drop_preco.Designer.cs">
+      <DependentUpon>201511120320521_drop_preco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositorios\JogoRepositorio.cs" />
     <Compile Include="Migrations\201511101556010_initiall.cs" />
     <Compile Include="Migrations\201511101556010_initiall.Designer.cs">
@@ -79,6 +87,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511101800554_Permisao_Usuario.resx">
       <DependentUpon>201511101800554_Permisao_Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511120226551_NomeUsuario_TirarPrecoJogo.resx">
+      <DependentUpon>201511120226551_NomeUsuario_TirarPrecoJogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511120320521_drop_preco.resx">
+      <DependentUpon>201511120320521_drop_preco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -31,7 +31,7 @@ namespace Locadora.Web.MVC.Controllers
                     Id = jogo.Id,
                     Nome = jogo.Nome,
                     Categoria = jogo.Categoria,
-                    Preco = jogo.Preco,
+                    
                     Descricao = jogo.Descricao,
                     Imagem = jogo.Imagem,
                     Video = jogo.Video,
@@ -64,7 +64,7 @@ namespace Locadora.Web.MVC.Controllers
                     {
                         Nome = model.Nome,
                         Descricao = model.Descricao,
-                        Preco = model.Preco,
+                        
                         Categoria = model.Categoria,
                         Imagem = model.Imagem,
                         Video = model.Video,
@@ -84,7 +84,7 @@ namespace Locadora.Web.MVC.Controllers
                     {
                         Nome = model.Nome,
                         Descricao = model.Descricao,
-                        Preco = model.Preco,
+                        
                         Categoria = model.Categoria,
                         Imagem = model.Imagem,
                         Video = model.Video,

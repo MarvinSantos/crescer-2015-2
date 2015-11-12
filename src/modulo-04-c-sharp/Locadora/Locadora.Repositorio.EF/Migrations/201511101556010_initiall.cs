@@ -42,7 +42,6 @@ namespace Locadora.Repositorio.EF.Migrations
                 {
                     Id = c.Int(nullable: false, identity: true),
                     Nome = c.String(nullable: false),
-                    Preco = c.Decimal(nullable: false, precision: 18, scale: 2),
                     Categoria = c.Int(nullable: false),
                     Descricao = c.String(nullable: false),
                     Imagem = c.String(),

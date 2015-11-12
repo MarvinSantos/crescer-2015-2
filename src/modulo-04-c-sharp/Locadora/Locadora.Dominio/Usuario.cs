@@ -13,6 +13,8 @@ namespace Locadora.Dominio
       
         public String Senha { get; set; }
 
+        public String Nome { get; set; }
+
         public ICollection<Permissao> Permissoes { get; set; }
     }
 }

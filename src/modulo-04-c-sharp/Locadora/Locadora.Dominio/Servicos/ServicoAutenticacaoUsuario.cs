@@ -31,7 +31,7 @@ namespace Locadora.Dominio.Servicos
             {
                 string senhaCriptografada = ServicoCriptografia.CriptografarSenha(senha);
 
-                if (usuario.Senha == senha)
+                if (usuario.Senha == senhaCriptografada)
                 {
                     return usuario;
                 }

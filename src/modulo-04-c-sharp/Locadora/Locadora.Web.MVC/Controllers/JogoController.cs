@@ -22,7 +22,6 @@ namespace Locadora.Web.MVC.Controllers
             JogoDetalhadoModel jogoDetalhadoModel = new JogoDetalhadoModel()
             {
                 Nome = jogo.Nome,
-                Preco = jogo.Preco,
                 Categoria = jogo.Categoria.ToString(),
                 Id = jogo.Id,
                 Imagem = jogo.Imagem,

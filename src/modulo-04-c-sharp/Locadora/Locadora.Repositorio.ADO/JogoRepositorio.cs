@@ -33,7 +33,7 @@ namespace Locadora.Repositorio.ADO
                 IDbCommand comando = conexao.CreateCommand();
                 comando.CommandText = sql.ToString();
                 comando.AddParam("paramNome", entidade.Nome);
-                comando.AddParam("paramPreco", entidade.Preco);
+                
                 comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
                 //TODO: arrumar pq deu jabulani
                // comando.AddParam("paramIdClienteLocacao", entidade.IdClienteLocacao);
@@ -104,7 +104,7 @@ namespace Locadora.Repositorio.ADO
                 IDbCommand comando = conexao.CreateCommand();
                 comando.CommandText = sql.ToString();
                 comando.AddParam("paramNome", entidade.Nome);
-                comando.AddParam("paramPreco", entidade.Preco);
+                
                 comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
                 //TODO: arrumar pq deu jabulani
                 // comando.AddParam("paramIdClienteLocacao", entidade.IdClienteLocacao);
@@ -152,7 +152,7 @@ namespace Locadora.Repositorio.ADO
                 );
 
             jogo.Nome = reader["Nome"].ToString();
-            jogo.Preco = Convert.ToDecimal(reader["Preco"]);
+           
             jogo.Categoria = (Categoria)Convert.ToInt32(reader["IdCategoria"]);
             jogo.Descricao = reader["Descricao"].ToString();
             jogo.Video = reader["Video"].ToString();

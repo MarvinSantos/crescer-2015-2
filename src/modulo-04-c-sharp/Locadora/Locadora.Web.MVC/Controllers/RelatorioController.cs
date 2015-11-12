@@ -36,17 +36,16 @@ namespace Locadora.Web.MVC.Controllers
                 {
                     JogoModel jogoModel = new JogoModel();
                     jogoModel.Nome = jogo.Nome;
-                    jogoModel.Preco = jogo.Preco;
+                    
                     jogoModel.Categoria = jogo.Categoria.ToString();
                     jogoModel.Id = jogo.Id;
 
                     model.Jogos.Add(jogoModel);
                 }
 
-                model.MaisBarato = jogos.OrderBy(jogo => jogo.Preco).First().Nome;
-                model.MaisCaro = jogos.OrderByDescending(jogo => jogo.Preco).First().Nome;
+               
                 model.QuantidadeDeJogos = jogos.Count();
-                model.MediaDePreco = jogos.Sum(jogo => jogo.Preco) / jogos.Count;
+              
             }
 
             return View(model);

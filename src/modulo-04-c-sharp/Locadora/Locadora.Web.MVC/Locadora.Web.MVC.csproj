@@ -181,6 +181,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FabricaDeModulos.cs" />
     <Compile Include="Seguranca\Models\ControladorDeSessao.cs" />
     <Compile Include="Seguranca\Models\UsuarioLogado.cs" />
     <Compile Include="ViewModels\LoginModel.cs" />
@@ -218,6 +219,10 @@
     <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj">
       <Project>{93d95d00-78c7-4b77-be44-686ab7a29c7c}</Project>
       <Name>Locadora.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locadora.Infraestrutura.Servicos\Locadora.Infraestrutura.Servicos.csproj">
+      <Project>{f5c9351f-9b3f-42f3-a019-2f0bf6abd1ac}</Project>
+      <Name>Locadora.Infraestrutura.Servicos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Locadora.Repositorio.ADO\Locadora.Repositorio.ADO.csproj">
       <Project>{14105bc9-3336-43bc-b394-6e0aa2a29751}</Project>

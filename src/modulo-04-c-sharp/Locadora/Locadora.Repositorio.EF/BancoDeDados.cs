@@ -45,7 +45,6 @@ namespace Locadora.Repositorio.EF
             HasKey(p => p.Id);
 
             Property(p => p.Nome).IsRequired();
-            Property(p => p.Preco).IsRequired();
             Property(p => p.Descricao).IsRequired();
             Property(p => p.Imagem).IsOptional();
             Property(p => p.Video).IsOptional();
@@ -77,6 +76,7 @@ namespace Locadora.Repositorio.EF
 
             Property(p => p.Email).IsRequired().HasMaxLength(100);
             Property(p => p.Senha).IsRequired().HasMaxLength(256);
+            Property(p => p.Nome).IsRequired().HasMaxLength(300);
             
             HasMany(u => u.Permissoes).WithMany(p => p.Usuarios)
                                       .Map(m =>
