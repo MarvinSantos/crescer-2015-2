@@ -58,6 +58,14 @@
     <Compile Include="Migrations\201511120320521_drop_preco.Designer.cs">
       <DependentUpon>201511120320521_drop_preco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511120541188_fix_all.cs" />
+    <Compile Include="Migrations\201511120541188_fix_all.Designer.cs">
+      <DependentUpon>201511120541188_fix_all.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511120559490_fix_all_2.cs" />
+    <Compile Include="Migrations\201511120559490_fix_all_2.Designer.cs">
+      <DependentUpon>201511120559490_fix_all_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositorios\JogoRepositorio.cs" />
     <Compile Include="Migrations\201511101556010_initiall.cs" />
     <Compile Include="Migrations\201511101556010_initiall.Designer.cs">
@@ -93,6 +101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511120320521_drop_preco.resx">
       <DependentUpon>201511120320521_drop_preco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511120541188_fix_all.resx">
+      <DependentUpon>201511120541188_fix_all.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511120559490_fix_all_2.resx">
+      <DependentUpon>201511120559490_fix_all_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
