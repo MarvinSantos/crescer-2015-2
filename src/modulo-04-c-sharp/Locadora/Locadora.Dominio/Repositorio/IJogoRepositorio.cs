@@ -14,5 +14,6 @@ namespace Locadora.Dominio.Repositorio
         int Atualizar(Jogo jogo);
         int Excluir(int id);
         Jogo BuscarPorId(int id);
+        int BuscarNumeroDeJogosLocados(Cliente cliente);
     }
 }

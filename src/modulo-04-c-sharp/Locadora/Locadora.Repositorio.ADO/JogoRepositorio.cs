@@ -163,5 +163,9 @@ namespace Locadora.Repositorio.ADO
             return jogo;
         }
 
+        public int BuscarNumeroDeJogosLocados(Cliente cliente)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
