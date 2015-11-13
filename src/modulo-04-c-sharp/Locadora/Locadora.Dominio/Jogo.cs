@@ -35,7 +35,6 @@ namespace Locadora.Dominio
                 }
                 
             }
-
             set { }
         }
 
@@ -58,6 +57,31 @@ namespace Locadora.Dominio
         }
 
         public DateTime? DataLocacao { get; set; }
+
+        public DateTime? DataPrevistaEntrega {
+            get
+            {
+                if(DataLocacao != null)
+                {
+                    if(Selo == Selo.OURO)
+                    {
+                        return DataLocacao.Value.AddDays(1);   
+                    }
+                    else if (Selo == Selo.PRATA)
+                    {
+                        return DataLocacao.Value.AddDays(2);
+                    }
+                    else
+                    {
+                        return DataLocacao.Value.AddDays(3);
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         public Jogo()
         {
