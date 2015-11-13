@@ -32,7 +32,7 @@ else
     <div class="form-group inline-block">
         @Html.LabelFor(m => m.Nome, new { @class = "col-sm-2 control-label block" })
         <div class="col-sm-10">
-            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control margem-direita" })
             @Html.ValidationMessageFor(m => m.Nome)
         </div>
     </div>
@@ -40,9 +40,10 @@ else
     <input class="right btn" type="submit" name="enviar" value="Procurar" />
 }
 
-@using (Html.BeginForm("Devolver", "Jogo", Model, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <input class="right btn inline-block top-margin" type="submit" name="enviar" value="Devolver" />
-}
-
+<div class="block top-margin">
+    @using (Html.BeginForm("Devolver", "Jogo", Model, FormMethod.Post, new { @class = "form-horizontal inline-block", role = "form" }))
+    {
+        <input class="right btn inline-block" type="submit" name="enviar" value="Devolver" />
+    }
+</div>
 

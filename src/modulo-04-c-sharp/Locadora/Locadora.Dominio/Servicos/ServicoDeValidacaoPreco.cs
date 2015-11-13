@@ -10,7 +10,7 @@ namespace Locadora.Dominio.Servicos
     {
         public decimal CalcularPreco(Jogo jogo)
         {
-            decimal precoFinal = 0.00m;
+            decimal precoFinal = jogo.Preco;
 
             if(jogo.DataLocacao != null && jogo.DataPrevistaEntrega != null)
             {

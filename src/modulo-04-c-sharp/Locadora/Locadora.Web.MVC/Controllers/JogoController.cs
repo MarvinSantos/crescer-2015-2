@@ -17,7 +17,7 @@ namespace Locadora.Web.MVC.Controllers
     [Autorizador]
     public class JogoController : Controller
     {
-        
+        [HttpGet]
         public ActionResult JogoDetalhado(int id)
         {
             IJogoRepositorio repo = new JogoRepositorio();
@@ -39,24 +39,32 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         
-        
-        public ActionResult Locacao(int id)
+        [HttpGet]
+        public ActionResult Locacao(int? id)
         {
-            IJogoRepositorio repositorio = FabricaDeModulos.CriarJogoRepositorio();
-            
-            var jogo = repositorio.BuscarPorId(id);
-            JogoLocacaoModel jogolocacao = new JogoLocacaoModel()
+            if(id != null)
             {
-                Cliente = jogo.ClienteLocacao,
-                Id = jogo.Id,
-                Descricao = jogo.Descricao,
-                Imagem = jogo.Imagem,
-                Nome = jogo.Nome,
-                DataPrevistaEntrega = jogo.DataPrevistaEntrega,
-                PrecoPorSelo = jogo.Preco
-            };
+                IJogoRepositorio repositorio = FabricaDeModulos.CriarJogoRepositorio();
 
-            return View(jogolocacao);
+                var jogo = repositorio.BuscarPorId((int)id);
+                JogoLocacaoModel jogolocacao = new JogoLocacaoModel()
+                {
+                    Cliente = jogo.ClienteLocacao,
+                    Id = jogo.Id,
+                    Descricao = jogo.Descricao,
+                    Imagem = jogo.Imagem,
+                    Nome = jogo.Nome,
+                    DataPrevistaEntrega = jogo.DataPrevistaEntrega,
+                    PrecoPorSelo = jogo.Preco
+                };
+
+                return View(jogolocacao);
+            }
+            else
+            {
+                return RedirectToAction("JogosDisponiveis","Relatorio");
+            }
+            
                
         }
 
@@ -98,7 +106,7 @@ namespace Locadora.Web.MVC.Controllers
             return RedirectToAction("JogosDisponiveis", "Relatorio");
         }
 
-
+        [HttpGet]
         public ActionResult Devolucao(int? id)
         {
             if (id != null)
@@ -115,7 +123,7 @@ namespace Locadora.Web.MVC.Controllers
 
                 ServicoDeValidacaoPreco validarPrecoFinal = FabricaDeModulos.CriarServicoDeValidarPreco();
 
-                jogoDevolucao.ValorFinal = validarPrecoFinal.CalcularPreco(jogo) + jogo.Preco;
+                jogoDevolucao.ValorFinal = validarPrecoFinal.CalcularPreco(jogo);
 
                 return View(jogoDevolucao);
             }
@@ -126,6 +134,7 @@ namespace Locadora.Web.MVC.Controllers
             
         }
 
+        [HttpPost]
         public ActionResult ProcurarPorNomeParaDevolver(JogoDevolucaoModel model)
         {
             IJogoRepositorio repositorio = FabricaDeModulos.CriarJogoRepositorio();
@@ -143,7 +152,7 @@ namespace Locadora.Web.MVC.Controllers
  
         }
 
-
+        [HttpPost]
         public ActionResult Devolver(JogoDevolucaoModel model)
         {
             IJogoRepositorio repositorio = FabricaDeModulos.CriarJogoRepositorio();

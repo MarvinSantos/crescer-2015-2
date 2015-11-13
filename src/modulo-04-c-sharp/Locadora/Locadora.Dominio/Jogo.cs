@@ -6,9 +6,7 @@ namespace Locadora.Dominio
 {
     public class Jogo : EntidadeBase
     {
-        public String Nome { get; set; }
-
-        
+        public String Nome { get; set; }    
 
         public Categoria Categoria { get; set; }
 
@@ -81,6 +79,7 @@ namespace Locadora.Dominio
                     return null;
                 }
             }
+            set { }
         }
 
         public Jogo()

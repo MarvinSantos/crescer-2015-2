@@ -74,6 +74,10 @@
     <Compile Include="Migrations\201511130337234_fix_IdCliente.Designer.cs">
       <DependentUpon>201511130337234_fix_IdCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511131658565_final_fix.cs" />
+    <Compile Include="Migrations\201511131658565_final_fix.Designer.cs">
+      <DependentUpon>201511131658565_final_fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositorios\ClienteRepositorio.cs" />
     <Compile Include="Repositorios\JogoRepositorio.cs" />
     <Compile Include="Migrations\201511101556010_initiall.cs" />
@@ -122,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511130337234_fix_IdCliente.resx">
       <DependentUpon>201511130337234_fix_IdCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511131658565_final_fix.resx">
+      <DependentUpon>201511131658565_final_fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
