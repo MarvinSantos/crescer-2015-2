@@ -3,7 +3,7 @@ namespace Locadora.Repositorio.EF.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class fix_cliente : DbMigration
+    public partial class fix_IdCliente : DbMigration
     {
         public override void Up()
         {
