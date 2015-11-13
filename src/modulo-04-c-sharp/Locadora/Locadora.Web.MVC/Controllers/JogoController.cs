@@ -43,20 +43,20 @@ namespace Locadora.Web.MVC.Controllers
         {
             IJogoRepositorio repositorio = FabricaDeModulos.CriarJogoRepositorio();
             
-                var jogo = repositorio.BuscarPorId(id);
-                JogoLocacaoModel jogolocacao = new JogoLocacaoModel()
-                {
-                    Cliente = jogo.ClienteLocacao,
-                    Id = jogo.Id,
-                    Descricao = jogo.Descricao,
-                    Imagem = jogo.Imagem,
-                    Nome = jogo.Nome
-                    
-                };
+            var jogo = repositorio.BuscarPorId(id);
+            JogoLocacaoModel jogolocacao = new JogoLocacaoModel()
+            {
+                Cliente = jogo.ClienteLocacao,
+                Id = jogo.Id,
+                Descricao = jogo.Descricao,
+                Imagem = jogo.Imagem,
+                Nome = jogo.Nome,
+                DataPrevistaEntrega = jogo.DataPrevistaEntrega,
+                PrecoPorSelo = jogo.Preco
+            };
 
-                return View(jogolocacao);
-           
-            
+            return View(jogolocacao);
+               
         }
 
         [HttpPost]
@@ -64,28 +64,43 @@ namespace Locadora.Web.MVC.Controllers
         {
             IClienteRepositorio clienteRepo = FabricaDeModulos.CriarClienteRepositorio();
             var clienteLocador = clienteRepo.BuscarPorNome(jogoLocacaoModel.Cliente.Nome).FirstOrDefault(j => j.Nome == jogoLocacaoModel.Cliente.Nome);
-
+    
             IJogoRepositorio repositorioJogo = FabricaDeModulos.CriarJogoRepositorio();
             var jogo = repositorioJogo.BuscarPorId(jogoLocacaoModel.Id);
 
-            jogo.LocarPara(clienteLocador);
-            jogo.DataLocacao = DateTime.Now;
+            bool estaLocado = repositorioJogo.VerificarSeEstaLocado(jogo);
 
-            ServicoValidacaoLocacao servicoValidadorLocacao = FabricaDeModulos.CriarServicoValidacaoLocacao();
-            bool podeLocar = servicoValidadorLocacao.ValidarLocacaoParaCliente(jogo.ClienteLocacao);
-
-            if (podeLocar)
+            if (clienteLocador != null && !estaLocado)
             {
-                repositorioJogo.Atualizar(jogo);
-                return RedirectToAction("JogosDisponiveis", "Relatorio");
+
+                jogo.LocarPara(clienteLocador);
+                jogo.DataLocacao = DateTime.Now;
+
+                ServicoValidacaoLocacao servicoValidadorLocacao = FabricaDeModulos.CriarServicoValidacaoLocacao();
+                bool podeLocar = servicoValidadorLocacao.ValidarLocacaoParaCliente(jogo.ClienteLocacao);
+
+                if (podeLocar)
+                {
+                    repositorioJogo.Atualizar(jogo);
+                    TempData["MensagemSalvarEditar"] = "Locado com sucesso :D";
+                }
+                else
+                {
+                    TempData["MensagemSalvarEditar"] = "o cliente ja possui 3 jogos locados";
+                }
             }
             else
             {
-                TempData["MensagemSalvarEditar"] = "o cliente ja possui 3 jogos locados";
-                return RedirectToAction("JogosDisponiveis", "Relatorio");
+                TempData["MensagemSalvarEditar"] = "O jogo esta locado, ou o cliente não esta cadastrado";
             }
 
-
+            return RedirectToAction("JogosDisponiveis", "Relatorio");
         }
+
+
+        //public ActionResult Devolver(JogoLocacaoModel jogoLocacaoModel)
+        //{
+
+        //}
     }
 }
