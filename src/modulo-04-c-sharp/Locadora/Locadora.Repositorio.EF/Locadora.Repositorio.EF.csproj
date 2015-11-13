@@ -70,9 +70,9 @@
     <Compile Include="Migrations\201511121618291_add_dataLocacao.Designer.cs">
       <DependentUpon>201511121618291_add_dataLocacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511121923021_fix_cliente.cs" />
-    <Compile Include="Migrations\201511121923021_fix_cliente.Designer.cs">
-      <DependentUpon>201511121923021_fix_cliente.cs</DependentUpon>
+    <Compile Include="Migrations\201511130337234_fix_IdCliente.cs" />
+    <Compile Include="Migrations\201511130337234_fix_IdCliente.Designer.cs">
+      <DependentUpon>201511130337234_fix_IdCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositorios\ClienteRepositorio.cs" />
     <Compile Include="Repositorios\JogoRepositorio.cs" />
@@ -120,8 +120,8 @@
     <EmbeddedResource Include="Migrations\201511121618291_add_dataLocacao.resx">
       <DependentUpon>201511121618291_add_dataLocacao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511121923021_fix_cliente.resx">
-      <DependentUpon>201511121923021_fix_cliente.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511130337234_fix_IdCliente.resx">
+      <DependentUpon>201511130337234_fix_IdCliente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
