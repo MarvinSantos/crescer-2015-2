@@ -14,5 +14,7 @@ namespace Locadora.Web.MVC.ViewModels
         public Cliente Cliente { get; set; }
         public DateTime? DataLocacao { get; set; }
         public decimal PrecoPorSelo { get; set; }
+        public DateTime? DataPrevistaEntrega { get; set; }
+       
     }
 }

@@ -1,13 +1,20 @@
 ﻿@model Locadora.Web.MVC.ViewModels.JogoLocacaoModel
 
 <div class="conteiner-img-descicao block">
+    <h2>@Model.Nome</h2>
     <div class="inline-block tamanhoPadrao">
         <img class="img-responsive" src="@Model.Imagem" />
     </div>
 
     <div class="descricao-jogo-locacao right">
-        <div>
+        <div class="block top-margin">
             Descrição: @Model.Descricao
+        </div>
+        <div class="block top-margin">
+            Data Prevista De Entrega: @Model.DataPrevistaEntrega
+        </div>
+        <div class="block top-margin">
+            Preco: @Model.PrecoPorSelo
         </div>
     </div>
 </div>
