@@ -14,7 +14,7 @@ namespace Locadora.Repositorio.EF.Repositorios
         {
             using (var db = new BancoDeDados())
             {
-                return db.Cliente.ToList();
+                return db.Cliente.Where(cli => cli.Nome.Contains(nome)).ToList();
             }
         }
 
