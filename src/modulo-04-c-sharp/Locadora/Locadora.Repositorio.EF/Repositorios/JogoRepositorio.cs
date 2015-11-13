@@ -80,5 +80,21 @@ namespace Locadora.Repositorio.EF
             }
         }
 
+        public bool VerificarSeEstaLocado(Jogo jogo)
+        {
+            using (var db = new BancoDeDados())
+            {
+                var jogoDoBanco = db.Jogo.Where(j => j.Id == jogo.Id).ToList();
+            }
+
+            if(jogo.DataLocacao != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

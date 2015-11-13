@@ -167,5 +167,10 @@ namespace Locadora.Repositorio.ADO
         {
             throw new NotImplementedException();
         }
+
+        public bool VerificarSeEstaLocado(Jogo jogo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

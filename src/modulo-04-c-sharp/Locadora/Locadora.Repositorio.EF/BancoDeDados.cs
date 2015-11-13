@@ -51,6 +51,7 @@ namespace Locadora.Repositorio.EF
             Property(p => p.Categoria).IsRequired();
             Property(p => p.Selo).IsRequired();
             Property(p => p.DataLocacao).IsOptional();
+            Property(p => p.IdCliente).IsOptional();
             Ignore(p => p.Preco);
 
             HasOptional(p => p.ClienteLocacao).WithMany().HasForeignKey(p => p.IdCliente);
