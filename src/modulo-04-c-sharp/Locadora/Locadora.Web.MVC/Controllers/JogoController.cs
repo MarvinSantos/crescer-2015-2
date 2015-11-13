@@ -8,8 +8,9 @@ using Locadora.Repositorio.EF;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Filters;
 using Locadora.Web.MVC.Helpers;
-using Locadora.Web.MVC.ViewModels;
 using Locadora.Dominio.Servicos;
+using Locadora.Web.MVC.ViewModels.BaseModels;
+using Locadora.Web.MVC.ViewModels;
 
 namespace Locadora.Web.MVC.Controllers
 {
@@ -98,9 +99,67 @@ namespace Locadora.Web.MVC.Controllers
         }
 
 
-        //public ActionResult Devolver(JogoLocacaoModel jogoLocacaoModel)
-        //{
+        public ActionResult Devolucao(int? id)
+        {
+            if (id != null)
+            {
+                IJogoRepositorio repositorio = FabricaDeModulos.CriarJogoRepositorio();
 
-        //}
+                var jogo = repositorio.BuscarPorId((int)id);
+                JogoDevolucaoModel jogoDevolucao = new JogoDevolucaoModel()
+                {
+                    Id = jogo.Id,
+                    Nome = jogo.Nome,
+                    DataLocacao = jogo.DataLocacao
+                };
+
+                ServicoDeValidacaoPreco validarPrecoFinal = FabricaDeModulos.CriarServicoDeValidarPreco();
+
+                jogoDevolucao.ValorFinal = validarPrecoFinal.CalcularPreco(jogo) + jogo.Preco;
+
+                return View(jogoDevolucao);
+            }
+            else
+            {
+                return View();
+            }
+            
+        }
+
+        public ActionResult ProcurarPorNomeParaDevolver(JogoDevolucaoModel model)
+        {
+            IJogoRepositorio repositorio = FabricaDeModulos.CriarJogoRepositorio();
+
+            var jogo = repositorio.BuscarPorNome(model.Nome).FirstOrDefault();
+            
+            if (jogo != null)
+            {
+                return RedirectToAction("Devolucao/" +jogo.Id);
+            }
+            else
+            {
+                return RedirectToAction("Devolucao", "Jogo");
+            }
+ 
+        }
+
+
+        public ActionResult Devolver(JogoDevolucaoModel model)
+        {
+            IJogoRepositorio repositorio = FabricaDeModulos.CriarJogoRepositorio();
+
+            var jogo = repositorio.BuscarPorId(model.Id);
+
+            jogo.DataLocacao = null;
+            jogo.IdCliente = null;
+
+            repositorio.Atualizar(jogo);
+            TempData["MensagemDevolver"] = "Jogo Devolvido Com Sucesso :D";
+
+            return RedirectToAction("Devolucao", "Jogo");
+
+        }
+
     }
+
 }

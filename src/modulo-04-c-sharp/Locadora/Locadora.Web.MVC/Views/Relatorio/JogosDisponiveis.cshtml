@@ -17,6 +17,7 @@
         </form>
     }
 }
+
 </div>
 
 @if (Model.Jogos.Count > 0)
@@ -27,6 +28,7 @@
                 <th>Jogo</th>
                 <th>Categoria</th>
                 <th>Locar Jogo</th>
+                <th>Devolução</th>
             </tr>
         </thead>
         @foreach (var jogo in @Model.Jogos)
@@ -35,6 +37,7 @@
                 <td><a href='@Url.Action("JogoDetalhado","Jogo")/@jogo.Id'>@jogo.Nome</a></td>
                 <td>@jogo.Categoria</td>
                 <td><a href='@Url.Action("Locacao","Jogo")/@jogo.Id'>Locar</a></td>
+                <td><a href='@Url.Action("Devolucao","Jogo")/@jogo.Id'>Devolver</a></td>
             </tr>
         }
     </table>
