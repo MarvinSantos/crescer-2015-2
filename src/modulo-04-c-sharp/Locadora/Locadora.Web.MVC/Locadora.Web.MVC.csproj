@@ -184,6 +184,7 @@
     <Compile Include="Helpers\FabricaDeModulos.cs" />
     <Compile Include="Seguranca\Models\ControladorDeSessao.cs" />
     <Compile Include="Seguranca\Models\UsuarioLogado.cs" />
+    <Compile Include="ViewModels\JogoDevolucaoModel.cs" />
     <Compile Include="ViewModels\BaseModels\JogoBase.cs" />
     <Compile Include="ViewModels\JogoLocacaoModel.cs" />
     <Compile Include="ViewModels\LoginModel.cs" />
@@ -209,6 +210,7 @@
     <Content Include="Views\Login\_LayoutLogin.cshtml" />
     <Content Include="Views\Jogo\Locacao.cshtml" />
     <Content Include="Views\Jogo\_JogoLocacao.cshtml" />
+    <Content Include="Views\Jogo\Devolucao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

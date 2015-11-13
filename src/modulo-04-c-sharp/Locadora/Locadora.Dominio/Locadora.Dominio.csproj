@@ -54,6 +54,7 @@
     <Compile Include="Selo.cs" />
     <Compile Include="Servicos\IServicoCriptografia.cs" />
     <Compile Include="Servicos\ServicoAutenticacaoUsuario.cs" />
+    <Compile Include="Servicos\ServicoDeValidacaoPreco.cs" />
     <Compile Include="Servicos\ServicoValidacaoLocacao.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
