@@ -42,6 +42,11 @@ namespace Locadora.Web.MVC.Helpers
             return new ServicoValidacaoLocacao(CriarJogoRepositorio());
         }
 
+        public static ServicoDeValidacaoPreco CriarServicoDeValidarPreco()
+        {
+            return new ServicoDeValidacaoPreco();
+        }
+
         
     }
 }
