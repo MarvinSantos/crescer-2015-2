@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201511131658565_final_fix.Designer.cs">
       <DependentUpon>201511131658565_final_fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511151828514_ignore_dataPrevistaEntrega.cs" />
+    <Compile Include="Migrations\201511151828514_ignore_dataPrevistaEntrega.Designer.cs">
+      <DependentUpon>201511151828514_ignore_dataPrevistaEntrega.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositorios\ClienteRepositorio.cs" />
     <Compile Include="Repositorios\JogoRepositorio.cs" />
     <Compile Include="Migrations\201511101556010_initiall.cs" />
@@ -129,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511131658565_final_fix.resx">
       <DependentUpon>201511131658565_final_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511151828514_ignore_dataPrevistaEntrega.resx">
+      <DependentUpon>201511151828514_ignore_dataPrevistaEntrega.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
