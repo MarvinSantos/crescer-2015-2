@@ -169,13 +169,6 @@ namespace Locadora.Web.MVC.Controllers
 
         }
 
-        public JsonResult Autocomplete(string term)
-        {
-            IClienteRepositorio repositorio = FabricaDeModulos.CriarClienteRepositorio();
-
-            return Json(repositorio.BuscarPorNome(term).Select(j => new {label = j.Nome, value = j.Nome }),JsonRequestBehavior.AllowGet);
-        }
-
     }
 
 }
