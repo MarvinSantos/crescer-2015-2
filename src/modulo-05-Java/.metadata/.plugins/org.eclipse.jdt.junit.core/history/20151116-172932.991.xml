@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LinkeListTest" project="crescerModuloJava" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.cwi.crescer.test.LinkeListTest" time="0.002">
+    <testcase name="adicionarUmNodoNalistaVazia" classname="br.com.cwi.crescer.test.LinkeListTest" time="0.001"/>
+    <testcase name="adicionarTresNodosNalistaVazia" classname="br.com.cwi.crescer.test.LinkeListTest" time="0.0"/>
+    <testcase name="adicionarNodoNoIndice1EOUltimoViraOIndice2" classname="br.com.cwi.crescer.test.LinkeListTest" time="0.0"/>
+    <testcase name="adicionarNodoNoIndice2EOUltimoViraOIndice3" classname="br.com.cwi.crescer.test.LinkeListTest" time="0.001"/>
+    <testcase name="adicionarNodoNoFinal" classname="br.com.cwi.crescer.test.LinkeListTest" time="0.0"/>
+  </testsuite>
+</testrun>

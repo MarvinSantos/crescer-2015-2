@@ -1,0 +1,84 @@
+package br.com.cwi.crescer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LinkedList {
+
+    private Node last, first;
+
+    public void addFirst(String value) {
+        Node node = new Node(value, first);
+        if (first == null) {
+            last = node;
+        }
+        first = node;
+
+    }
+
+    public String getFirst() {
+        return first.getValue();
+    }
+
+    public String getLast() {
+
+        return this.last.getValue();
+    }
+
+    public List<String> list() {
+        ArrayList<String> lista = new ArrayList<String>();
+        Node node = first;
+        while (node != null) {
+            lista.add(node.getValue());
+        }
+        return lista;
+    }
+
+    public void addLast(String value) {
+        Node node = new Node(value, last);
+        if (first == null) {
+            first = node;
+        }
+        first.setNext(node);
+        last = node;
+
+    }
+
+    public void removeFirst() {
+        first = first.getNext();
+    }
+
+    public void add(int index, String value) {
+        Node adicionado = new Node(value);
+        Node node = getNodeByIndex(index);
+        adicionado.setNext(node);
+        Node anterior = getNodeByIndex(index - 1);
+
+        anterior.setNext(adicionado);
+    }
+
+    public void remove(int index) {
+
+        Node node = getNodeByIndex(index);
+        Node anterior = getNodeByIndex(index - 1);
+        Node proximo = node.getNext();
+
+        anterior.setNext(proximo);
+
+    }
+
+    public Node getNodeByIndex(int index) {
+        Node node = first;
+        Node nodeDoIndice = null;
+        int indice = 0;
+        while (node != null) {
+            if (indice == index) {
+                nodeDoIndice = node;
+                return nodeDoIndice;
+            }
+            indice++;
+            node = node.getNext();
+        }
+        return nodeDoIndice;
+    }
+}
