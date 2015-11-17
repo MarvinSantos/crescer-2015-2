@@ -31,6 +31,23 @@ public class Aplicacao {
     }
     
     private static void opcao1(){
-    	//TODO:fazer a logica pra caso o usuario escolha a opcao1
+    	final int ADD = 1;
+    	final int REMOVER = 2;
+    	final int LISTAR = 3;
+    	final int SAIR = 4;
+    	MenuPrincipal menu = new MenuPrincipal();
+    	Scanner scan = new Scanner(System.in);
+    	MinhaLinkedList<String> linkedList = new LinkedList<String>();
+    	boolean rodando = true;
+    	int opcao;
+    	
+    	while(rodando){
+    		menu.mostrarMenuManter();
+    		opcao = scan.nextInt();
+    		if(opcao == ADD ){
+    			//TODO:fazer a logica pra caso o usuario escolha a opcao adicionar
+    		}
+    	}
+    	
     }
 }

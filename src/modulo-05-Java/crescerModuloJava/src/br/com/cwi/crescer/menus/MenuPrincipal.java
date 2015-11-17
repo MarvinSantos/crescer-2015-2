@@ -10,4 +10,14 @@ public class MenuPrincipal {
 		String quebraLinha = "\r\n";
 		System.out.println(cabecalho +quebraLinha+ opcao1 +quebraLinha+ opcao2 +quebraLinha+ opcao3);
 	}
+	
+	public void mostrarMenuManter(){
+		String cabecalho = "        Escolha o que deseja fazer";
+		String adicionar = "1- adicionar na lista";
+		String remover = "2- remover da lista";
+		String listar = "3- Ver a lista";
+		String sair = "4- Sair";
+		String quebraLinha = "\r\n";
+		System.out.println(cabecalho +quebraLinha+ adicionar +quebraLinha+ remover +quebraLinha+ listar +quebraLinha+ sair);
+	}
 }

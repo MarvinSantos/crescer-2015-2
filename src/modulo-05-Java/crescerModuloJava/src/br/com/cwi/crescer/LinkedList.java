@@ -2,6 +2,11 @@ package br.com.cwi.crescer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import br.com.cwi.crescer.interfaces.MinhaLinkedList;
 
@@ -12,10 +17,12 @@ public class LinkedList<T> implements MinhaLinkedList<T>{
 
     public void addFirst(T value) {
         Node<T> node = new Node<T>(value, first);
-        if (first == null) {
-            last = node;
+        node.setNext(first);
+        if(first == null){
+        	last = node;
         }
         first = node;
+     
 
     }
 
@@ -33,18 +40,30 @@ public class LinkedList<T> implements MinhaLinkedList<T>{
         Node<T> node = first;
         while (node != null) {
             lista.add(node.getValue());
+            node = node.getNext();
         }
         return lista;
     }
+    
+    @Override
+    public String toString(){
+    	List<T> lista = new ArrayList<T>();
+    	lista = list();
+    	String listaString = "";
+    	for(int i = 0; i < lista.size(); i++){
+    		listaString += lista.get(i).toString() + "\r\n";
+    	}
+    	return listaString;
+    }
 
     public void addLast(T value) {
-        Node<T> node = new Node<T>(value, last);
+        Node<T> node = new Node<T>(value);
         if (first == null) {
-            first = node;
+            addFirst(value);
+        }else{
+        	last.setNext(node);
+        	last = node;
         }
-        first.setNext(node);
-        last = node;
-
     }
 
     public void removeFirst() {
@@ -84,5 +103,23 @@ public class LinkedList<T> implements MinhaLinkedList<T>{
             node = node.getNext();
         }
         return nodeDoIndice;
+    }
+    
+    public void exportarTxtDaLista() throws IOException{
+    	File file = new File("C:\\Users\\marvin.santos\\Documents\\crescer-2015-2\\src\\modulo-05-Java\\arquivosIO\\lista.txt");
+    	
+    	if(!file.exists()){  
+            file.createNewFile();      
+        }
+    	
+        try(PrintWriter pw = new PrintWriter (new BufferedWriter (new FileWriter (file, true)))){
+        	String lista = toString();
+        	
+        	pw.write(lista);
+        	pw.flush();
+        	pw.close();
+        }catch(IOException e){
+        	throw e;
+        }
     }
 }
