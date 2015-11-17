@@ -12,10 +12,8 @@ public class ListaDuplamenteEncadeada<T> {
 
     public void addFirst(T value) {
         NodeDupla<T> node = new NodeDupla<T>(value, first);
-        if (first == null) {
-            last = node;
-        }
         first = node;
+        first.setNext(getNodeDuplaByIndex(1));
 
     }
 
@@ -33,6 +31,7 @@ public class ListaDuplamenteEncadeada<T> {
         NodeDupla<T> node = first;
         while (node != null) {
             lista.add(node.getValue());
+            node = node.getNext();
         }
         return lista;
     }
@@ -40,11 +39,14 @@ public class ListaDuplamenteEncadeada<T> {
     public void addLast(T value) {
         NodeDupla<T> node = new NodeDupla<T>(value, last);
         if (first == null) {
-            first = node;
+            addFirst(value);
+        }else{    
+        	NodeDupla<T> ultimoNode = getUltimoNodeDupla();
+        	ultimoNode.setNext(node);
+        	node.setAnterior(ultimoNode);
+	        last = node;
+	        
         }
-        first.setNext(node);
-        last = node;
-
     }
 
     public void removeFirst() {
@@ -55,19 +57,22 @@ public class ListaDuplamenteEncadeada<T> {
         NodeDupla<T> adicionado = new NodeDupla<T>(value);
         NodeDupla<T> node = getNodeDuplaByIndex(index);
         adicionado.setNext(node);
-        NodeDupla<T> anterior = getNodeDuplaByIndex(index).getAnterior();
-
+        NodeDupla<T> anterior = node.getAnterior();
+        node.setAnterior(adicionado);     
+        adicionado.setAnterior(anterior);
         anterior.setNext(adicionado);
     }
 
     public void remove(int index) {
 
         NodeDupla<T> node = getNodeDuplaByIndex(index);
-        NodeDupla<T> anterior = getNodeDuplaByIndex(index).getAnterior();
-        NodeDupla<T> proximo = node.getNext();
-
-        anterior.setNext(proximo);
-
+        if(node != null){
+	        NodeDupla<T> anterior = node.getAnterior();
+	        NodeDupla<T> proximo = node.getNext();
+	
+	        anterior.setNext(proximo);
+	        proximo.setAnterior(anterior);
+        }
     }
 
     public NodeDupla<T> getNodeDuplaByIndex(int index) {
@@ -82,7 +87,24 @@ public class ListaDuplamenteEncadeada<T> {
             indice++;
             node = node.getNext();
         }
-        return nodeDoIndice;
+       
+        return  nodeDoIndice;
+               
+    }
+    
+    public NodeDupla<T> getUltimoNodeDupla() {
+        NodeDupla<T> node = first;
+        NodeDupla<T> nodeRetorno;
+        while (node != null) {
+        	nodeRetorno = node;
+            node = node.getNext();
+            if(node == null){
+            	return nodeRetorno;
+            }
+        }
+       
+        return  node;
+               
     }
 
 }
