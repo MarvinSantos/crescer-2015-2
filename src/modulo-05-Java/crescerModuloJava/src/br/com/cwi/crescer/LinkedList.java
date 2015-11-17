@@ -3,7 +3,9 @@ package br.com.cwi.crescer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LinkedList<T> {
+import br.com.cwi.crescer.interfaces.MinhaLinkedList;
+
+public class LinkedList<T> implements MinhaLinkedList<T>{
 
     private Node<T> last;
     private Node<T> first;
@@ -48,7 +50,8 @@ public class LinkedList<T> {
     public void removeFirst() {
         first = first.getNext();
     }
-
+    
+   
     public void add(int index, T value) {
         Node<T> adicionado = new Node<T>(value);
         Node<T> node = getNodeByIndex(index);
