@@ -1,5 +1,0 @@
-package br.com.cwi.crescer.interfaces;
-
-public interface LinkedList {
-
-}

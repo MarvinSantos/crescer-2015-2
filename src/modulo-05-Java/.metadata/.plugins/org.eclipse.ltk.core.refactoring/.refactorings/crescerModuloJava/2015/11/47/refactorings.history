@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move element &apos;ListaDuplamenteEncadeada.java&apos; to &apos;crescerModuloJava/src/listaDuplamenteEncadeada&apos;&#x0D;&#x0A;- Original project: &apos;crescerModuloJava&apos;&#x0D;&#x0A;- Destination element: &apos;crescerModuloJava/src/listaDuplamenteEncadeada&apos;&#x0D;&#x0A;- Original element: &apos;br.com.cwi.crescer.ListaDuplamenteEncadeada.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;listaDuplamenteEncadeada" element1="/src&lt;br.com.cwi.crescer{ListaDuplamenteEncadeada.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1447702833502" units="1" version="1.0"/>
-</session>
