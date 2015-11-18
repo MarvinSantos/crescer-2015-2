@@ -1,5 +1,6 @@
 package br.com.cwi.crescer.interfaces;
 
+import java.io.IOException;
 import java.util.List;
 import br.com.cwi.crescer.Node;
 
@@ -21,7 +22,9 @@ public interface MinhaLinkedList<T> {
     public void add(int index, T value);
 
     public void remove(int index);
-
-    public Node<T> getNodeByIndex(int index);
+    
+    public void exportarTxtDaLista()throws IOException;
+    
+    public String toString();
 	
 }
