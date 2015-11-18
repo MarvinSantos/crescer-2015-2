@@ -1,4 +1,4 @@
-package testes.na.mao;
+package br.com.cwi.crescer.consoleAppDao;
 
 import br.com.cwi.crescer.interfaces.MinhaLinkedList;
 
@@ -16,7 +16,7 @@ import listaDuplamenteEncadeada.ListaDuplamenteEncadeada;
 import br.com.cwi.crescer.menus.MenuPrincipal;
 import br.com.cwi.crescer.model.Cliente;
 
-public class consoleappTestes {	
+public class ConsoleAppclienteDao {	
 	
 	public static void main(String[] args)throws SQLException {
 		/*try(Connection conexao = new ConnectionFactory().getConnection()){
