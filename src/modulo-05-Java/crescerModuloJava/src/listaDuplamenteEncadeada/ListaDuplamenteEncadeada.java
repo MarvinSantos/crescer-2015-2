@@ -1,19 +1,30 @@
 package listaDuplamenteEncadeada;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.cwi.crescer.Node;
+import br.com.cwi.crescer.interfaces.MinhaLinkedList;
 import listaDuplamenteEncadeada.NodeDupla;
 
-public class ListaDuplamenteEncadeada<T> {
+public class ListaDuplamenteEncadeada<T> implements MinhaLinkedList<T>{
 	
 	private NodeDupla<T> last;
     private NodeDupla<T> first;
 
     public void addFirst(T value) {
         NodeDupla<T> node = new NodeDupla<T>(value, first);
+        if( first == null){
+        	last = node;
+        }else{
+        	first.setAnterior(node);
+        }
         first = node;
-        first.setNext(getNodeDuplaByIndex(1));
 
     }
 
@@ -37,7 +48,7 @@ public class ListaDuplamenteEncadeada<T> {
     }
 
     public void addLast(T value) {
-        NodeDupla<T> node = new NodeDupla<T>(value, last);
+        NodeDupla<T> node = new NodeDupla<T>(value);
         if (first == null) {
             addFirst(value);
         }else{    
@@ -56,11 +67,21 @@ public class ListaDuplamenteEncadeada<T> {
     public void add(int index, T value) {
         NodeDupla<T> adicionado = new NodeDupla<T>(value);
         NodeDupla<T> node = getNodeDuplaByIndex(index);
-        adicionado.setNext(node);
-        NodeDupla<T> anterior = node.getAnterior();
-        node.setAnterior(adicionado);     
-        adicionado.setAnterior(anterior);
-        anterior.setNext(adicionado);
+        if(node != null){
+        	adicionado.setNext(node);
+        	NodeDupla<T> anterior = node.getAnterior();
+        	node.setAnterior(adicionado);   
+            if(anterior != null){         	     
+                adicionado.setAnterior(anterior);
+                anterior.setNext(adicionado);
+            }else{
+            	addFirst(value);
+            }
+            
+        }else{
+        	addFirst(value);
+        }
+        
     }
 
     public void remove(int index) {
@@ -69,9 +90,13 @@ public class ListaDuplamenteEncadeada<T> {
         if(node != null){
 	        NodeDupla<T> anterior = node.getAnterior();
 	        NodeDupla<T> proximo = node.getNext();
-	
-	        anterior.setNext(proximo);
-	        proximo.setAnterior(anterior);
+	        if(anterior != null){
+	        	anterior.setNext(proximo);
+		        proximo.setAnterior(anterior);
+	        }else{
+	        	removeFirst();
+	        }
+	        
         }
     }
 
@@ -105,6 +130,38 @@ public class ListaDuplamenteEncadeada<T> {
        
         return  node;
                
+    }
+    
+    
+    @Override
+    public String toString(){
+    	List<T> lista = new ArrayList<T>();
+    	lista = list();
+    	String listaString = "";
+    	for(int i = 0; i < lista.size(); i++){
+    		listaString += lista.get(i).toString() + "\r\n";
+    	}
+    	return listaString;
+    }
+    
+    
+    
+    public void exportarTxtDaLista() throws IOException{
+    	File file = new File("C:\\Users\\marvi\\Documents\\crescer-2015-2\\src\\modulo-05-Java\\arquivosIO\\listaDuplamenteEncadeada.txt");
+    	
+    	if(!file.exists()){  
+            file.createNewFile();      
+        }
+    	
+        try(PrintWriter pw = new PrintWriter (new BufferedWriter (new FileWriter (file, false)))){
+        	String lista = toString();
+        	
+        	pw.write(lista);
+        	pw.flush();
+        	pw.close();
+        }catch(IOException e){
+        	throw e;
+        }
     }
 
 }
