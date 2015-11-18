@@ -1,13 +1,3 @@
-primeiro
-segundo
-terceiro
-primeiro
-segundo
-terceiro
-primeiro
-segundo
-terceiro
-primeiro
-segundo
-terceiro
-ultimo
+javascript
+csharp
+java
