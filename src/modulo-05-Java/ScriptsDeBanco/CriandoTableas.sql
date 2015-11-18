@@ -11,4 +11,17 @@ create table servico (
 );
 */
 
-select * from cliente;
+select * from cliente
+create sequence cliente_seq;
+
+/*create table pedido(
+    idpedido number(10) primary key,
+       idcliente number(10) not null,
+    dsPedido varchar2(200)
+);
+alter table pedido add constraint PED_CLI_FK foreign key(idcliente) references cliente(idcliente);
+create index PED_CLI_FK on pedido(idcliente);
+
+create sequence pedido_seq;*/
+
+select * from pedido
