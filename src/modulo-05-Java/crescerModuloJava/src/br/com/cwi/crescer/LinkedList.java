@@ -76,18 +76,26 @@ public class LinkedList<T> implements MinhaLinkedList<T>{
         Node<T> node = getNodeByIndex(index);
         adicionado.setNext(node);
         Node<T> anterior = getNodeByIndex(index - 1);
-
-        anterior.setNext(adicionado);
+        if(anterior != null){
+        	anterior.setNext(adicionado);
+        }else{
+        	addFirst(value);
+        }
+        
     }
 
     public void remove(int index) {
-
+    
         Node<T> node = getNodeByIndex(index);
-        Node<T> anterior = getNodeByIndex(index - 1);
-        Node<T> proximo = node.getNext();
-
-        anterior.setNext(proximo);
-
+        if(node != null){
+	        Node<T> anterior = getNodeByIndex(index - 1);
+	        if(anterior != null){
+	        	Node<T> proximo = node.getNext();
+		        anterior.setNext(proximo);
+	        }else{
+	        	removeFirst();
+	        }
+        }
     }
 
     public Node<T> getNodeByIndex(int index) {
@@ -106,13 +114,13 @@ public class LinkedList<T> implements MinhaLinkedList<T>{
     }
     
     public void exportarTxtDaLista() throws IOException{
-    	File file = new File("C:\\Users\\marvin.santos\\Documents\\crescer-2015-2\\src\\modulo-05-Java\\arquivosIO\\lista.txt");
+    	File file = new File("C:\\Users\\marvi\\Documents\\crescer-2015-2\\src\\modulo-05-Java\\arquivosIO\\lista.txt");
     	
     	if(!file.exists()){  
             file.createNewFile();      
         }
     	
-        try(PrintWriter pw = new PrintWriter (new BufferedWriter (new FileWriter (file, true)))){
+        try(PrintWriter pw = new PrintWriter (new BufferedWriter (new FileWriter (file, false)))){
         	String lista = toString();
         	
         	pw.write(lista);
