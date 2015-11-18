@@ -10,5 +10,6 @@ public class ConnectionFactory {
 		String strConexao = "jdbc:oracle:thin:@localhost:1521:xe";
 		
 		return DriverManager.getConnection(strConexao,"system","oracle");
+		//return DriverManager.getConnection(strConexao,"system","senhaDeCasa");
 	}
 }
