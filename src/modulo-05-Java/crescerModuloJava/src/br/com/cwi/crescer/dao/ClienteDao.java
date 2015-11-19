@@ -150,8 +150,12 @@ public class ClienteDao {
 
             for (int i = 0; i < listaParameters.size(); i++) {
                 Object objeto = listaParameters.get(i);
-
-                statement.setString(i + 1, (String) objeto);
+                if(objeto instanceof String){
+                	 statement.setString(i + 1, (String) objeto);
+                }else if(objeto instanceof Long){
+                	 statement.setLong(i + 1, (Long) objeto);
+                }
+               
 
             }
 
