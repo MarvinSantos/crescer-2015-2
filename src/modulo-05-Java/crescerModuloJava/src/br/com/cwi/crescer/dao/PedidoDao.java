@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cwi.crescer.ConnectionFactory;
+import br.com.cwi.crescer.model.Cliente;
 import br.com.cwi.crescer.model.Pedido;
 
 public class PedidoDao {
@@ -154,6 +155,32 @@ public class PedidoDao {
 
             }
             return lista;
+        } catch (SQLException e) {
+            throw e;
+        }
+
+    }
+    
+    
+    public Pedido load(Long idPedido) throws SQLException {
+
+        try (Connection conexao = new ConnectionFactory().getConnection()) {
+
+            PreparedStatement statement = conexao.prepareStatement("select idCliente,idPedido,dsPedido from pedido where idPedido = ?");
+            statement.setLong(1, idPedido);
+            ResultSet resultSet = statement.executeQuery();
+
+            Pedido pedido = new Pedido();
+            if (resultSet.next()) {
+            	pedido.setIdCliente(resultSet.getLong("idCliente"));
+            	pedido.setIdPedido(resultSet.getLong("idPedido"));
+            	pedido.setDsPedido(resultSet.getString("dsPedido"));
+            } else {
+                throw new RuntimeException("Registro não enconrado");
+            }
+
+            return pedido;
+
         } catch (SQLException e) {
             throw e;
         }
