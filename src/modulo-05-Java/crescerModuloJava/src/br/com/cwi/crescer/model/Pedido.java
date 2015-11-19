@@ -33,7 +33,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return this.dsPedido;
+        return " Descricao: " +this.dsPedido + "  id: "+this.idPedido ;
     }
 
 }
