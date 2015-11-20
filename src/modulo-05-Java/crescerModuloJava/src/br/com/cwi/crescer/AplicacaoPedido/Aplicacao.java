@@ -24,12 +24,17 @@ public class Aplicacao {
     public static void main(String[] args) {
     	Scanner scan = new Scanner(System.in);
     	TelaPedido telaPedido = new TelaPedido();
-    	int opcao;
+    	int opcao = 0;
     	boolean rodando = true;
     	
     	while(rodando){
     		telaPedido.mostrarTelaPrincipal();
-        	opcao = scan.nextInt();
+    		try{
+    			opcao = scan.nextInt();
+    		}catch(Exception e){
+    			System.out.println("voce deve digitar um numero inteiro");
+    		}
+        	
         	if(opcao == INSERIR){
         		TelaInserirPedido();
         	}else if(opcao == LISTAR){
