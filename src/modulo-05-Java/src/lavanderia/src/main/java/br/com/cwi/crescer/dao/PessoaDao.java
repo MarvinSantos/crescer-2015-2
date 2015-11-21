@@ -10,10 +10,10 @@ import br.com.cwi.crescer.domain.Pessoa;
 @Repository
 public class PessoaDao {
 
-    @PersistenceContext
-    private EntityManager em;
-
-    public Pessoa findById(Long id) {
-        return em.find(Pessoa.class, id);
-    }
+	@PersistenceContext
+	private EntityManager em;
+	
+	public Pessoa findById(Long id) {
+		return em.find(Pessoa.class, id);
+	}
 }
