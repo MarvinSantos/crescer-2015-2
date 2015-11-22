@@ -1,4 +1,6 @@
-package br.com.cwi.crescer.domain;
+package br.com.cwi.crescer.lavanderia.domain;
+
+import java.math.BigDecimal;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,6 +17,10 @@ import javax.persistence.Table;
 public class Cliente {
 
 	public static final String SEQUENCE_NAME = "SEQ_Cliente";
+	
+	public Cliente(){
+		
+	}
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
@@ -33,7 +39,7 @@ public class Cliente {
     private String email;
     
     @Column(name = "Endereco", length = 50)
-	private Long endereco;
+	private String endereco;
     
     @Column(name = "Bairro", length = 50)
     private String bairro;
@@ -42,7 +48,7 @@ public class Cliente {
 	private Long idCidade;
     
     @Column(name = "CEP")
-	private Long cep;
+	private double cep;
     
     @Column(name = "Situacao", length = 1)
     private String situacao;
@@ -79,12 +85,12 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public Long getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(Long idEndereco) {
-		this.endereco = idEndereco;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getBairro() {
@@ -103,11 +109,11 @@ public class Cliente {
 		this.idCidade = idCidade;
 	}
 
-	public Long getCep() {
+	public double getCep() {
 		return cep;
 	}
 
-	public void setCep(Long cep) {
+	public void setCep(double cep) {
 		this.cep = cep;
 	}
 
