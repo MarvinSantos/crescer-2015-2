@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.domain;
+package br.com.cwi.crescer.lavanderia.domain;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

@@ -1,10 +1,10 @@
-package br.com.cwi.crescer.service;
+package br.com.cwi.crescer.lavanderia.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.cwi.crescer.dao.MaterialDao;
-import br.com.cwi.crescer.domain.Material;
+import br.com.cwi.crescer.lavanderia.dao.MaterialDao;
+import br.com.cwi.crescer.lavanderia.domain.Material;
 
 @Service
 public class MaterialService {
