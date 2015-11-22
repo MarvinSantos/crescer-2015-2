@@ -1,15 +1,15 @@
-package br.com.cwi.crescer.service;
+package br.com.cwi.crescer.lavanderia.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.cwi.crescer.dao.ClienteDao;
+import br.com.cwi.crescer.lavanderia.dao.ClienteDao;
+import br.com.cwi.crescer.lavanderia.domain.Cliente;
 
 @Service
 public class ClienteService {
 
-	
-private ClienteDao clienteDao;
+	private ClienteDao clienteDao;
 	
 	@Autowired
 	public ClienteService(ClienteDao clienteDAO) {
@@ -18,9 +18,16 @@ private ClienteDao clienteDao;
 	}
 	
 	public String buscarNome(Long id) {
+		String nome;
+		Cliente cliente;
 		
-		String nome = clienteDao.findById(id).getNome();
-		
+		cliente = clienteDao.findById(id);
+		if(cliente != null){
+			nome = cliente.getNome();
+		}else{
+			return "cliente não encontrado";
+		}
+						
 		return nome.toUpperCase();
 	}
 	
