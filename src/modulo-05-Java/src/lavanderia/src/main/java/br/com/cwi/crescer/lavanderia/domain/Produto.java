@@ -15,68 +15,68 @@ import javax.persistence.Table;
 @Table(name="Produto")
 @SequenceGenerator(name = Produto.SEQUENCE_NAME,sequenceName = Produto.SEQUENCE_NAME)
 public class Produto {
-	
-	public static final String SEQUENCE_NAME = "SEQ_Produto";
-	
-	@Id
-	@Column(name="IDProduto")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-	private Long idProduto;
-	
-	
-	@Column(name="IDServico")
-	@Basic(optional = false)
-	private Long idServico;
-	
-	
-	@Column(name="IDMaterial")
-	@Basic(optional = false)
-	private Long idMaterial;
-	
-	
-	@Column(name="Valor")
-	@Basic(optional = false)
-	private double valor;
+
+    public static final String SEQUENCE_NAME = "SEQ_Produto";
+
+    @Id
+    @Column(name="IDProduto")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
+    private Long idProduto;
 
 
-	
-	public Long getIdProduto() {
-		return idProduto;
-	}
+    @Column(name="IDServico")
+    @Basic(optional = false)
+    private Long idServico;
 
 
-	public void setIdProduto(Long idProduto) {
-		this.idProduto = idProduto;
-	}
+    @Column(name="IDMaterial")
+    @Basic(optional = false)
+    private Long idMaterial;
 
 
-	public Long getIdServico() {
-		return idServico;
-	}
+    @Column(name="Valor")
+    @Basic(optional = false)
+    private BigDecimal valor;
 
 
-	public void setIdServico(Long idServico) {
-		this.idServico = idServico;
-	}
+
+    public Long getIdProduto() {
+        return idProduto;
+    }
 
 
-	public Long getIdMaterial() {
-		return idMaterial;
-	}
+    public void setIdProduto(Long idProduto) {
+        this.idProduto = idProduto;
+    }
 
 
-	public void setIdMaterial(Long idMaterial) {
-		this.idMaterial = idMaterial;
-	}
+    public Long getIdServico() {
+        return idServico;
+    }
 
 
-	public double getValor() {
-		return valor;
-	}
+    public void setIdServico(Long idServico) {
+        this.idServico = idServico;
+    }
 
 
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
-	
+    public Long getIdMaterial() {
+        return idMaterial;
+    }
+
+
+    public void setIdMaterial(Long idMaterial) {
+        this.idMaterial = idMaterial;
+    }
+
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
 }
