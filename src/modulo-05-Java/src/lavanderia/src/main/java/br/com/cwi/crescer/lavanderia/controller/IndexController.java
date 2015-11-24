@@ -1,7 +1,5 @@
 package br.com.cwi.crescer.lavanderia.controller;
 
-import java.math.BigDecimal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +19,7 @@ public class IndexController {
         this.itemService = itemService;
     }
 
-    @RequestMapping(name = "/")
+    @RequestMapping("/")
     public String index(Model model) {
 
         String bemVindo = "Bem vindo à lavanderia crescer";
@@ -29,20 +27,6 @@ public class IndexController {
         model.addAttribute("mensagem", bemVindo);
 
         return "index";
-    }
-
-
-    @RequestMapping("/testes")
-    public String testes(Model model) {
-        String valorString = "";
-        BigDecimal valor = itemService.buscarValorUnitario(1L);
-        if (valor != null) {
-            valorString = valor.toString();
-        }
-
-        model.addAttribute("mensagem", valorString);
-
-        return "testes";
     }
 
 }

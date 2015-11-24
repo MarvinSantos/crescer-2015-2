@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${cliente}">
+	
+			<div>
+				<label>ID: </label>
+				<input th:field="*{id}" type="text" disabled="false" />
+			</div>
+			
+			<div>
+				<label class="control-label">Nome: </label>
+				<input th:field="*{nome}" type="text" disabled="false" />
+			</div>
+			
+			<div>
+				<label class="control-label">CPF: </label>
+		 		<input th:field="*{cpf}" type="text" disabled="false"/>
+			</div>
+			
+			<div>
+		 		<label class="control-label">Email: </label>
+		 		<input th:field="*{email}" type="text" disabled="false"/>
+	 		</div>
+	 		
+	 		<div>
+		 		<label class="control-label">Cidade: </label>
+		 		<select th:field="*{idCidade}" disabled="false">
+	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
+	            </select>
+            </div>
+             
+		</form>
+
+</body>
+</html>

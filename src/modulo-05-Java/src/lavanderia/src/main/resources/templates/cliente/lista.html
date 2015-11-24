@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Insert title here</title>
+	</head>
+	<body>
+	
+		<div th:if="${not #lists.isEmpty(clientes)}" >
+			<table>
+			
+				<tr>
+	                <th>Id</th>
+	                <th>Nome</th>
+	                <th>CPF</th>
+	                <th>Email</th>
+	                <th>Visualizar</th>
+	                <th>Editar</th>
+	                <th>Remover</th>
+	            </tr>
+	            <tr th:each="cliente : ${clientes}">
+	            	<td th:text="${cliente.id}"><a th:href="@{|/clientes/${cliente.id}|}"></a></td>
+	            	<td th:text="${cliente.nome}"></td>
+	            	<td th:text="${cliente.email}"></td>
+	            	<td th:text="${cliente.cpf}"></td>
+	            	<td><a th:href="@{|/clientes/${cliente.id}|}">visualizar</a></td>
+	            	<td><a th:href="@{|/clientes/editar/${cliente.id}|}">editar</a></td>
+	            	<td><a th:href="@{|/clientes/remover/${cliente.id}|}">remover</a></td>
+	            </tr>			
+			
+			</table>		
+		</div>
+	
+	</body>
+</html>
