@@ -1,15 +1,20 @@
 package br.com.cwi.crescer.lavanderia.mapper;
 
+
 import br.com.cwi.crescer.lavanderia.DTO.ClienteDTO;
+
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
 
 public class ClienteMapper {
 
+	
     public static Cliente getNewEntity(ClienteDTO dto) {
         Cliente entity = new Cliente();
         entity.setNome(dto.getNome());
         entity.setCpf(dto.getCpf());
         entity.setEmail(dto.getEmail());
+        entity.setBairro(dto.getBairro());
+        entity.setEndereco(dto.getEndereco());
         return entity;
     }
 
@@ -19,7 +24,12 @@ public class ClienteMapper {
         dto.setNome(entity.getNome());
         dto.setCpf(entity.getCpf());
         dto.setEmail(entity.getEmail());
-        dto.setIdCidade(entity.getCidade().getIdCidade());
+        dto.setBairro(entity.getBairro());
+        dto.setCep(entity.getCep());
+        dto.setEndereco(entity.getEndereco());
+        if(entity.getCidade() != null){
+        	dto.setIdCidade(entity.getCidade().getIdCidade());
+        }      
         return dto;
     }
 
@@ -27,6 +37,9 @@ public class ClienteMapper {
         entity.setNome(dto.getNome());
         entity.setCpf(dto.getCpf());
         entity.setEmail(dto.getEmail());
+        entity.setBairro(dto.getBairro());
+        entity.setCep(dto.getCep());
+        entity.setEndereco(dto.getEndereco());
         return entity;
     }
 
