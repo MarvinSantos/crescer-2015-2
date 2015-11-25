@@ -2,14 +2,33 @@ package br.com.cwi.crescer.lavanderia.DTO;
 
 import java.math.BigDecimal;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
+
 public class ClienteDTO {
+
     private Long id;
+
+    @NotBlank
     private String nome;
+
+    @NotBlank
+    @CPF
     private String cpf;
+
+    @NotBlank
     private String email;
+
+    @NotBlank
     private String endereco;
+
+    @NotBlank
     private String bairro;
+
+    @NotBlank
     private Long idCidade;
+
+    @NotBlank
     private BigDecimal cep;
 
     public Long getId() {
