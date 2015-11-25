@@ -21,6 +21,10 @@
 	margin-top: 20%;
 }
 
+.margem-top-min{
+	margin-top: 7%;
+}
+
 .mensagem{
 	width: 250px;
 	height: auto;
@@ -41,4 +45,9 @@
 
 .esquerda{
 	margin-left: 70%;
+}
+
+.centralizar{
+	margin-left: 35%;
+	width:40%;
 }
