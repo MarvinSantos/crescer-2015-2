@@ -1,5 +1,6 @@
 package br.com.cwi.crescer.lavanderia.DTO;
 
+import java.math.BigDecimal;
 
 public class ClienteDTO {
     private Long id;
@@ -9,7 +10,7 @@ public class ClienteDTO {
     private String endereco;
     private String bairro;
     private Long idCidade;
-    private Long cep;
+    private BigDecimal cep;
 
     public Long getId() {
         return id;
@@ -67,11 +68,11 @@ public class ClienteDTO {
         this.idCidade = idCidade;
     }
 
-    public Long getCep() {
+    public BigDecimal getCep() {
         return cep;
     }
 
-    public void setCep(Long cep) {
+    public void setCep(BigDecimal cep) {
         this.cep = cep;
     }
 }
