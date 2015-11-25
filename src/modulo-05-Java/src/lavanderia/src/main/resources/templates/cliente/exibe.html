@@ -1,57 +1,62 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns="http://www.w3.org/1999/xhtml"
+ 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 		layout:decorator="layout">
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Insert title here</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  />
 		<link rel="stylesheet" type="text/css" href="/css/site.css" />
+		<script src="common-script.js"></script>
 	</head>
 	<body>
-		<form class="form-group" th:object="${cliente}">
-			<div class="container">
-				<div class="form-group ">
-					<label class="label label-primary margem-direita">ID </label>
-					<label th:text="*{id}"></label>
-				</div>
-				
-				<div class="form-group">
-					<label class="label label-primary margem-direita">Nome </label>
-					<label th:text="*{nome}"></label>
-				</div>
-				
-				<div class="form-group">
-					<label class="label label-primary margem-direita">CPF </label>
-			 		<label th:text="*{cpf}"></label>
-				</div>
-				
-				<div class="form-group">
-			 		<label class="label label-primary margem-direita">Email </label>
-			 		<label th:text="*{email}"></label>
-		 		</div>
-		 		
-		 		<div class="form-group">
-			 		<label class="label label-primary margem-direita">Endereco </label>
-			 		<label th:text="*{endereco}"></label>
-		 		</div>
-		 		
-		 		<div class="form-group">
-			 		<label class="label label-primary margem-direita">Bairro </label>
-			 		<label th:text="*{bairro}"></label>
-		 		</div>
-		 		
-		 		<div class="form-group">
-			 		<label class="label label-primary margem-direita">Cep </label>
-			 		<label th:text="*{cep}"></label>
-		 		</div>
-		 		
-		 		<div class="form-group">
-			 		<label class="label label-primary margem-direita">Cidade </label>
-			 		<select th:field="*{idCidade}" disabled="true">
-		                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
-		            </select>
-	            </div>
-	        </div>     
-		</form>
-	
+		<div layout:fragment="content" class="margem-top-min centralizar">
+			<form class="form-group" th:object="${cliente}">
+				<div class="container">
+					<div class="form-group ">
+						<label class="label label-primary margem-direita">ID </label>
+						<label th:text="*{id}"></label>
+					</div>
+					
+					<div class="form-group">
+						<label class="label label-primary margem-direita">Nome </label>
+						<label th:text="*{nome}"></label>
+					</div>
+					
+					<div class="form-group">
+						<label class="label label-primary margem-direita">CPF </label>
+				 		<label th:text="*{cpf}"></label>
+					</div>
+					
+					<div class="form-group">
+				 		<label class="label label-primary margem-direita">Email </label>
+				 		<label th:text="*{email}"></label>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label class="label label-primary margem-direita">Endereco </label>
+				 		<label th:text="*{endereco}"></label>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label class="label label-primary margem-direita">Bairro </label>
+				 		<label th:text="*{bairro}"></label>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label class="label label-primary margem-direita">Cep </label>
+				 		<label th:text="*{cep}"></label>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label class="label label-primary margem-direita">Cidade </label>
+				 		<select th:field="*{idCidade}" disabled="true">
+			                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
+			            </select>
+		            </div>
+		        </div>     
+			</form>
+		</div>
 	</body>
 </html>

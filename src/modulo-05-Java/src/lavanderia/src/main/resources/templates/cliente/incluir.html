@@ -1,55 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns="http://www.w3.org/1999/xhtml"
+ 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 		layout:decorator="layout">
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Insert title here</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  />
 		<link rel="stylesheet" type="text/css" href="/css/site.css" />
+		<script src="common-script.js"></script>
 	</head>
 	<body>
 
-		<form th:action="@{/clientes/incluir}" th:object="${cliente}" method="post">
-			<div class="container-form">
-				<div class="form-group">
-					<label class="control-label">Nome: </label>
-					<input class="form-control" th:field="*{nome}" type="text"/>
-				</div>
-				
-				<div class="form-group">
-					<label class="control-label">CPF: </label>
-			 		<input class="form-control" th:field="*{cpf}" type="text"/>
-				</div>
-				
-				<div class="form-group">
-			 		<label class="control-label">Email: </label>
-			 		<input class="form-control" th:field="*{email}" type="text"/>
-		 		</div>
-		 		
-		 		<div class="form-group">
-			 		<label class="control-label">Endereco: </label>
-			 		<input class="form-control" th:field="*{endereco}" type="text"/>
-		 		</div>
-		 		
-		 		<div class="form-group">
-			 		<label class="control-label">Bairro: </label>
-			 		<input class="form-control" th:field="*{bairro}" type="text"/>
-		 		</div>
-		 		
-		 		<div class="form-group">
-			 		<label class="control-label">Cep: </label>
-			 		<input class="form-control" th:field="*{cep}" type="text"/>
-		 		</div>
-		 		
-		 		<div class="form-group">
-			 		<label class="control-label">Cidade: </label>
-			 		<select class="form-control" th:field="*{idCidade}">
-		                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
-		            </select>
+		<div layout:fragment="content" class="margem-top-min centralizar">
+			<form th:action="@{/clientes/incluir}" th:object="${cliente}" method="post">
+				<div class="container-form">
+					<div class="form-group">
+						<label class="control-label">Nome: </label>
+						<input class="form-control" th:field="*{nome}" type="text"/>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">CPF: </label>
+				 		<input class="form-control" th:field="*{cpf}" type="text"/>
+					</div>
+					
+					<div class="form-group">
+				 		<label class="control-label">Email: </label>
+				 		<input class="form-control" th:field="*{email}" type="text"/>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label class="control-label">Endereco: </label>
+				 		<input class="form-control" th:field="*{endereco}" type="text"/>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label class="control-label">Bairro: </label>
+				 		<input class="form-control" th:field="*{bairro}" type="text"/>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label class="control-label">Cep: </label>
+				 		<input class="form-control" th:field="*{cep}" type="text"/>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label class="control-label">Cidade: </label>
+				 		<select class="form-control" th:field="*{idCidade}">
+			                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
+			            </select>
+		            </div>
+		             
+		            <button class="btn btn-primary" type="submit">Salvar</button>
 	            </div>
-	             
-	            <button type="submit">Salvar</button>
-            </div>
-		</form>	
-	
+			</form>	
+		</div>
 	</body>
 </html>
