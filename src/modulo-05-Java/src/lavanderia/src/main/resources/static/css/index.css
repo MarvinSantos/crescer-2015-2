@@ -1,9 +1,7 @@
 @CHARSET "UTF-8";
 
-body {
-	background-color: black;
-}
-
 .titulo{
 	color: grey;
+	margin-top: 14%;
+	text-align: center;
 }

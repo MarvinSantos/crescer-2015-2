@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+
+.margem-direita{
+	margin-right: 10px;
+}
+
+.margem-esquerda{
+	margin-left: 10px;
+}
+
+.block{
+	display: block;
+}
+
+.container-form{
+	width: 250px;
+	margin-left: 50px;
+}
+
+.margem-top{
+	margin-top: 20%;
+}
+
+.mensagem{
+	width: 250px;
+	height: auto;
+	border: 1px solid grey;
+}
+
+.pull-left{
+	float:left;
+}
+
+.pull-right{
+	float:right;
+}
+
+.superior{
+	margin-button: 70%;
+}
+
+.esquerda{
+	margin-left: 70%;
+}

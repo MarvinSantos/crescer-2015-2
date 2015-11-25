@@ -3,21 +3,41 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Insert title here</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  />
+		<link rel="stylesheet" type="text/css" href="/css/site.css" />
 	</head>
 	<body>
+		
+		
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Lavanderia</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/">Home</a></li>
+						<li class="active"><a href="/clientes">Clientes</a></li>
+						<li class="active"><a href="/clientes/incluir">Incluir</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 	
-		<div th:if="${not #lists.isEmpty(clientes)}" >
-			<table>
-			
-				<tr>
-	                <th>Id</th>
-	                <th>Nome</th>
-	                <th>Email</th>
-	                <th>CPF</th>
-	                <th>Visualizar</th>
-	                <th>Editar</th>
-	                <th>Remover</th>
-	            </tr>
+	
+		<div class="margem-top" th:if="${not #lists.isEmpty(clientes)}" >
+			<table class="table table-striped table-bordered table-hover">
+			    <thead>
+					<tr>
+		                <th>Id</th>
+		                <th>Nome</th>
+		                <th>Email</th>
+		                <th>CPF</th>
+		                <th>Visualizar</th>
+		                <th>Editar</th>
+		                <th>Remover</th>
+		            </tr>
+	            </thead>  
 	            <tr th:each="cliente : ${clientes}">
 	            	<td th:text="${cliente.id}"><a th:href="@{|/clientes/${cliente.id}|}"></a></td>
 	            	<td th:text="${cliente.nome}"></td>
@@ -30,6 +50,6 @@
 			
 			</table>		
 		</div>
-	
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</body>
 </html>
