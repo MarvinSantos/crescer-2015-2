@@ -46,21 +46,16 @@ public class ClienteService {
         return ClienteMapper.toDTO(cliente);
     }
 
-    public void atualizar(ClienteDTO dto) {
+    public void atualizar(ClienteDTO clienteDto) {
+        Cliente cliente= clienteDao.findById(clienteDto.getId());
+        ClienteMapper.merge(clienteDto, cliente);
+        cliente.setCidade(cidadeDao.findById(clienteDto.getIdCidade()));
 
-        Cliente entity = clienteDao.findById(dto.getId());
-
-        ClienteMapper.merge(dto, entity);
-
-        entity.setCidade(cidadeDao.findById(dto.getIdCidade()));
-
-        clienteDao.save(entity);
+        clienteDao.save(cliente);
     }
 
     public List<ClienteResumoDTO> listarClientesAtivos() {
-
         List<Cliente> clientes = clienteDao.findBySituacao(SituacaoCliente.ATIVO);
-
         List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
 
         for (Cliente cliente : clientes) {
@@ -69,5 +64,15 @@ public class ClienteService {
 
         return dtos;
     }
+
+	public void incluir(ClienteDTO cliente) {
+		Cliente clienteASalvar = ClienteMapper.getNewEntity(cliente);
+		clienteASalvar.setCidade(cidadeDao.findById(cliente.getIdCidade()));
+		clienteDao.save(clienteASalvar);	
+	}
+	
+	public void remover(ClienteDTO cliente){
+		clienteDao.remove(cliente.getId());
+	}
 
 }
