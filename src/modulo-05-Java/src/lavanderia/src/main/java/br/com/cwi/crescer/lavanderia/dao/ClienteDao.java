@@ -34,17 +34,18 @@ public class ClienteDao {
     public Cliente save(Cliente cliente) {
 
         if (cliente.getIdCliente() == null) {
-        	cliente.setSituacao(SituacaoCliente.ATIVO);
+            cliente.setSituacao(SituacaoCliente.ATIVO);
             em.persist(cliente);
-            
+
             return cliente;
         }
 
         return em.merge(cliente);
     }
-    
+
     @Transactional
-	public void remove(Long id){
-		em.remove(em.getReference(Cliente.class, id));
-	}
+    public void remove(Long id){
+        em.remove(em.getReference(Cliente.class, id));
+    }
+
 }
