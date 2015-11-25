@@ -9,27 +9,42 @@
 	
 			<div>
 				<label>ID: </label>
-				<label th:text="*{id}" type="text"/>
+				<label th:text="*{id}"></label>
 			</div>
 			
 			<div>
 				<label class="control-label">Nome: </label>
-				<label th:text="*{nome}" type="text" />
+				<label th:text="*{nome}"></label>
 			</div>
 			
 			<div>
 				<label class="control-label">CPF: </label>
-		 		<label th:text="*{cpf}" type="text"/>
+		 		<label th:text="*{cpf}"></label>
 			</div>
 			
 			<div>
 		 		<label class="control-label">Email: </label>
-		 		<label th:text="*{email}" type="text"/>
+		 		<label th:text="*{email}"></label>
+	 		</div>
+	 		
+	 		<div>
+		 		<label class="control-label">Endereco: </label>
+		 		<label th:text="*{endereco}"></label>
+	 		</div>
+	 		
+	 		<div>
+		 		<label class="control-label">Bairro: </label>
+		 		<label th:text="*{bairro}"></label>
+	 		</div>
+	 		
+	 		<div>
+		 		<label class="control-label">Cep: </label>
+		 		<label th:text="*{cep}"></label>
 	 		</div>
 	 		
 	 		<div>
 		 		<label class="control-label">Cidade: </label>
-		 		<select th:text="*{idCidade}" >
+		 		<select th:field="*{idCidade}" disabled="true">
 	                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
 	            </select>
             </div>
