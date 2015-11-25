@@ -65,14 +65,16 @@ public class ClienteService {
         return dtos;
     }
 
-	public void incluir(ClienteDTO cliente) {
-		Cliente clienteASalvar = ClienteMapper.getNewEntity(cliente);
-		clienteASalvar.setCidade(cidadeDao.findById(cliente.getIdCidade()));
-		clienteDao.save(clienteASalvar);	
-	}
-	
-	public void remover(ClienteDTO cliente){
-		clienteDao.remove(cliente.getId());
-	}
+    public void incluir(ClienteDTO cliente) {
+        Cliente clienteASalvar = ClienteMapper.getNewEntity(cliente);
+        clienteASalvar.setCidade(cidadeDao.findById(cliente.getIdCidade()));
+        clienteDao.save(clienteASalvar);
+    }
+
+    public void remover(ClienteDTO clienteDto) {
+        Cliente cliente = clienteDao.findById(clienteDto.getId());
+        cliente.setSituacao(SituacaoCliente.INATIVO);
+        clienteDao.save(cliente);
+    }
 
 }
