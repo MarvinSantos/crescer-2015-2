@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/clientes/remover}" th:object="${cliente}" method="post">
+	
+			<div>
+				<input th:field="*{id}" type="hidden"/>
+			</div>
+			
+			<div>
+				<label class="control-label">Nome: </label>
+				<input th:field="*{nome}" type="text" disabled="true"/>
+			</div>
+			
+			<div>
+				<label class="control-label">CPF: </label>
+		 		<input th:field="*{cpf}" type="text" disabled="true"/>
+			</div>
+			
+			<div>
+		 		<label class="control-label">Endereco: </label>
+		 		<input th:field="*{endereco}" type="text" disabled="true"/>
+	 		</div>
+	 		
+	 		<div>
+		 		<label class="control-label">Bairro: </label>
+		 		<input th:field="*{bairro}" type="text" disabled="true"/>
+	 		</div>
+	 		
+	 		<div>
+		 		<label class="control-label">Cep: </label>
+		 		<input th:field="*{cep}" type="text" disabled="true"/>
+	 		</div>
+			
+			<div>
+		 		<label class="control-label">Email: </label>
+		 		<input th:field="*{email}" type="text" disabled="true" />
+	 		</div>
+	 		
+	 		<div>
+		 		<label class="control-label">Cidade: </label>
+		 		<select th:field="*{idCidade}" disabled="true">
+	                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
+	            </select>
+            </div>
+             
+            <button type="submit">remover</button>
+             
+		</form>
+		 
+		 <h3>voce tem certeza que quer remover este cliente?</h3>
+		 
+		<form th:action="@{/clientes}">
+			<button type="submit">cancelar</button>
+		</form>
+
+</body>
+</html>
