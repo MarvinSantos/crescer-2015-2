@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns="http://www.w3.org/1999/xhtml"
+ 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 		layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  />
+		<link rel="stylesheet" type="text/css" href="/css/site.css" />
+		<script src="common-script.js"></script>
+	</head>
+	<body>
+		
+				<div class="container-form">
+					<div class="form-group">
+						<input class="form-control" th:field="*{id}" type="hidden" />
+					</div>
+					
+					<div class="form-group">
+						<label class="control-lable">Nome: </label>
+						<input class="form-control" th:field="*{nome}" type="text"/>
+					</div>
+					
+					<div class="form-group">
+						<label>CPF: </label>
+				 		<input class="form-control" th:field="*{cpf}" type="text"/>
+					</div>
+					
+					<div class="form-group">
+				 		<label>Email: </label>
+				 		<input class="form-control" th:field="*{email}" type="text"/>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label>Endereco: </label>
+				 		<input class="form-control" th:field="*{endereco}" type="text"/>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label>Bairro: </label>
+				 		<input class="form-control" th:field="*{bairro}" type="text"/>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label>Cep: </label>
+				 		<input class="form-control" th:field="*{cep}" type="text"/>
+			 		</div>
+			 		
+			 		<div class="form-group">
+				 		<label>Cidade: </label>
+				 		<select class="form-control" th:field="*{idCidade}">
+			                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
+			            </select>
+		            </div>
+		             
+		            <button class="btn btn-primary" type="submit">Salvar</button>
+		        </div>
+			
+	</body>
+</html>
