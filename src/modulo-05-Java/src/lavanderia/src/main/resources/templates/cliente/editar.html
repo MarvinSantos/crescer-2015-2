@@ -13,46 +13,54 @@
 	<body>
 		<div layout:fragment="content" class="centralizar margem-top-min">
 			<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post">
-				<div class="container-form">
-					<div class="form-group">
+				<div class="container-form" th:fragment="form-manter">
+					<div class="form-group" th:classappend="${#fields.hasErrors('id')} ? 'has-error'">
 						<input class="form-control" th:field="*{id}" type="hidden" />
+						<span class="help-inline" th:errors="*{id}"></span>
 					</div>
 					
-					<div class="form-group">
+					<div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? 'has-error'">
 						<label class="control-lable">Nome: </label>
 						<input class="form-control" th:field="*{nome}" type="text"/>
+						<span class="help-inline" th:errors="*{nome}"></span>
 					</div>
 					
-					<div class="form-group">
+					<div class="form-group" th:classappend="${#fields.hasErrors('cpf')} ? 'has-error'">
 						<label>CPF: </label>
 				 		<input class="form-control" th:field="*{cpf}" type="text"/>
+				 		<span class="help-inline" th:errors="*{cpf}"></span>
 					</div>
 					
-					<div class="form-group">
+					<div class="form-group" th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
 				 		<label>Email: </label>
 				 		<input class="form-control" th:field="*{email}" type="text"/>
+				 		<span class="help-inline" th:errors="*{email}"></span>
 			 		</div>
 			 		
-			 		<div class="form-group">
+			 		<div class="form-group" th:classappend="${#fields.hasErrors('endereco')} ? 'has-error'">
 				 		<label>Endereco: </label>
 				 		<input class="form-control" th:field="*{endereco}" type="text"/>
+				 		<span class="help-inline" th:errors="*{endereco}"></span>
 			 		</div>
 			 		
-			 		<div class="form-group">
+			 		<div class="form-group" th:classappend="${#fields.hasErrors('bairro')} ? 'has-error'">
 				 		<label>Bairro: </label>
 				 		<input class="form-control" th:field="*{bairro}" type="text"/>
+				 		<span class="help-inline" th:errors="*{bairro}"></span>
 			 		</div>
 			 		
-			 		<div class="form-group">
+			 		<div class="form-group" th:classappend="${#fields.hasErrors('cep')} ? 'has-error'">
 				 		<label>Cep: </label>
 				 		<input class="form-control" th:field="*{cep}" type="text"/>
+				 		<span class="help-inline" th:errors="*{cep}"></span>
 			 		</div>
 			 		
-			 		<div class="form-group">
+			 		<div class="form-group" th:classappend="${#fields.hasErrors('idCidade')} ? 'has-error'">
 				 		<label>Cidade: </label>
 				 		<select class="form-control" th:field="*{idCidade}">
 			                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
 			            </select>
+			            <span class="help-inline" th:errors="*{idCidade}"></span>
 		            </div>
 		             
 		            <button class="btn btn-primary" type="submit">Salvar</button>
