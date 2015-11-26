@@ -10,7 +10,12 @@
 		
 		<div layout:fragment="content">
 			<h1 class="titulo" >Bem vindo à lavanderia crescer</h1>
-			
+			<div class="pull-center" sec:authorize="hasRole('ROLE_USER')">
+				<h4>você é um usuario comum, conviva com isso <span sec:authentication="name"></span></h4>
+			</div >
+			<div class="pull-center" sec:authorize="hasRole('ROLE_ADMIN')">
+				<h4>você é um usuario adm, parabéns <span sec:authentication="name"></span></h4>
+			</div>
 		</div>
 					
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
