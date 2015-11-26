@@ -5,7 +5,7 @@
  		layout:decorator="layout">
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Insert title here</title>
+		<title>Detalhes do cliente</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  />
 		<link rel="stylesheet" type="text/css" href="/css/site.css" />
 		<script src="common-script.js"></script>
@@ -14,46 +14,49 @@
 		<div layout:fragment="content" class="margem-top-min centralizar">
 			<form class="form-group" th:object="${cliente}">
 				<div class="container">
-					<div class="form-group ">
-						<label class="label label-primary margem-direita">ID </label>
-						<label th:text="*{id}"></label>
-					</div>
-					
-					<div class="form-group">
-						<label class="label label-primary margem-direita">Nome </label>
+				
+					<div class="form-group linha">
+						<label class="control-label margem-direita coluna">Nome </label>
 						<label th:text="*{nome}"></label>
+						<hr/>
 					</div>
 					
-					<div class="form-group">
-						<label class="label label-primary margem-direita">CPF </label>
+					<div class="form-group linha">
+						<label class="control-label margem-direita coluna">CPF </label>
 				 		<label th:text="*{cpf}"></label>
+				 		<hr/>
 					</div>
 					
-					<div class="form-group">
-				 		<label class="label label-primary margem-direita">Email </label>
+					<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Email </label>
 				 		<label th:text="*{email}"></label>
+				 		<hr/>
 			 		</div>
 			 		
-			 		<div class="form-group">
-				 		<label class="label label-primary margem-direita">Endereco </label>
+			 		<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Endereco </label>
 				 		<label th:text="*{endereco}"></label>
+				 		<hr/>
 			 		</div>
 			 		
-			 		<div class="form-group">
-				 		<label class="label label-primary margem-direita">Bairro </label>
+			 		<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Bairro </label>
 				 		<label th:text="*{bairro}"></label>
+				 		<hr/>
 			 		</div>
 			 		
-			 		<div class="form-group">
-				 		<label class="label label-primary margem-direita">Cep </label>
+			 		<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Cep </label>
 				 		<label th:text="*{cep}"></label>
+				 		<hr/>
 			 		</div>
 			 		
-			 		<div class="form-group">
-				 		<label class="label label-primary margem-direita">Cidade </label>
+			 		<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Cidade </label>
 				 		<select th:field="*{idCidade}" disabled="true">
 			                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
 			            </select>
+			            <hr/>
 		            </div>
 		        </div>     
 			</form>

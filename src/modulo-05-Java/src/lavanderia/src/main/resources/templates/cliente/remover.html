@@ -5,14 +5,14 @@
  		layout:decorator="layout">
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Insert title here</title>
+		<title>Desativar</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  />
 		<link rel="stylesheet" type="text/css" href="/css/site.css" />
 		<script src="common-script.js"></script>
 	</head>
 	<body>
 	
-		<h3 style="text-align:center;">voce tem certeza que quer remover este cliente?</h3>
+		<h3 style="text-align:center;">voce tem certeza que quer desativar este cliente?</h3>
 		<div layout:fragment="content" class="centralizar margem-top-min">
 			<form th:action="@{/clientes/remover}" th:object="${cliente}" method="post">
 				<div class="container-form">
@@ -58,7 +58,7 @@
 			            </select>
 		            </div>
 		             
-		            <button class="btn btn-primary pull-left" type="submit">remover</button>
+		            <button class="btn btn-primary pull-left" type="submit">desativar</button>
 		        </div>   
 			</form>		
 			

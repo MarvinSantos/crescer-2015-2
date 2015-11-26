@@ -13,7 +13,7 @@
 	<body>
 	
 		<div layout:fragment="content">
-			<div class="margem-top-min centralizar" th:if="${menssagemFlash != null}">
+			<div class="margem-top-min centralizar alert alert-info" th:if="${menssagemFlash != null}">
 				<p th:text="${menssagemFlash}"></p>
 			</div>
 			<div class="margem-top" th:if="${not #lists.isEmpty(clientes)}" >
@@ -26,7 +26,7 @@
 			                <th>CPF</th>
 			                <th>Visualizar</th>
 			                <th>Editar</th>
-			                <th>Remover</th>
+			                <th>Desativar</th>
 			            </tr>
 		            </thead>  
 		            <tr th:each="cliente : ${clientes}">
@@ -36,7 +36,7 @@
 		            	<td th:text="${cliente.cpf}"></td>
 		            	<td><a th:href="@{|/clientes/${cliente.id}|}">visualizar</a></td>
 		            	<td><a th:href="@{|/clientes/editar/${cliente.id}|}">editar</a></td>
-		            	<td><a th:href="@{|/clientes/remover/${cliente.id}|}">remover</a></td>
+		            	<td><a th:href="@{|/clientes/remover/${cliente.id}|}">desativar</a></td>
 		            </tr>			
 				
 				</table>		

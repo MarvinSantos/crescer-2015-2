@@ -51,3 +51,15 @@
 	margin-left: 35%;
 	width:40%;
 }
+
+.coluna{
+	width: 150px;
+	font-size: 17px;
+	color: black;
+}
+
+.linha{
+	width: 500px;
+	color: #5c5c5c;
+}
+
