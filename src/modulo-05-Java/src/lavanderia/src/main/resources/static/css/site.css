@@ -25,6 +25,11 @@
 	margin-top: 7%;
 }
 
+.grid-cliente{
+	width: 90%;
+	margin-left: 5%;	
+}
+
 .mensagem{
 	width: 250px;
 	height: auto;
@@ -61,5 +66,9 @@
 .linha{
 	width: 500px;
 	color: #5c5c5c;
+}
+
+.pull-center{
+	text-align:center;	
 }
 
