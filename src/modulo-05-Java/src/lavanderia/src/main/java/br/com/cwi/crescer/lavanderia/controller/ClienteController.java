@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,62 +46,62 @@ public class ClienteController {
         return new ModelAndView("cliente/exibe", "cliente", clienteService.buscarClientePorId(id));
     }
 
-    
-    
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/editar/{id}", method = RequestMethod.GET)
     public ModelAndView edita(@PathVariable("id") Long id) {
         return new ModelAndView("cliente/editar", "cliente", clienteService.buscarClientePorId(id));
     }
 
-    
-    
-    
+
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
     public ModelAndView editarSalvando(@Valid @ModelAttribute("cliente")ClienteDTO cliente,
-    					BindingResult result,
-    		            final RedirectAttributes redirectAttributes) {
-    	
-    	if (result.hasErrors()) {
-    	    return new ModelAndView("cliente/editar");
-    	}
-    	
+            BindingResult result,
+            final RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            return new ModelAndView("cliente/editar");
+        }
+
         clienteService.atualizar(cliente);
         redirectAttributes.addFlashAttribute("menssagemFlash", "Editado Com Sucesso");
         return new ModelAndView("redirect:/clientes");
     }
 
-    
-    
+
+
     @RequestMapping(path = "/incluir",method = RequestMethod.GET )
     public ModelAndView viewInlcuir(ClienteDTO cliente) {
         return new ModelAndView("cliente/incluir", "cliente", new ClienteDTO());
     }
 
-    
-    
+
+
     @RequestMapping(path = "/incluir", method = RequestMethod.POST)
     public ModelAndView incluir(@Valid @ModelAttribute("cliente")ClienteDTO cliente,
-    		BindingResult result,
-    		final RedirectAttributes redirectAttributes) {
-    	
-    	if (result.hasErrors()) {
-    	    return new ModelAndView("cliente/incluir");
-    	}
-    	
+            BindingResult result,
+            final RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            return new ModelAndView("cliente/incluir");
+        }
+
         clienteService.incluir(cliente);
         redirectAttributes.addFlashAttribute("menssagemFlash", "Adicionado Com Sucesso");
         return new ModelAndView("redirect:/clientes");
     }
-    
-    
+
+
 
     @RequestMapping(path = "/remover/{id}", method = RequestMethod.GET)
     public ModelAndView removerView(@PathVariable("id") Long id) {
         return new ModelAndView("cliente/remover", "cliente", clienteService.buscarClientePorId(id) );
     }
-    
-    
-    
+
+
+
 
     @RequestMapping(path = "/remover", method = RequestMethod.POST)
     public ModelAndView remover(ClienteDTO cliente,
@@ -111,8 +112,8 @@ public class ClienteController {
         return new ModelAndView("redirect:/clientes");
     }
 
-    
-    
+
+
     @ModelAttribute("cidades")
     public List<Cidade> comboCidades() {
         return cidadeService.listar();
