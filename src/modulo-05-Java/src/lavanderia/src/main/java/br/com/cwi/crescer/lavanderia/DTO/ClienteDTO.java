@@ -2,6 +2,12 @@ package br.com.cwi.crescer.lavanderia.DTO;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.*;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -10,25 +16,28 @@ public class ClienteDTO {
     private Long id;
 
     @NotBlank
+    @Length(max = 70)
     private String nome;
 
+    @Length(max = 11, min = 11)
     @NotBlank
     @CPF
     private String cpf;
 
-    @NotBlank
+    @Length(max = 100)
+    @Email
     private String email;
 
-    @NotBlank
+    @Length(max = 50)
     private String endereco;
 
-    @NotBlank
+    @Length(max = 50)
     private String bairro;
 
-    @NotBlank
+    @NotNull
     private Long idCidade;
 
-    @NotBlank
+    @NotNull
     private BigDecimal cep;
 
     public Long getId() {
