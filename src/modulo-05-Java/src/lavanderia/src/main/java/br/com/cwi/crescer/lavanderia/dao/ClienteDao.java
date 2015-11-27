@@ -30,11 +30,14 @@ public class ClienteDao {
         return em.createQuery("FROM Cliente c WHERE c.situacao = :situacao", Cliente.class).setParameter("situacao", situacao).getResultList();
     }
 
+    public List<Cliente> findAll() {
+        return em.createQuery("FROM Cliente", Cliente.class).getResultList();
+    }
+
     @Transactional
     public Cliente save(Cliente cliente) {
 
         if (cliente.getIdCliente() == null) {
-            cliente.setSituacao(SituacaoCliente.ATIVO);
             em.persist(cliente);
 
             return cliente;
@@ -46,6 +49,14 @@ public class ClienteDao {
     @Transactional
     public void remove(Long id){
         em.remove(em.getReference(Cliente.class, id));
+    }
+
+    public List<Cliente> listarPorNomeParcial(String nome) {
+
+        return em.createQuery("FROM Cliente c WHERE c.nome LIKE :nome", Cliente.class)
+                .setParameter("nome", nome + "%")
+                .getResultList();
+
     }
 
 }

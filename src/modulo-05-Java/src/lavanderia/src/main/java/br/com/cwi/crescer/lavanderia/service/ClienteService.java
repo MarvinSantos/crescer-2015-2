@@ -54,8 +54,8 @@ public class ClienteService {
         clienteDao.save(cliente);
     }
 
-    public List<ClienteResumoDTO> listarClientesAtivos() {
-        List<Cliente> clientes = clienteDao.findBySituacao(SituacaoCliente.ATIVO);
+    public List<ClienteResumoDTO> listarClientes() {
+        List<Cliente> clientes = clienteDao.findAll();
         List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
 
         for (Cliente cliente : clientes) {
@@ -68,6 +68,7 @@ public class ClienteService {
     public void incluir(ClienteDTO cliente) {
         Cliente clienteASalvar = ClienteMapper.getNewEntity(cliente);
         clienteASalvar.setCidade(cidadeDao.findById(cliente.getIdCidade()));
+        clienteASalvar.setSituacao(SituacaoCliente.ATIVO);
         clienteDao.save(clienteASalvar);
     }
 
@@ -75,6 +76,24 @@ public class ClienteService {
         Cliente cliente = clienteDao.findById(clienteDto.getId());
         cliente.setSituacao(SituacaoCliente.INATIVO);
         clienteDao.save(cliente);
+    }
+
+    public List<SituacaoCliente> listarSituacoes() {
+        ArrayList<SituacaoCliente> situacoes = new ArrayList<SituacaoCliente>();
+        situacoes.add(SituacaoCliente.ATIVO);
+        situacoes.add(SituacaoCliente.INATIVO);
+        return situacoes;
+    }
+
+    public List<ClienteResumoDTO> listarPorNomeParcial(String nome) {
+        List<Cliente> clientes = clienteDao.listarPorNomeParcial(nome);
+        List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
+
+        for (Cliente cliente : clientes) {
+            dtos.add(new ClienteResumoDTO(cliente));
+        }
+
+        return dtos;
     }
 
 }

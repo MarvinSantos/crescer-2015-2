@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cwi.crescer.lavanderia.DTO.ClienteDTO;
 import br.com.cwi.crescer.lavanderia.domain.Cidade;
+import br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente;
 import br.com.cwi.crescer.lavanderia.service.CidadeService;
 import br.com.cwi.crescer.lavanderia.service.ClienteService;
 
@@ -36,7 +38,7 @@ public class ClienteController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView listar() {
 
-        return new ModelAndView("cliente/lista", "clientes", clienteService.listarClientesAtivos());
+        return new ModelAndView("cliente/lista", "clientes", clienteService.listarClientes());
 
     }
 
@@ -44,6 +46,12 @@ public class ClienteController {
     public ModelAndView exibe(@PathVariable("id") Long id) {
 
         return new ModelAndView("cliente/exibe", "cliente", clienteService.buscarClientePorId(id));
+    }
+
+    @RequestMapping(path = "/pesquisar", method = RequestMethod.GET)
+    public ModelAndView exibePorNome(@RequestParam("nome") String nome) {
+
+        return new ModelAndView("cliente/lista", "clientes", clienteService.listarPorNomeParcial(nome));
     }
 
 
@@ -117,6 +125,11 @@ public class ClienteController {
     @ModelAttribute("cidades")
     public List<Cidade> comboCidades() {
         return cidadeService.listar();
+    }
+
+    @ModelAttribute("situacoes")
+    public List<SituacaoCliente> comboSituacoes() {
+        return clienteService.listarSituacoes();
     }
 
 }

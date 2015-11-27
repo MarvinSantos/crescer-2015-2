@@ -52,6 +52,12 @@
 			 		</div>
 			 		
 			 		<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Situacao </label>
+				 		<label th:text="*{situacao}"></label>
+				 		<hr/>
+			 		</div>
+			 		
+			 		<div class="form-group linha">
 				 		<label class="control-label margem-direita coluna">Cidade </label>
 				 		<select th:field="*{idCidade}" disabled="true">
 			                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>

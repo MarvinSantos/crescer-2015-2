@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import br.com.cwi.crescer.lavanderia.DTO.UserDTO;
 import br.com.cwi.crescer.lavanderia.domain.Authorities;
-import br.com.cwi.crescer.lavanderia.domain.Cidade;
 import br.com.cwi.crescer.lavanderia.service.AuthoritiesService;
 import br.com.cwi.crescer.lavanderia.service.UserService;
 
@@ -26,10 +26,10 @@ import br.com.cwi.crescer.lavanderia.service.UserService;
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class UserController {
 
-	
-	private UserService userService;
-	private AuthoritiesService authoritiesService;
-    
+
+    private UserService userService;
+    private AuthoritiesService authoritiesService;
+
 
     @Autowired
     public UserController(UserService userService, AuthoritiesService authoritiesService) {
@@ -51,7 +51,7 @@ public class UserController {
     }
 
 
-    
+
     @RequestMapping(path = "/editar/{id}", method = RequestMethod.GET)
     public ModelAndView edita(@PathVariable("id") String id) {
         return new ModelAndView("user/editar", "user", userService.buscarPorId(id));
@@ -59,7 +59,7 @@ public class UserController {
 
 
 
- 
+
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
     public ModelAndView editarSalvando(@Valid @ModelAttribute("user")UserDTO user,
             BindingResult result,
@@ -115,10 +115,10 @@ public class UserController {
         userService.remover(user);
         return new ModelAndView("redirect:/users");
     }
-    
+
     @ModelAttribute("permissoes")
     public List<Authorities> comboAuthorities() {
         return authoritiesService.listar();
     }
-	
+
 }

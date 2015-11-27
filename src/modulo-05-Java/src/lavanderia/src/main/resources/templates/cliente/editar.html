@@ -55,6 +55,14 @@
 				 		<span class="help-inline" th:errors="*{cep}"></span>
 			 		</div>
 			 		
+			 		<div class="form-group" th:classappend="${#fields.hasErrors('situacao')} ? 'has-error'">
+				 		<label>Situacao: </label>
+				 		<select class="form-control" th:field="*{situacao}">
+			                <option th:each="situacao : ${situacoes}" th:text="${situacao}" th:value="${situacao}" ></option>
+			            </select>
+			            <span class="help-inline" th:errors="*{situacao}"></span>
+		            </div>
+			 		
 			 		<div class="form-group" th:classappend="${#fields.hasErrors('idCidade')} ? 'has-error'">
 				 		<label>Cidade: </label>
 				 		<select class="form-control" th:field="*{idCidade}">
