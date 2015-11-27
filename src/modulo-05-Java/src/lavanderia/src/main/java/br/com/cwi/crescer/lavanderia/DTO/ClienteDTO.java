@@ -4,10 +4,12 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.*;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
+
+import br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente;
 
 public class ClienteDTO {
 
@@ -37,6 +39,17 @@ public class ClienteDTO {
 
     @NotNull
     private BigDecimal cep;
+
+    @NotNull
+    private SituacaoCliente situacao;
+
+    public SituacaoCliente getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoCliente situacao) {
+        this.situacao = situacao;
+    }
 
     public Long getId() {
         return id;
