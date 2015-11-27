@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns="http://www.w3.org/1999/xhtml"
+ 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 		layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Incluir novo Usuario</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  />
+		<link rel="stylesheet" type="text/css" href="/css/site.css" />
+		<script src="common-script.js"></script>
+	</head>
+	<body>
+
+		<div layout:fragment="content" class="margem-top-min centralizar">
+			<h2 class="margem-top">Incluir</h2>
+			<form th:action="@{/users/incluir}" th:object="${user}" method="post">
+				<div class="container-form" th:include="user/editar :: form-manter-user">
+					
+		             	            
+	            </div>
+			</form>	
+		</div>
+	</body>
+</html>
