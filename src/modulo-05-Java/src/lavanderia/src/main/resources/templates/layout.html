@@ -21,13 +21,13 @@
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="/">Home</a></li>
 							<li class="active"><a href="/clientes">Clientes</a></li>
-							<li class="active"><a href="/clientes/incluir">Incluir</a></li>
-							<li class="active"><a href="/login">Login</a></li>
+							<li class="active"><a href="/login">Login</a></li>					
+							<li class="active" sec:authorize="hasRole('ROLE_ADMIN')"><a href="/users">Usuarios</a></li>
 							<li class="active" sec:authorize="isAuthenticated()">
 								<form th:action="@{/logout}" method="post">
 									<input type="submit" id="logout" value="Logout" class="btn btn-primary" />
 								</form>
-							</li>
+							</li>			
 						</ul>
 					</div>
 				</div>
