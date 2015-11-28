@@ -16,7 +16,7 @@
 			<div class="margem-top-min centralizar alert alert-info" th:if="${menssagemFlash != null}">
 				<p th:text="${menssagemFlash}"></p>
 			</div>
-			<div class="margem-top">
+			<div class="margem-top" sec:authorize="hasRole('ROLE_ADMIN')">
 				<a class="btn btn-primary pull-right margem-dir" type="submit" th:href="@{|/produtos/incluir|}">Incluir</a>
 			</div>
 			<h2 class="margem-top pull-center">Produtos</h2>
@@ -30,8 +30,7 @@
 			                <th>Situacao</th>
 			                <th>Material</th>
 			                <th>Servico</th>
-			                <th>Visualizar</th>
-			                <th>Editar</th>
+			                <th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
 			            </tr>
 		            </thead>  
 		            <tr th:each="produto : ${produtos}">
@@ -39,9 +38,8 @@
 		            	<td th:text="${produto.prazo}"></td>
 		            	<td th:text="${produto.situacao}"></td>
 		            	<td th:text="${produto.material.descricao}"></td>
-		            	<td th:text="${produto.servico.descricao}"></td>
-		            	<td><a th:href="@{|/produtos/${produto.idProduto}|}">visualizar</a></td>
-		            	<td><a th:href="@{|/produtos/editar/${produto.idProduto}|}">editar</a></td>
+		            	<td th:text="${produto.servico.descricao}"></td>		         
+		            	<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{|/produtos/editar/${produto.idProduto}|}">editar</a></td>
 		            </tr>			
 				
 				</table>		
