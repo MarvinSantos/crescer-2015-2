@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns="http://www.w3.org/1999/xhtml"
+ 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 		layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Pedidos</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  />
+		<link rel="stylesheet" type="text/css" href="/css/site.css" />
+		<script src="common-script.js"></script>
+	</head>
+	<body>
+	
+		<div layout:fragment="content">
+			<div class="margem-top-min centralizar alert alert-info" th:if="${menssagemFlash != null}">
+				<p th:text="${menssagemFlash}"></p>
+			</div>
+	
+			<div class="margem-top">
+				<a class="btn btn-primary pull-right margem-dir" type="submit" th:href="@{|/pedidos/incluir|}">Incluir</a>
+			</div>
+			<h2 class="margem-top pull-center">Pedidos</h2>
+			
+			<div class="grid-cliente" th:if="${not #lists.isEmpty(pedidos)}" >
+				<table class="table table-striped table-bordered table-hover">
+				    <thead>
+						<tr>
+			                <th>Nome Cliente</th>
+			                <th>CPF Cliente</th>
+			                <th>Data Inclusão</th>
+			                <th>Valor Total Bruto</th>
+			                <th>Situacao</th>
+			                <th>Visualisar</th>
+			                <th>Editar</th>
+			            </tr>
+		            </thead>  
+		            <tr th:each="pedido : ${pedidos}">
+		            	<td th:text="${pedido.cliente.nome}"><a th:href="@{|/clientes/${pedido.cliente.id}|}"></a></td>
+		            	<td th:text="${pedido.cliente.cpf}"></td>
+		            	<td th:text="${pedido.dataInclusao}"></td>
+		            	<td th:text="${pedido.valorBruto}"></td>
+		            	<td th:text="${pedido.situacao}"> </td>
+		            	<td><a th:href="@{|/pedidos/${pedido.idPedido}|}">visualizar</a></td>	
+		            	<td ><a th:if="${pedido.situacaoName == 'PENDENTE'}" th:href="@{|/pedidos/editar/${pedido.idPedido}|}">editar</a></td>	            
+		            </tr>			
+				
+				</table>		
+			</div>
+		</div>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	</body>
+</html>
