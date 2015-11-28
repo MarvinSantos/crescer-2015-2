@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns="http://www.w3.org/1999/xhtml"
+ 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 		layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Escolher cliente</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  />
+		<link rel="stylesheet" type="text/css" href="/css/site.css" />
+		<script src="common-script.js"></script>
+	</head>
+	<body>
+		<div layout:fragment="content" class="centralizar margem-top-min">
+			<form th:action="@{/pedidos/incluir}" th:object="${pedido}" method="post">
+				<div class="container-form">
+					
+			 		<div class="form-group" th:classappend="${#fields.hasErrors('idCliente')} ? 'has-error'">
+				 		<label>Cliente: </label>
+				 		<select class="form-control" th:field="*{idCliente}">
+			                <option th:each="cliente : ${clientes}" th:text="${cliente.nome}" th:value="${cliente.idCliente}" ></option>
+			            </select>
+			            <span class="help-inline" th:errors="*{idCliente}"></span>
+		            </div>
+		             
+		        </div>
+		        <button class="btn btn-primary" type="submit">Escolher</button>
+			</form>
+		</div>
+	</body>
+</html>
