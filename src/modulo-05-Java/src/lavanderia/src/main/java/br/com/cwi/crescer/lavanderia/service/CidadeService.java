@@ -35,7 +35,7 @@ public class CidadeService {
     }
 
     public List<Cidade> listar() {
-        // TODO Auto-generated method stub
+        
         return cidadeDao.listAll();
     }
 }
