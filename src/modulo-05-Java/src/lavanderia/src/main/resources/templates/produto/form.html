@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns="http://www.w3.org/1999/xhtml"
+ 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 		layout:decorator="layout">
+	<head>
+	</head>
+	<body>
+		<div th:fragment="form-manter">
+			<div class="form-group" th:classappend="${#fields.hasErrors('idProduto')} ? 'has-error'">
+				<input class="form-control" th:field="*{idProduto}" type="hidden" />
+				<span class="help-inline" th:errors="*{idProduto}"></span>
+			</div>
+						
+			<div class="form-group" th:classappend="${#fields.hasErrors('valor')} ? 'has-error'">
+				<label class="control-lable">Valor: </label>
+				<input class="form-control" th:field="*{valor}" type="text"/>
+				<span class="help-inline" th:errors="*{valor}"></span>
+			</div>
+						
+			<div class="form-group" th:classappend="${#fields.hasErrors('prazo')} ? 'has-error'">
+				<label>Prazo: </label>
+		 		<input class="form-control" th:field="*{prazo}" type="text"/>
+		 		<span class="help-inline" th:errors="*{prazo}"></span>
+			</div>
+			             
+		</div>			
+	</body>
+</html>
