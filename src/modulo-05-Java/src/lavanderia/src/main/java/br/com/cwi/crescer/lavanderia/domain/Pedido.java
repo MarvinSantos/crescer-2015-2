@@ -51,17 +51,40 @@ public class Pedido {
     @Temporal(value = TemporalType.DATE)
     private Date dataEntrega;
 
-    @Column(name="Valor")
+    @Column(name="VALORBruto")
     @Basic(optional = false)
-    private BigDecimal valor;
+    private BigDecimal valorBruto;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name="Situacao",length = 1)
     private PedidoSituacao situacao;
+    
+    @Column(name="VALORDesconto")
+    private BigDecimal valorDesconto;
+    
+    @Column(name="VALORFinal")
+    private BigDecimal valorFinal;
+
 
     public static enum PedidoSituacao {
         PENDENTE, PROCESSANDO, PROCESSADO, ENCERRADO, CANCELADO
     }
+    
+    public BigDecimal getValorFinal() {
+		return valorFinal;
+	}
+    
+    public void setValorFinal(BigDecimal valorFinal) {
+		this.valorFinal = valorFinal;
+	}
+    
+    public BigDecimal getValorDesconto() {
+		return valorDesconto;
+	}
+    
+    public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
 
     public Long getIdPedido() {
         return idPedido;
@@ -95,12 +118,12 @@ public class Pedido {
         this.dataEntrega = dataEntrega;
     }
 
-    public BigDecimal getValor() {
-        return valor;
+    public BigDecimal getValorBruto() {
+        return valorBruto;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
+    public void setValorBruto(BigDecimal valor) {
+        this.valorBruto = valor;
     }
 
     public PedidoSituacao getSituacao() {
