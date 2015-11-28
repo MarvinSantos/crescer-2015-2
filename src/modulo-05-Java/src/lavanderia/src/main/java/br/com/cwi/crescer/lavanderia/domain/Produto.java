@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente;
 
 @Entity
 @Table(name="Produto")
@@ -41,6 +45,18 @@ public class Produto {
     @Column(name="Valor")
     @Basic(optional = false)
     private BigDecimal valor;
+    
+    @Column(name="Prazo")
+    @Basic(optional = false)
+    private BigDecimal prazo;
+    
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "Situacao", length = 1)
+    private SituacaoProduto situacao;
+
+    public static enum SituacaoProduto {
+        ATIVO, INATIVO
+    }
 
     @OneToMany(mappedBy="produto")
     private List<Item> itens;
@@ -48,6 +64,22 @@ public class Produto {
     public Long getIdProduto() {
         return idProduto;
     }
+    
+    public void setPrazo(BigDecimal prazo) {
+		this.prazo = prazo;
+	}
+    
+    public BigDecimal getPrazo() {
+		return prazo;
+	}
+    
+    public void setSituacao(SituacaoProduto situacao) {
+		this.situacao = situacao;
+	}
+    
+    public SituacaoProduto getSituacao() {
+		return situacao;
+	}
 
 
     public void setIdProduto(Long idProduto) {
