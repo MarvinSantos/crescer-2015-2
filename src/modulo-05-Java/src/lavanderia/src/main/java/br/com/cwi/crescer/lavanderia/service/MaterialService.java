@@ -1,7 +1,10 @@
 package br.com.cwi.crescer.lavanderia.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import br.com.cwi.crescer.lavanderia.dao.MaterialDao;
 import br.com.cwi.crescer.lavanderia.domain.Material;
@@ -17,6 +20,10 @@ public class MaterialService {
 		this.materialDao = materialDao;
 	}
 	
+	public Material buscarPorId(Long id) {
+		Material material = materialDao.findById(id);
+	    return  material;
+	}
 	
 	public String buscarDescricao(Long id){
 		String descricao;
@@ -30,5 +37,10 @@ public class MaterialService {
 		}
 		
 		return descricao.toUpperCase();
+	}
+	
+	
+	public List<Material> listar(){
+		return materialDao.listAll();
 	}
 }
