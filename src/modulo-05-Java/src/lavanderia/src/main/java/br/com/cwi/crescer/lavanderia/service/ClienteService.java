@@ -95,5 +95,9 @@ public class ClienteService {
 
         return dtos;
     }
+    
+    public List<Cliente> listar(){
+    	return clienteDao.findAll();
+    }
 
 }
