@@ -64,8 +64,13 @@ public class ProdutoController {
             return new ModelAndView("produto/incluir");
         }
 
-        produtoService.incluir(produto);
-        redirectAttributes.addFlashAttribute("menssagemFlash", "Adicionado Com Sucesso");
+        boolean deuCerto = produtoService.incluir(produto);
+        if(deuCerto){
+        	redirectAttributes.addFlashAttribute("menssagemFlash", "Adicionado Com Sucesso");
+        }else{
+        	redirectAttributes.addFlashAttribute("menssagemFlash", "O produto já existe");
+        }
+        
         return new ModelAndView("redirect:/produtos");
     }
     

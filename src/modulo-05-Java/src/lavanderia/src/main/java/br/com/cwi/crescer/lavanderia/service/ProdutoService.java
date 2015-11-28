@@ -53,14 +53,21 @@ public class ProdutoService {
         return valor;
     }
 
-	public void incluir(ProdutoDTO produto) {	
+	public boolean incluir(ProdutoDTO produto) {
+		
 		Produto produtoASalvar = ProdutoMapper.getNewEntity(produto);
 		Material material = materialDao.findById(produto.getMaterial());
 		Servico servico = servicoDao.findById(produto.getServico());
 		produtoASalvar.setMaterial(material);
 		produtoASalvar.setServico(servico);
-		produtoASalvar.setSituacao(SituacaoProduto.ATIVO);
-		produtoDao.save(produtoASalvar);
+		if(!produtoExiste(produtoASalvar)){	
+			produtoASalvar.setSituacao(SituacaoProduto.ATIVO);
+			produtoDao.save(produtoASalvar);
+			return true;
+		}else{
+			return false;
+		}
+		
 		
 	}
 
@@ -97,6 +104,15 @@ public class ProdutoService {
         situacoes.add(SituacaoProduto.ATIVO);
         situacoes.add(SituacaoProduto.INATIVO);
         return situacoes;
+	}
+	
+	public boolean produtoExiste(Produto produto){
+		Produto produto2 = produtoDao.buscarPorMaterialEServico(produto);
+		if(produto2 != null){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	
