@@ -17,9 +17,13 @@ import br.com.cwi.crescer.lavanderia.DTO.ItemDTO;
 import br.com.cwi.crescer.lavanderia.DTO.PedidoDTO;
 import br.com.cwi.crescer.lavanderia.DTO.PedidoResumoDTO;
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
+import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
+import br.com.cwi.crescer.lavanderia.domain.Servico;
 import br.com.cwi.crescer.lavanderia.service.ClienteService;
+import br.com.cwi.crescer.lavanderia.service.MaterialService;
 import br.com.cwi.crescer.lavanderia.service.PedidoService;
+import br.com.cwi.crescer.lavanderia.service.ServicoService;
 
 @Controller
 @RequestMapping("/pedidos")
@@ -27,11 +31,19 @@ public class PedidoController {
 
 	private PedidoService pedidoService;
 	private ClienteService clienteService;
+	private MaterialService materialService;
+	private ServicoService servicoService;
 	
 	@Autowired
-	public PedidoController(PedidoService pedidoService,ClienteService clienteService){
+	public PedidoController(PedidoService pedidoService,
+			ClienteService clienteService,
+			MaterialService materialService,
+			ServicoService servicoService){
+		
 		this.pedidoService = pedidoService;
 		this.clienteService = clienteService;
+		this.materialService =  materialService;
+		this.servicoService =  servicoService;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -62,13 +74,23 @@ public class PedidoController {
         Pedido pedido = pedidoService.incluirInicial(pedidoResumo);
         redirectAttributes.addFlashAttribute("menssagemFlash", "agora você pode adicionar itens a esse pedido");
         ItemDTO itemDTO = new ItemDTO();
-        itemDTO.setPedido(pedido);
-        return new ModelAndView("item/incluir","item",itemDTO);
+        itemDTO.setIdPedido(pedido.getIdPedido());
+        return new ModelAndView("item/manter","item",itemDTO);
     }
 
     
     @ModelAttribute("clientes")
     public List<Cliente> comboClientes() {
         return clienteService.listar();
+    }
+    
+    @ModelAttribute("materiais")
+    public List<Material> comboMateriais() {
+        return materialService.listar();
+    }
+    
+    @ModelAttribute("servicos")
+    public List<Servico> comboServicos() {
+        return servicoService.listar();
     }
 }
