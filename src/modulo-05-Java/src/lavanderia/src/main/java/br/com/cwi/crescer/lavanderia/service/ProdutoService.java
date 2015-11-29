@@ -115,5 +115,10 @@ public class ProdutoService {
 		}
 	}
 	
+	public Produto buscarProduto(Produto produto){
+		Produto produto2 = produtoDao.buscarPorMaterialEServico(produto);
+		return produto2;
+	}
+	
 	
 }
