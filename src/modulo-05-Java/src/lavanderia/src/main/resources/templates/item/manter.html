@@ -23,7 +23,7 @@
 				
 		            <div class="form-group">
 				 		<label>Material: </label>
-						<select class="form-control" th:field="*{idMaterial}">
+						<select class="form-control" th:field="*{idMaterial}" id="material">
 					           <option th:each="material : ${materiais}" th:text="${material.descricao}" th:value="${material.idMaterial}" ></option>
 				        </select>
 				        <span class="help-inline" th:errors="*{idMaterial}"></span>
@@ -31,7 +31,7 @@
 				            
 				    <div class="form-group">
 						<label>Servico: </label>
-						<select class="form-control" th:field="*{idServico}">
+						<select class="form-control" th:field="*{idServico}" id="servico">
 						       <option th:each="servico : ${servicos}" th:text="${servico.descricao}" th:value="${servico.idServico}" ></option>
 						</select>
 						<span class="help-inline" th:errors="*{idServico}"></span>
@@ -47,7 +47,6 @@
 				<button class="btn btn-primary pull-left" type="submit">Escolher</button>
 				<a class="btn btn-primary pull-right" th:href="@{|/pedido/status/finalizar/${item.idPedido}|}">Finalizar</a>
 			</form>	
-			
 		</div>
 	</body>
 </html>

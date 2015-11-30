@@ -13,11 +13,11 @@ import br.com.cwi.crescer.lavanderia.dao.PedidoDao;
 import br.com.cwi.crescer.lavanderia.dao.ProdutoDao;
 import br.com.cwi.crescer.lavanderia.dao.ServicoDao;
 import br.com.cwi.crescer.lavanderia.domain.Item;
+import br.com.cwi.crescer.lavanderia.domain.Item.SituacaoItem;
 import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
 import br.com.cwi.crescer.lavanderia.domain.Produto;
 import br.com.cwi.crescer.lavanderia.domain.Servico;
-import br.com.cwi.crescer.lavanderia.domain.Item.SituacaoItem;
 import br.com.cwi.crescer.lavanderia.mapper.ItemMapper;
 
 @Service
@@ -32,7 +32,7 @@ public class ItemService {
 
     @Autowired
     public ItemService(ItemDao itemDao,ProdutoDao produtoDao,
-    				   MaterialDao materialDao,ServicoDao servicoDao,PedidoDao pedidoDao) {
+            MaterialDao materialDao,ServicoDao servicoDao,PedidoDao pedidoDao) {
         super();
         this.itemDao = itemDao;
         this.produtoDao = produtoDao;
@@ -52,57 +52,57 @@ public class ItemService {
 
         return valorUnit;
     }
-    
+
     public Item incluirItem(ItemDTO itemDTO){
-    	Produto produto = obterProduto(itemDTO);
-		
-		Item item = ItemMapper.getNewEntity(itemDTO);
-		item.setValorUnitario(produto.getValor());
-		item.setPedido(pedidoDao.findById(itemDTO.getIdPedido()));
-		item.setProduto(produto);
-		item.setPeso(itemDTO.getPeso());
-		BigDecimal valorTotal = item.getValorUnitario().multiply(item.getPeso());
-		item.setValorTotal(valorTotal);
-		item.setSituacao(SituacaoItem.PENDENTE);
-		
-		return itemDao.save(item);
-	
+        Produto produto = obterProduto(itemDTO);
+
+        Item item = ItemMapper.getNewEntity(itemDTO);
+        item.setValorUnitario(produto.getValor());
+        item.setPedido(pedidoDao.findById(itemDTO.getIdPedido()));
+        item.setProduto(produto);
+        item.setPeso(itemDTO.getPeso());
+        BigDecimal valorTotal = item.getValorUnitario().multiply(item.getPeso());
+        item.setValorTotal(valorTotal);
+        item.setSituacao(SituacaoItem.PENDENTE);
+
+        return itemDao.save(item);
+
     }
-    
+
     public Produto obterProduto(ItemDTO itemDTO){
-    	Produto produtoBuscar = new Produto();
-		produtoBuscar.setMaterial(new Material());
-		produtoBuscar.setServico(new Servico());
-		produtoBuscar.getMaterial().setIdMaterial(itemDTO.getIdMaterial());
-		produtoBuscar.getServico().setIdServico(itemDTO.getIdServico());
-		Produto produto = produtoDao.buscarPorMaterialEServico(produtoBuscar);
-		return produto;
+        Produto produtoBuscar = new Produto();
+        produtoBuscar.setMaterial(new Material());
+        produtoBuscar.setServico(new Servico());
+        produtoBuscar.getMaterial().setIdMaterial(itemDTO.getIdMaterial());
+        produtoBuscar.getServico().setIdServico(itemDTO.getIdServico());
+        Produto produto = produtoDao.buscarPorMaterialEServico(produtoBuscar);
+        return produto;
     }
-    
+
     public List<Item> buscarPorPedido(Pedido pedido){
-    	
-    	return itemDao.findAllByPedido(pedido.getIdPedido());
+
+        return itemDao.findAllByPedido(pedido.getIdPedido());
     }
 
-	public BigDecimal somarPesoItensPedido(Pedido pedido) {
-		BigDecimal pesoTotal = new BigDecimal(0);
-		List<Item> itens = buscarPorPedido(pedido);
-		for(Item item : itens){
-			pesoTotal.add(item.getPeso());
-		}
-		
-		return pesoTotal;
-	}
+    public BigDecimal somarPesoItensPedido(Pedido pedido) {
+        BigDecimal pesoTotal = new BigDecimal(0);
+        List<Item> itens = buscarPorPedido(pedido);
+        for(Item item : itens){
+            pesoTotal.add(item.getPeso());
+        }
 
-	public Item processarItem(Long id) {
-		Item item = itemDao.findById(id);
-		item.setSituacao(SituacaoItem.PROCESSADO);
-		Item itemSalvo = itemDao.save(item);
-		return itemSalvo;
-	}
-	
-	public Item atualizar(Item item){
-		Item itemSalvar = itemDao.findById(item.getIdItem());
-		return itemDao.save(itemSalvar);
-	}
+        return pesoTotal;
+    }
+
+    public Item processarItem(Long id) {
+        Item item = itemDao.findById(id);
+        item.setSituacao(SituacaoItem.PROCESSADO);
+        Item itemSalvo = itemDao.save(item);
+        return itemSalvo;
+    }
+
+    public Item atualizar(Item item){
+        Item itemSalvar = itemDao.findById(item.getIdItem());
+        return itemDao.save(itemSalvar);
+    }
 }
