@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.lavanderia.DTO.ClienteDTO;
-import br.com.cwi.crescer.lavanderia.DTO.ClienteResumoDTO;
+import br.com.cwi.crescer.lavanderia.DTO.PedidoVisualizarDTO;
 import br.com.cwi.crescer.lavanderia.DTO.PedidoListaDTO;
 import br.com.cwi.crescer.lavanderia.DTO.PedidoResumoDTO;
 import br.com.cwi.crescer.lavanderia.DTO.PedidoDTO;
@@ -19,7 +19,9 @@ import br.com.cwi.crescer.lavanderia.dao.ClienteDao;
 import br.com.cwi.crescer.lavanderia.dao.PedidoDao;
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
 import br.com.cwi.crescer.lavanderia.domain.Item;
+import br.com.cwi.crescer.lavanderia.domain.Item.SituacaoItem;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
+import br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente;
 import br.com.cwi.crescer.lavanderia.domain.Pedido.PedidoSituacao;
 import br.com.cwi.crescer.lavanderia.mapper.ClienteMapper;
 import br.com.cwi.crescer.lavanderia.mapper.PedidoMapper;
@@ -121,14 +123,14 @@ public class PedidoService {
 	}
 	
 	public BigDecimal obterValorDesconto(Pedido pedido,Item item){
-		BigDecimal valorDesconto = new BigDecimal(0); 
+		BigDecimal valorDesconto = new BigDecimal("0"); 
 		BigDecimal valorTotalPedido = pedido.getValorBruto();
 		
-		BigDecimal percentual1 = new BigDecimal(0.08);
-		BigDecimal percentual2 = new BigDecimal(0.0487);
-		BigDecimal percentual3 = new BigDecimal(0.04);
-		BigDecimal valorEspecificado = new BigDecimal(90);
-		BigDecimal pesoEspecificado = new BigDecimal(15);
+		BigDecimal percentual1 = new BigDecimal("0.08");
+		BigDecimal percentual2 = new BigDecimal("0.0487");
+		BigDecimal percentual3 = new BigDecimal("0.04");
+		BigDecimal valorEspecificado = new BigDecimal("90");
+		BigDecimal pesoEspecificado = new BigDecimal("15");
 		BigDecimal somaDoPesoItens = itemService.somarPesoItensPedido(pedido);
 		somaDoPesoItens = somaDoPesoItens.add(item.getPeso());
 		
@@ -146,7 +148,8 @@ public class PedidoService {
 		}else if((valorTotalPedido.compareTo(valorEspecificado) > 0) ||
 				  somaDoPesoItens.compareTo(pesoEspecificado) > 0){
 			valorDesconto = valorTotalPedido.multiply(percentual2);
-		}else{
+		}else if(diaDaSemana == diasDaSemana.QUINTA.ordinal() ||
+				 diaDaSemana == diasDaSemana.SEXTA.ordinal()){
 			valorDesconto = valorTotalPedido.multiply(percentual3);
 		}
 		
@@ -156,5 +159,111 @@ public class PedidoService {
 	
 	public static enum diasDaSemana{
 		DOMINGO,SEGUNDA,TERCA,QUARTA,QUINTA,SEXTA,SABADO
+	}
+	
+	public Pedido mudarStatusParaProcessando(Long id){
+		Pedido pedido = pedidoDao.findById(id);
+		pedido.setSituacao(PedidoSituacao.PROCESSANDO);
+		
+		return pedidoDao.save(pedido);
+	}
+
+	public Pedido cancelar(Long id) {
+		Pedido pedido = pedidoDao.findById(id);
+		pedido.setSituacao(PedidoSituacao.CANCELADO);
+		
+		return pedidoDao.save(pedido);
+	}
+
+	public PedidoVisualizarDTO visualizarPedidoDTO(Long id) {
+		
+		Pedido pedido = pedidoDao.findById(id);
+		PedidoVisualizarDTO pedidoVisu = PedidoMapper.toPedidoVisualizarDTO(pedido);
+		
+		return pedidoVisu;
+	}
+
+	public Pedido verificarSituacaoItensEAtualizar(Long idPedido) {
+		Pedido pedido = pedidoDao.findById(idPedido);
+		boolean itensForamProcessados = verficarSeItensForamProcessados(pedido.getItens());
+		if(itensForamProcessados){
+			pedido.setSituacao(PedidoSituacao.PROCESSADO);
+			return pedidoDao.save(pedido);
+		}else{
+			return null;
+		}
+		
+	}
+	
+	public boolean verficarSeItensForamProcessados(List<Item> itens){
+		for(Item item : itens){
+			if(item.getSituacao() == SituacaoItem.PENDENTE){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public Pedido encerrar(Long id) {
+		Pedido pedido = pedidoDao.findById(id);
+		
+		if(pedido.getSituacao() == PedidoSituacao.PROCESSADO){
+			pedido.setSituacao(PedidoSituacao.ENCERRADO);
+			return pedidoDao.save(pedido);
+		}
+		return null;
+	}
+
+	public boolean processarPedido(Long idPedido) {
+		Pedido pedido = pedidoDao.findById(idPedido);
+		List<Item> itens = pedido.getItens();
+		
+		for(Item item : itens){
+			if(item.getSituacao() != SituacaoItem.PROCESSADO){
+				itemService.processarItem(item.getIdItem());
+			}
+			
+		}
+		
+		Pedido pedidoProcessou = verificarSituacaoItensEAtualizar(pedido.getIdPedido());
+		if(pedidoProcessou != null){	
+			return true;
+		}else{
+			return false;
+		}	
+	}
+
+	public List<PedidoListaDTO> listarPedidosListaDTOPorCPF(String cpf) {
+		List<Pedido> pedidos =  pedidoDao.findByCpf(cpf);
+		List<PedidoListaDTO> dtos = new ArrayList<PedidoListaDTO>();
+
+        for (Pedido pedido : pedidos) {
+            dtos.add(new PedidoListaDTO(pedido));
+        }
+
+        return dtos;	
+	}
+
+	public List<PedidoListaDTO> listarPedidosListaDTOPorSituacao(PedidoSituacao situacao) {
+		List<Pedido> pedidos =  pedidoDao.findBySituacao(situacao);
+		List<PedidoListaDTO> dtos = new ArrayList<PedidoListaDTO>();
+
+        for (Pedido pedido : pedidos) {
+            dtos.add(new PedidoListaDTO(pedido));
+        }
+
+        return dtos;
+	}
+
+	public List<PedidoSituacao> listarSituacoes() {
+		ArrayList<PedidoSituacao> situacoes = new ArrayList<PedidoSituacao>();
+        situacoes.add(PedidoSituacao.PENDENTE);
+        situacoes.add(PedidoSituacao.PROCESSANDO);
+        situacoes.add(PedidoSituacao.PROCESSADO);
+        situacoes.add(PedidoSituacao.ENCERRADO);
+        situacoes.add(PedidoSituacao.CANCELADO);
+        return situacoes;
+	        
+	  
 	}
 }
