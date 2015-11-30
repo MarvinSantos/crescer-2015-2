@@ -62,6 +62,11 @@
 			<version>11.2.0.4</version>
 		</dependency>
 		
+		<dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+        </dependency>
+		
 	</dependencies>
 	
 	<build>
