@@ -2,6 +2,7 @@ package br.com.cwi.crescer.lavanderia.mapper;
 
 
 import br.com.cwi.crescer.lavanderia.DTO.ClienteDTO;
+import br.com.cwi.crescer.lavanderia.DTO.ClientePedidoDTO;
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
 
 public class ClienteMapper {
@@ -43,6 +44,16 @@ public class ClienteMapper {
         entity.setEndereco(dto.getEndereco());
         entity.setSituacao(dto.getSituacao());
         return entity;
+    }
+    
+    public static ClientePedidoDTO toClientePedidoDTO(Cliente cliente){
+    	ClientePedidoDTO dto = new ClientePedidoDTO();
+    	
+    	dto.setCpf(cliente.getCpf());
+    	dto.setIdCliente(cliente.getIdCliente());
+    	dto.setNome(cliente.getNome());
+    	
+    	return dto;
     }
 
 }
