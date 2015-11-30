@@ -44,8 +44,10 @@
 			 		</div>
 					
 				</div>
-				<button class="btn btn-primary" type="submit">Escolher</button>
+				<button class="btn btn-primary pull-left" type="submit">Escolher</button>
+				<a class="btn btn-primary pull-right" th:href="@{|/pedido/status/finalizar/${item.idPedido}|}">Finalizar</a>
 			</form>	
+			
 		</div>
 	</body>
 </html>
