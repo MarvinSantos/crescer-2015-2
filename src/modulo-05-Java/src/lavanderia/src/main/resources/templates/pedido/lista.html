@@ -13,9 +13,30 @@
 	<body>
 	
 		<div layout:fragment="content">
-			<div class="margem-top-min centralizar alert alert-info" th:if="${menssagemFlash != null}">
-				<p th:text="${menssagemFlash}"></p>
-			</div>
+		
+			  
+			
+<!-- 			<div class="margem-top container-form"> -->
+<!-- 				<form th:action="@{/pedidos/pesquisar/cpf}" th:object="${filtro}" method="post"> -->
+<!-- 					<div class="form-group"> -->
+<!-- 						<label class="control-lable pull-left">Filtrar por Cpf: </label> -->
+<!-- 						<input class="form-control pull-right" th:field="*{cpf}" type="text"/> -->
+<!-- 					</div> -->
+<!-- 					<button class="btn btn-primary pull-left" type="submit">Filtrar</button> -->
+<!-- 				</form> -->
+<!-- 			</div> -->
+			
+<!-- 			<div class="container-form"> -->
+<!-- 				<form th:action="@{/pedidos/pesquisar/situacao}" th:object="${filtro}" method="post"> -->
+<!-- 					<div class="form-group" > -->
+<!-- 						 <label>Filtrar por situação </label> -->
+<!-- 						 <select class="form-control" th:field="*{situacao}"> -->
+<!-- 					        <option th:each="situacao : ${situacoes}" th:text="${situacao}" th:value="${situacao}" ></option> -->
+<!-- 					     </select>			 -->
+<!-- 				    </div> -->
+<!-- 				    <button class="btn btn-primary pull-left" type="submit">Filtrar</button> -->
+<!-- 				</form> -->
+<!-- 			</div>   -->
 	
 			<div class="margem-top">
 				<a class="btn btn-primary pull-right margem-dir" type="submit" th:href="@{|/pedidos/incluir|}">Incluir</a>
@@ -31,8 +52,11 @@
 			                <th>Data Inclusão</th>
 			                <th>Valor Total Bruto</th>
 			                <th>Situacao</th>
-			                <th>Visualisar</th>
-			                <th>Editar</th>
+			                <th>Visualisar/processar itens</th>
+			                <th>Finalizar</th>
+			                <th>Encerrar</th>
+			                <th>Cancelar</th>
+			                <th>Processar</th>
 			            </tr>
 		            </thead>  
 		            <tr th:each="pedido : ${pedidos}">
@@ -41,11 +65,27 @@
 		            	<td th:text="${pedido.dataInclusao}"></td>
 		            	<td th:text="${pedido.valorBruto}"></td>
 		            	<td th:text="${pedido.situacao}"> </td>
-		            	<td><a th:href="@{|/pedidos/${pedido.idPedido}|}">visualizar</a></td>	
-		            	<td ><a th:if="${pedido.situacaoName == 'PENDENTE'}" th:href="@{|/pedidos/editar/${pedido.idPedido}|}">editar</a></td>	            
+		            	<td><a th:href="@{|/pedidos/${pedido.idPedido}|}">visualizar/processar itens</a></td>	
+		            	<td ><a th:if="${pedido.situacaoName == 'PENDENTE'}" th:href="@{|/pedido/status/finalizar/${pedido.idPedido}|}">Finalizar</a></td>
+		            	<td ><a th:if="${pedido.situacaoName == 'PROCESSADO'}" th:href="@{|/pedido/status/encerrar/${pedido.idPedido}|}">Encerrar</a></td>
+		            	<td >
+		            		<div th:if="${pedido.situacaoName != 'ENCERRADO'}">
+		            			<a th:if="${pedido.situacaoName != 'CANCELADO'}" th:href="@{|/pedido/status/cancelar/${pedido.idPedido}|}">Cancelar</a>
+		            		</div>
+		            	</td>	
+		            	<td>
+		            		<div th:if="${pedido.situacaoName == 'PROCESSANDO'}">
+		            			<a th:if="${pedido.situacaoName != 'PROCESSADO'}" th:href="@{|/pedido/status/processar/${pedido.idPedido}|}">Processar</a>
+		            		</div>
+		            	</td>            
 		            </tr>			
 				
-				</table>		
+				</table>
+				
+				<div class="margem-top-min centralizar alert alert-info" th:if="${menssagemFlash != null}">
+					<p th:text="${menssagemFlash}"></p>
+				</div>		
+				
 			</div>
 		</div>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
