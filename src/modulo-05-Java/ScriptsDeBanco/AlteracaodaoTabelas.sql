@@ -8,4 +8,11 @@ ALTER TABLE Produto MODIFY Prazo number(3) NOT NULL;
 UPDATE Produto SET Prazo = 3;
 COMMIT;
 
+select * from pedido
+select * from item
+select * from material
 select * from produto
+
+
+delete from produto where idproduto = 6
+commit
