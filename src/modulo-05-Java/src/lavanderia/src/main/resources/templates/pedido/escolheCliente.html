@@ -13,12 +13,12 @@
 	<body>
 		<div layout:fragment="content" class="centralizar margem-top-min">
 			<form th:action="@{/pedidos/incluir}" th:object="${pedido}" method="post">
-				<div class="container-form">
+				<div class="container-form-large">
 					
 			 		<div class="form-group" th:classappend="${#fields.hasErrors('idCliente')} ? 'has-error'">
 				 		<label>Cliente: </label>
 				 		<select class="form-control" th:field="*{idCliente}">
-			                <option th:each="cliente : ${clientes}" th:text="${cliente.nome}" th:value="${cliente.idCliente}" ></option>
+			                <option th:each="cliente : ${clientes}" th:text="${'Nome:  '+ cliente.nome +' ------------- '+' CPF: '+ cliente.cpf}" th:value="${cliente.idCliente}" ></option>
 			            </select>
 			            <span class="help-inline" th:errors="*{idCliente}"></span>
 		            </div>
