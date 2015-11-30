@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns="http://www.w3.org/1999/xhtml"
+ 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 		layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Detalhes do pedido</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  />
+		<link rel="stylesheet" type="text/css" href="/css/site.css" />
+		<script src="common-script.js"></script>
+	</head>
+	<body>
+		<div layout:fragment="content" class="margem-top-min centralizar">
+			<form class="form-group" th:object="${pedido}">
+				<div class="container" th:fragment="pedido-exibir">
+				
+					<div class="form-group linha">
+						<label class="control-label margem-direita coluna">Cliente </label>
+						<label th:text="*{cliente.nome}"></label>
+						<hr/>
+					</div>
+					
+					<div class="form-group linha">
+						<label class="control-label margem-direita coluna">CPF </label>
+				 		<label th:text="*{cliente.cpf}"></label>
+				 		<hr/>
+					</div>
+					
+					<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Data Inclusao </label>
+				 		<label th:text="*{dataInclusao}"></label>
+				 		<hr/>
+			 		</div>
+			 		
+			 		<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Data Entrega </label>
+				 		<label th:text="*{dataEntrega}"></label>
+				 		<hr/>
+			 		</div>
+			 		
+			 		<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Valor Bruto </label>
+				 		<label th:text="*{valorBruto}"></label>
+				 		<hr/>
+			 		</div>
+			 		
+			 		<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Valor Desconto </label>
+				 		<label th:text="*{valorDesconto}"></label>
+				 		<hr/>
+			 		</div>
+			 		
+			 		<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Valor Final </label>
+				 		<label th:text="*{valorFinal}"></label>
+				 		<hr/>
+			 		</div>
+			 		
+			 		<div class="form-group linha">
+				 		<label class="control-label margem-direita coluna">Situacao </label>
+				 		<label th:text="*{situacao}"></label>
+				 		<hr/>
+			 		</div>		 		
+		        </div> 
+		        <div th:include="item/lista :: lista-itens">
+					
+		             	            
+	            </div>    
+			</form>
+		</div>
+	</body>
+</html>
