@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
+import br.com.cwi.crescer.lavanderia.domain.Pedido.PedidoSituacao;
 
 @Repository
 public class PedidoDao {
@@ -35,6 +36,18 @@ public class PedidoDao {
         }
 
         return em.merge(pedido);
+		
+	}
+
+	public List<Pedido> findByCpf(String cpf) {
+		
+		return em.createQuery("FROM Pedido p WHERE p.cliente.cpf = :cpf ", Pedido.class).setParameter("cpf",cpf ).getResultList();
+	}
+
+	public List<Pedido> findBySituacao(PedidoSituacao situacao) {
+		return em.createQuery("FROM Pedido p WHERE p.situacao = :situacao ", Pedido.class)
+				.setParameter("situacao",situacao )
+				.getResultList();
 		
 	}
 }
