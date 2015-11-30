@@ -93,4 +93,16 @@ public class ItemService {
 		
 		return pesoTotal;
 	}
+
+	public Item processarItem(Long id) {
+		Item item = itemDao.findById(id);
+		item.setSituacao(SituacaoItem.PROCESSADO);
+		Item itemSalvo = itemDao.save(item);
+		return itemSalvo;
+	}
+	
+	public Item atualizar(Item item){
+		Item itemSalvar = itemDao.findById(item.getIdItem());
+		return itemDao.save(itemSalvar);
+	}
 }
