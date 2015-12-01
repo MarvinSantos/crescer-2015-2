@@ -68,7 +68,7 @@ public class ItemController {
             final RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
-            return new ModelAndView("itens/manter");
+            return new ModelAndView("item/manter","item" ,itemDTO);
         }
 
         Item incluido = itemService.incluirItem(itemDTO);
