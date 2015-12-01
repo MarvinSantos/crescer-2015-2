@@ -101,11 +101,11 @@ public class ItemController {
 
     @ModelAttribute("materiais")
     public List<Material> comboMateriais() {
-        return materialService.listar();
+        return materialService.listar2();
     }
 
     @ModelAttribute("servicos")
     public List<Servico> comboServicos() {
-        return servicoService.listar();
+        return servicoService.listar2();
     }
 }
