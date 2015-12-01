@@ -55,7 +55,7 @@ public class ClienteController {
     }
 
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+  
     @RequestMapping(path = "/editar/{id}", method = RequestMethod.GET)
     public ModelAndView edita(@PathVariable("id") Long id) {
         return new ModelAndView("cliente/editar", "cliente", clienteService.buscarClientePorId(id));
@@ -63,7 +63,6 @@ public class ClienteController {
 
 
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
     public ModelAndView editarSalvando(@Valid @ModelAttribute("cliente")ClienteDTO cliente,
             BindingResult result,
