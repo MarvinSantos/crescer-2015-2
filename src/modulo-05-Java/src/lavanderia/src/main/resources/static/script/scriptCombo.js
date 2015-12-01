@@ -4,12 +4,11 @@
 // 					$(function(){
 // 						$('#servico').change(function(){
 // 							if( $(this).val() ) {
-// 								$.getJSON('/itens/rest/' + $(this).val(), function(j){
-// 									var options = '<option value=""></option>'; 
+// 								$.getJSON('/itens/rest/' + $(this).val(), function(json){
 							
-// 									for (var i = 0; i < j.length; i++) {
-// 										console.log(j[i]);
-// 										options += '<option value="' + j[i].idMaterial + '">' + j[i].descricaoMaterial + '</option>';
+// 									for (var i = 0; i < json.result.length; i++) {
+// 										console.log(json[i]);
+// 										options += '<option value="' + json[i].idMaterial + '">' + json[i].descricaoMaterial + '</option>';
 									
 // 									}	
 // 									$('#material').html(options).show();
