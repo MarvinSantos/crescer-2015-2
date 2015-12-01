@@ -45,19 +45,6 @@ public class PedidoService {
         Pedido pedido = pedidoDao.findById(id);
         return pedido;
     }
-	
-	
-	public Date buscarDataInclusao(Long id) {
-		Date data = new Date(1L);
-		Pedido pedido;
-		
-		pedido = pedidoDao.findById(id);
-		if(pedido != null){
-			data = pedido.getDataInclusao() ;
-		}
-		
-		return data;
-	}
 
 
 	public List<PedidoListaDTO> listarPedidosListaDTO() {
@@ -102,7 +89,7 @@ public class PedidoService {
 		BigDecimal valorDesconto = obterValorDesconto(pedido, incluido);
 		pedido.setValorDesconto(valorDesconto);
 		pedido.setValorFinal(pedido.getValorBruto().subtract(valorDesconto));
-		pedido = pedidoDao.save(pedido);
+		pedidoDao.save(pedido);
 		return pedido;
 	}
 	
@@ -164,15 +151,15 @@ public class PedidoService {
 	public Pedido mudarStatusParaProcessando(Long id){
 		Pedido pedido = pedidoDao.findById(id);
 		pedido.setSituacao(PedidoSituacao.PROCESSANDO);
-		
-		return pedidoDao.save(pedido);
+		pedidoDao.save(pedido);
+		return pedido;
 	}
 
 	public Pedido cancelar(Long id) {
 		Pedido pedido = pedidoDao.findById(id);
 		pedido.setSituacao(PedidoSituacao.CANCELADO);
-		
-		return pedidoDao.save(pedido);
+		pedidoDao.save(pedido);
+		return pedido;
 	}
 
 	public PedidoVisualizarDTO visualizarPedidoDTO(Long id) {
@@ -188,7 +175,8 @@ public class PedidoService {
 		boolean itensForamProcessados = verficarSeItensForamProcessados(pedido.getItens());
 		if(itensForamProcessados){
 			pedido.setSituacao(PedidoSituacao.PROCESSADO);
-			return pedidoDao.save(pedido);
+			pedidoDao.save(pedido);
+			return pedido;
 		}else{
 			return null;
 		}
@@ -209,7 +197,8 @@ public class PedidoService {
 		
 		if(pedido.getSituacao() == PedidoSituacao.PROCESSADO){
 			pedido.setSituacao(PedidoSituacao.ENCERRADO);
-			return pedidoDao.save(pedido);
+			pedidoDao.save(pedido);
+			return pedido;
 		}
 		return null;
 	}
